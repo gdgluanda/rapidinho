@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SlapshPage extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
-  _SlapshPageState createState() => _SlapshPageState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _SlapshPageState extends State<SlapshPage> {
+class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
 
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/home_page.dart';
+import 'package:rapidinho/splash_page.dart';
 
 void main() => runApp(
   RapidinhoApp()
@@ -13,7 +13,7 @@ class RapidinhoApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red
       ),
-      home: HomePage(),
+      home: SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }
