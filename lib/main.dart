@@ -10,6 +10,9 @@ class RapidinhoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Rapidinho',
+      theme: ThemeData(
+        primarySwatch: Colors.red
+      ),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
