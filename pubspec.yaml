@@ -47,6 +47,8 @@ flutter:
     - assets/images/rapidinho_red.jpg
     - assets/images/rapidinho_white.jpg
     - assets/images/rapidinho_cover.png
+    - assets/images/rapidinho_transparent.png
+    - assets/images/r_transparent.png
 
   fonts:
     - family: Rajdhani
