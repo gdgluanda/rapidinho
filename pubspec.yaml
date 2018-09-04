@@ -41,7 +41,23 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-    - assets/images/rapidinho.jpg
+    - assets/images/rapidinho_launcher.jpg
+    - assets/images/r_red.jpg
+    - assets/images/r_white.jpg
+    - assets/images/rapidinho_red.jpg
+    - assets/images/rapidinho_white.jpg
+    - assets/images/rapidinho_cover.png
+    - assets/images/rapidinho_transparent.png
+    - assets/images/r_transparent.png
+
+  fonts:
+    - family: Rajdhani
+      fonts:
+        - asset: assets/fonts/Rajdhani/Rajdhani-Light.ttf
+        - asset: assets/fonts/Rajdhani/Rajdhani-Regular.ttf
+        - asset: assets/fonts/Rajdhani/Rajdhani-Medium.ttf
+        - asset: assets/fonts/Rajdhani/Rajdhani-SemiBold.ttf
+        - asset: assets/fonts/Rajdhani/Rajdhani-Bold.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
