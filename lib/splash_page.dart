@@ -68,12 +68,12 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with SingleTickerPro
   void initState() {
     super.initState();
     _controller = new AnimationController(
-      duration: const Duration(milliseconds: 5000),
+      duration: const Duration(milliseconds: 4000),
       vsync: this,
     );
     _controller.forward();
     Future.delayed(
-        Duration(milliseconds: 5050)).then((_) =>
+        Duration(milliseconds: 4050)).then((_) =>
         Navigator.of(context).push(MaterialPageRoute<Null>(
             builder: (context){
               return HomePage();
