@@ -6,7 +6,27 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+
+  AnimationController controller;
+  Animation<double> revealSize;
+
+  @override
+  void initState() {
+    super.initState();
+    controller =  AnimationController(
+      duration: const Duration(seconds: 9),
+      vsync: this,
+    );
+    revealSize = new Tween(begin: 1.0, end: 0.6).animate(controller);
+    controller.forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   /// The Bottom Navigation Items
   List<BottomNavigationBarItem> navigationItems() {
@@ -40,7 +60,7 @@ class _HomePageState extends State<HomePage> {
    @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
       bottomNavigationBar: new BottomNavigationBar(
         currentIndex: _currentIndex,
         items: navigationItems(),
@@ -52,18 +72,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: <Widget>[
-          Reveal(
-            revealPercent: 1.0,
-            child: Container(
-              color: Colors.white,
-            ),
-          ),
           Container(
             height: 100.0,
             color: Colors.red,
           ),
           Align(
-            alignment: Alignment.topCenter,
+            alignment: Alignment.center.add(Alignment(0.0, -1.0)),
             child: Hero(tag: 'Rapidinho-Logo',
                 child: Image.asset('assets/images/rapidinho_transparent.png', height: 150.0, width: 150.0)),
           ),

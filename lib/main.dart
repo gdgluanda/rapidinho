@@ -14,7 +14,7 @@ class RapidinhoApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red
       ),
-      home: SplashPage(),
+      home: SplashPageAnimator(),
       debugShowCheckedModeBanner: false,
     );
   }
