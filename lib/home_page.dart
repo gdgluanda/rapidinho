@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/reveal.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -49,10 +50,24 @@ class _HomePageState extends State<HomePage> {
           });
         },
       ),
-      body: Container(
-          alignment: Alignment.topCenter,
-          child: Hero(tag: 'Rapidinho-Logo',
-              child: Image.asset('assets/images/rapidinho_transparent.png', height: 150.0, width: 150.0)),
+      body: Stack(
+        children: <Widget>[
+          Reveal(
+            revealPercent: 1.0,
+            child: Container(
+              color: Colors.white,
+            ),
+          ),
+          Container(
+            height: 100.0,
+            color: Colors.red,
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Hero(tag: 'Rapidinho-Logo',
+                child: Image.asset('assets/images/rapidinho_transparent.png', height: 150.0, width: 150.0)),
+          ),
+        ],
       ),
     );
   }

@@ -32,14 +32,14 @@ class _SplashPageState extends State<SplashPage> {
             Center(
                 child: Hero(
                   tag: 'Rapidinho-Logo',
-                    child: Image.asset('assets/images/rapidinho_transparent.png'))),
+                    child: Image.asset('assets/images/rapidinho_transparent.png', width: 300.0, height: 300.0,))),
             Align(
-                alignment: Alignment.center.add(Alignment(0.5, 0.07)),
+                alignment: Alignment.center.add(Alignment(0.45, 0.05)),
                 child: Text('Entregas na hora', style: TextStyle(
                 fontFamily: 'Rajdhani',
                 color: Colors.white,
-                fontSize: 20.0,
-                letterSpacing: 2.0,
+                fontSize: 15.0,
+                letterSpacing: 1.5,
                 fontWeight: FontWeight.w500))),
           ]
       ),
