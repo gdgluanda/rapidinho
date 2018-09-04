@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:rapidinho/reveal.dart';
 
@@ -57,31 +59,38 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   // selected index
   int _currentIndex = 0;
 
+  Future<bool> _exitApp() async{
+    return false;
+  }
+
    @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      bottomNavigationBar: new BottomNavigationBar(
-        currentIndex: _currentIndex,
-        items: navigationItems(),
-        onTap: (int index){
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: 100.0,
-            color: Colors.red,
-          ),
-          Align(
-            alignment: Alignment.center.add(Alignment(0.0, -1.0)),
-            child: Hero(tag: 'Rapidinho-Logo',
-                child: Image.asset('assets/images/rapidinho_transparent.png', height: 150.0, width: 150.0)),
-          ),
-        ],
+    return WillPopScope(
+      onWillPop: _exitApp,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        bottomNavigationBar: new BottomNavigationBar(
+          currentIndex: _currentIndex,
+          items: navigationItems(),
+          onTap: (int index){
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              height: 100.0,
+              color: Colors.red,
+            ),
+            Align(
+              alignment: Alignment.center.add(Alignment(0.0, -1.0)),
+              child: Hero(tag: 'Rapidinho-Logo',
+                  child: Image.asset('assets/images/rapidinho_transparent.png', height: 150.0, width: 150.0)),
+            ),
+          ],
+        ),
       ),
     );
   }
