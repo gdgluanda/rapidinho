@@ -1,6 +1,6 @@
 # Rapidinho
 
-unofficial delivery app for Rapidinho made with Flutter
+Unofficial delivery app for Rapidinho made with Flutter
 
 Gradle version: `4.4`
 Flutter version: `0.6.0`
