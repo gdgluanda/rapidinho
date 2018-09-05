@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:rapidinho/rapidinho_icon.dart';
+import 'package:rapidinho/rapidinho_style.dart';
 import 'package:rapidinho/reveal.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,24 +36,20 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   List<BottomNavigationBarItem> navigationItems() {
     return [
       BottomNavigationBarItem(
-        title: new Text("Home"),
-        icon: new Icon(Icons.home),
-        backgroundColor: Colors.deepPurple,
+        title: new Text("Casa", style: bottomTextStyle),
+        icon: new Icon(homeIcon, color: _currentIndex == 0 ? Colors.red : Colors.grey),
       ),
       BottomNavigationBarItem(
-          title: new Text("Orders"),
-          icon: new Icon(Icons.reorder),
-          backgroundColor: Colors.blue
+          title: new Text("Entregas", style: bottomTextStyle),
+          icon: new Icon(motorCycle, size: 30.0, color: _currentIndex == 1 ? Colors.red : Colors.grey),
       ),
       BottomNavigationBarItem(
-          title: new Text("Cart"),
-          icon: new Icon(Icons.shopping_cart),
-          backgroundColor: Colors.amber
+          title: new Text("Compras", style: bottomTextStyle),
+          icon: new Icon(shoppingCart, color: _currentIndex == 2 ? Colors.red : Colors.grey),
       ),
       BottomNavigationBarItem(
-          title: new Text('Account'),
-          icon: new Icon(Icons.account_circle),
-          backgroundColor: Colors.teal
+          title: new Text('Conta', style: bottomTextStyle),
+          icon: new Icon(account, color: _currentIndex == 3 ? Colors.red : Colors.grey),
       )
     ];
   }

@@ -1,0 +1,113 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter build bundle --suppress-analytics --target C:\Users\Braulio\KotlinProjects\rapidinho\lib\main.dart --preview-dart-2 --filesystem-scheme org-dartlang-root --depfile C:\Users\Braulio\KotlinProjects\rapidinho\build\app\intermediates\flutter\debug/snapshot_blob.bin.d --asset-dir C:\Users\Braulio\KotlinProjects\rapidinho\build\app\intermediates\flutter\debug/flutter_assets --debug
+
+## exception
+
+FileSystemException: FileSystemException: Exists failed, path = 'C:\Users\Braulio\KotlinProjects\rapidinho\build\app\intermediates\flutter\debug/flutter_assets' (OS Error: Access is denied.
+, errno = 5)
+
+```
+#0      _Directory.existsSync (dart:io/directory_impl.dart:101:7)
+#1      _Directory.createSync (dart:io/directory_impl.dart:133:11)
+#2      _LocalDirectory&LocalFileSystemEntity&ForwardingDirectory.createSync (package:file/src/forwarding/forwarding_directory.dart:22:16)
+#3      writeBundle (package:flutter_tools/src/bundle.dart:222:13)
+<asynchronous suspension>
+#4      assemble (package:flutter_tools/src/bundle.dart:214:9)
+<asynchronous suspension>
+#5      build (package:flutter_tools/src/bundle.dart:133:9)
+<asynchronous suspension>
+#6      BuildBundleCommand.runCommand (package:flutter_tools/src/commands/build_bundle.dart:95:11)
+<asynchronous suspension>
+#7      FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:348:18)
+<asynchronous suspension>
+#8      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:282:33)
+<asynchronous suspension>
+#9      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:142:29)
+<asynchronous suspension>
+#10     _rootRun (dart:async/zone.dart:1124:13)
+#11     _CustomZone.run (dart:async/zone.dart:1021:19)
+#12     _runZoned (dart:async/zone.dart:1516:10)
+#13     runZoned (dart:async/zone.dart:1463:12)
+#14     AppContext.run (package:flutter_tools/src/base/context.dart:141:18)
+<asynchronous suspension>
+#15     FlutterCommand.run (package:flutter_tools/src/runner/flutter_command.dart:273:20)
+#16     CommandRunner.runCommand (package:args/command_runner.dart:194:27)
+<asynchronous suspension>
+#17     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:346:21)
+<asynchronous suspension>
+#18     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:142:29)
+<asynchronous suspension>
+#19     _rootRun (dart:async/zone.dart:1124:13)
+#20     _CustomZone.run (dart:async/zone.dart:1021:19)
+#21     _runZoned (dart:async/zone.dart:1516:10)
+#22     runZoned (dart:async/zone.dart:1463:12)
+#23     AppContext.run (package:flutter_tools/src/base/context.dart:141:18)
+<asynchronous suspension>
+#24     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:302:19)
+<asynchronous suspension>
+#25     CommandRunner.run.<anonymous closure> (package:args/command_runner.dart:109:29)
+#26     new Future.sync (dart:async/future.dart:224:31)
+#27     CommandRunner.run (package:args/command_runner.dart:109:11)
+#28     FlutterCommandRunner.run (package:flutter_tools/src/runner/flutter_command_runner.dart:211:18)
+#29     run.<anonymous closure> (package:flutter_tools/runner.dart:59:20)
+<asynchronous suspension>
+#30     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:142:29)
+<asynchronous suspension>
+#31     _rootRun (dart:async/zone.dart:1124:13)
+#32     _CustomZone.run (dart:async/zone.dart:1021:19)
+#33     _runZoned (dart:async/zone.dart:1516:10)
+#34     runZoned (dart:async/zone.dart:1463:12)
+#35     AppContext.run (package:flutter_tools/src/base/context.dart:141:18)
+<asynchronous suspension>
+#36     runInContext (package:flutter_tools/src/context_runner.dart:42:24)
+<asynchronous suspension>
+#37     run (package:flutter_tools/runner.dart:50:10)
+#38     main (package:flutter_tools/executable.dart:51:9)
+<asynchronous suspension>
+#39     main (file:///C:/Users/Braulio/flutter/packages/flutter_tools/bin/flutter_tools.dart:8:3)
+#40     _startIsolate.<anonymous closure> (dart:isolate/runtime/libisolate_patch.dart:284:32)
+#41     _RawReceivePortImpl._handleMessage (dart:isolate/runtime/libisolate_patch.dart:169:12)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel beta, v0.6.0, on Microsoft Windows [Version 6.1.7601], locale en-US)
+    • Flutter version 0.6.0 at C:\Users\Braulio\flutter
+    • Framework revision 9299c02cf7 (3 weeks ago), 2018-08-16 00:35:12 +0200
+    • Engine revision e3687f70c7
+    • Dart version 2.1.0-dev.0.0.flutter-be6309690f
+
+[!] Android toolchain - develop for Android devices (Android SDK 28.0.2)
+    • Android SDK at C:\Users\Braulio\AppData\Local\Android\sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-28, build-tools 28.0.2
+    • ANDROID_HOME = C:\Users\Braulio\AppData\Local\Android\sdk
+    • Java binary at: C:\Program Files\Java\jdk1.8.0_92\bin\java.exe
+    • Java version Java(TM) SE Runtime Environment (build 1.8.0_92-b14)
+    ✗ Android license status unknown.
+
+[✓] Android Studio (version 3.1)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin version 26.0.1
+    • Dart plugin version 173.4700
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1024-b02)
+
+[!] Android Studio
+    • Android Studio at C:\Users\Braulio\.AndroidStudio3.1
+    ✗ Flutter plugin not installed; this adds Flutter specific functionality.
+    ✗ Dart plugin not installed; this adds Dart specific functionality.
+    ✗ android-studio-dir = C:\Users\Braulio\.AndroidStudio3.1
+    ✗ Unable to find bundled Java version.
+    • Try updating or re-installing Android Studio.
+    • Consider removing your android-studio-dir setting by running:
+      flutter config --android-studio-dir=
+
+[✓] Connected devices (1 available)
+    • Android SDK built for x86 • emulator-5554 • android-x86 • Android 7.0 (API 24) (emulator)
+
+! Doctor found issues in 2 categories.
+```

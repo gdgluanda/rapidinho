@@ -58,6 +58,9 @@ flutter:
         - asset: assets/fonts/Rajdhani/Rajdhani-Medium.ttf
         - asset: assets/fonts/Rajdhani/Rajdhani-SemiBold.ttf
         - asset: assets/fonts/Rajdhani/Rajdhani-Bold.ttf
+    - family: Fontello
+      fonts:
+        - asset: assets/fonts/Fontello/fontello.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
