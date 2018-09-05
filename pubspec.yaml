@@ -49,6 +49,16 @@ flutter:
     - assets/images/rapidinho_cover.png
     - assets/images/rapidinho_transparent.png
     - assets/images/r_transparent.png
+    - assets/images/deliverables/books.png
+    - assets/images/deliverables/drink.png
+    - assets/images/deliverables/food.png
+    - assets/images/deliverables/hamburger.png
+    - assets/images/deliverables/ice_cream.png
+    - assets/images/deliverables/letter.png
+    - assets/images/deliverables/mail.png
+    - assets/images/deliverables/pizza.png
+    - assets/images/deliverables/present.png
+    - assets/images/deliverables/wear.png
 
   fonts:
     - family: Rajdhani
