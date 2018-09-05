@@ -4,6 +4,7 @@ class NavigationCategory {
 
   final String name;
   final IconData icon;
+  final int index;
 
-  NavigationCategory(this.name, this.icon);
+  NavigationCategory(this.name, this.icon, this.index);
 }

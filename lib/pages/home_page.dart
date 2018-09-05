@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
+import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
-import 'package:rapidinho/ui/reveal.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -34,24 +33,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   /// The Bottom Navigation Items
   List<BottomNavigationBarItem> navigationItems() {
-    return [
-      BottomNavigationBarItem(
-        title: new Text("Casa", style: bottomTextStyle),
-        icon: new Icon(homeIcon, color: _currentIndex == 0 ? Colors.red : Colors.grey),
-      ),
-      BottomNavigationBarItem(
-          title: new Text("Entregas", style: bottomTextStyle),
-          icon: new Icon(motorCycle, size: 30.0, color: _currentIndex == 1 ? Colors.red : Colors.grey),
-      ),
-      BottomNavigationBarItem(
-          title: new Text("Compras", style: bottomTextStyle),
-          icon: new Icon(shoppingCart, color: _currentIndex == 2 ? Colors.red : Colors.grey),
-      ),
-      BottomNavigationBarItem(
-          title: new Text('Conta', style: bottomTextStyle),
-          icon: new Icon(account, color: _currentIndex == 3 ? Colors.red : Colors.grey),
-      )
-    ];
+    return navigationCategories.map((category){
+      return BottomNavigationBarItem(
+        title: new Text(category.name, style: bottomTextStyle),
+        icon: new Icon(category.icon, color: _currentIndex == category.index ? Colors.red : Colors.grey),
+      );
+    }).toList();
   }
 
   // selected index
