@@ -45,7 +45,25 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   int _currentIndex = 0;
 
   Future<bool> _exitApp() async{
-    return false;
+    return showDialog(
+      context: context,
+      builder: (builderContext){
+        return AlertDialog(
+          title: new Text("Aviso"),
+          content: new Text("Tem a certeza que deseja sair do aplicativo?"),
+          actions: <Widget>[
+            new FlatButton(
+              onPressed: () => Navigator.of(builderContext).pop(false),
+              child: new Text("Não"),
+            ),
+            new FlatButton(
+              onPressed: () => Navigator.of(builderContext).pop(true),
+              child: new Text("Sim"),
+            )
+          ],
+        );
+    }
+    );
   }
 
    @override
