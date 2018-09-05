@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       context: context,
       builder: (builderContext){
         return AlertDialog(
-          title: new Text("Atenção"),
+          title: new Text("Aviso"),
           content: new Text("Tem a certeza que deseja sair do aplicativo?"),
           actions: <Widget>[
             new MaterialButton(
