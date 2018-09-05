@@ -65,11 +65,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           title: new Text("Aviso"),
           content: new Text("Tem a certeza que deseja sair do aplicativo?"),
           actions: <Widget>[
-            new MaterialButton(
+            new FlatButton(
               onPressed: () => Navigator.of(builderContext).pop(false),
               child: new Text("Não"),
             ),
-            new MaterialButton(
+            new FlatButton(
               onPressed: () => Navigator.of(builderContext).pop(true),
               child: new Text("Sim"),
             )
