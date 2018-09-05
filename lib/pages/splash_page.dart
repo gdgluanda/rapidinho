@@ -27,11 +27,9 @@ class SplashPage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.center.add(Alignment(0.0, animation.logoAlignment.value)),
-              child: Hero(
-                  tag: 'Rapidinho-Logo',
-                  child: Image.asset(
-                    'assets/images/rapidinho_transparent.png',
-                    width: animation.logoSize.value, height: animation.logoSize.value))),
+              child: Image.asset(
+                'assets/images/rapidinho_transparent.png',
+                width: animation.logoSize.value, height: animation.logoSize.value)),
           Align(
               alignment: Alignment.center.add(Alignment(0.45, 0.05)),
               child: Text('Entregas na hora', style: TextStyle(
