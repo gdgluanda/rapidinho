@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/pages/delivery_tab.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class HomePage extends StatefulWidget {
@@ -82,7 +83,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               physics: NeverScrollableScrollPhysics(),
               controller: _tabController,
               children: navigationCategories.map((category){
-                return Center(child: Text(category.name, style: displayText));
+                if(category.name == 'Entregas'){
+                  return DeliveryTab();
+                } else {
+                  return Center(child: Text(category.name, style: displayText));
+                }
               }).toList(),
             ),
             Container(
