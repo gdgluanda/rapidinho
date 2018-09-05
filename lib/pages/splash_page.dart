@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/home_page.dart';
-import 'package:rapidinho/reveal.dart';
-import 'package:rapidinho/splash_animation.dart';
+import 'package:rapidinho/pages/home_page.dart';
+import 'package:rapidinho/ui/reveal.dart';
+import 'package:rapidinho/ui/animation/splash_animation.dart';
 
 class SplashPage extends StatelessWidget {
 

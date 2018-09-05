@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:rapidinho/rapidinho_icon.dart';
-import 'package:rapidinho/rapidinho_style.dart';
-import 'package:rapidinho/reveal.dart';
+import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
+import 'package:rapidinho/ui/styling/rapidinho_style.dart';
+import 'package:rapidinho/ui/reveal.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/home_page.dart';
-import 'package:rapidinho/splash_page.dart';
+import 'package:rapidinho/pages/home_page.dart';
+import 'package:rapidinho/pages/splash_page.dart';
 
 void main() => runApp(
   RapidinhoApp()
