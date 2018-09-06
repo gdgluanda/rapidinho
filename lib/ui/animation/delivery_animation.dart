@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DeliveryExpandAnimation {
 
   DeliveryExpandAnimation(this.controller):
-        containerHeight = Tween(begin: 100.0, end: 200.0).animate(
+        containerHeight = Tween(begin: 80.0, end: 200.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
@@ -11,6 +11,7 @@ class DeliveryExpandAnimation {
               1.0,
               curve: Curves.easeInOut,
             ),
+            reverseCurve: Curves.easeInOut,
           ),
         );
 
