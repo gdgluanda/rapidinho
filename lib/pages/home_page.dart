@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   List<BottomNavigationBarItem> navigationItems() {
     return navigationCategories.map((category){
       return BottomNavigationBarItem(
-        title: new Text(category.name, style: bottomTextStyle),
+        title: new Text(category.name, style: RapidinhoTextStyle.bottomTextStyle),
         icon: new Icon(category.icon, size: category.name ==  'Entregas' ? 30.0 : 24.0, color: _currentIndex == category.index ? Colors.red : Colors.grey),
       );
     }).toList();
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 if(category.name == 'Entregas'){
                   return DeliveryTab();
                 } else {
-                  return Center(child: Text(category.name, style: displayText));
+                  return Center(child: Text(category.name, style: RapidinhoTextStyle.displayText));
                 }
               }).toList(),
             ),
