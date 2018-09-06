@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/ui/animation/delivery_motorcycle_animation.dart';
 import 'package:rapidinho/ui/animation/delivery_animation.dart';
 import 'package:flutter/scheduler.dart' show timeDilation ;
 import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
@@ -9,10 +10,11 @@ class DeliveryCard extends StatefulWidget {
   _DeliveryCardState createState() => _DeliveryCardState();
 }
 
-class _DeliveryCardState extends State<DeliveryCard> with SingleTickerProviderStateMixin {
+class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMixin {
 
   AnimationController _controller;
   DeliveryCardExpandAnimation _deliveryAnimation;
+  AnimationController _planeTravelController;
 
   @override
   void initState() {
@@ -20,8 +22,16 @@ class _DeliveryCardState extends State<DeliveryCard> with SingleTickerProviderSt
     _controller = AnimationController(
       duration: Duration(milliseconds: 200),
       vsync: this,
-    );
+    )..addStatusListener((status){
+      if(status == AnimationStatus.completed){
+        _planeTravelController.forward();
+      }
+    });
     _deliveryAnimation = DeliveryCardExpandAnimation(_controller);
+    _planeTravelController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
   }
 
   @override
@@ -59,6 +69,17 @@ class _DeliveryCardState extends State<DeliveryCard> with SingleTickerProviderSt
             ),
             child: Stack(
               children: [
+                LayoutBuilder(
+                    builder: (context, constraints){
+                      return Padding(
+                        padding: EdgeInsets.only(top: 24.0),
+                        child: DeliveryMotorCycleAnimation(
+                          width: constraints.maxWidth,
+                          controller: _planeTravelController,
+                        ),
+                      );
+                    }
+                ),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Row(
