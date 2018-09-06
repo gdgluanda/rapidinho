@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/ui/animation/delivery_animation.dart';
 import 'package:flutter/scheduler.dart' show timeDilation ;
+import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
-class Delivery extends StatefulWidget {
+class DeliveryCard extends StatefulWidget {
   @override
-  _DeliveryState createState() => _DeliveryState();
+  _DeliveryCardState createState() => _DeliveryCardState();
 }
 
-class _DeliveryState extends State<Delivery> with SingleTickerProviderStateMixin {
+class _DeliveryCardState extends State<DeliveryCard> with SingleTickerProviderStateMixin {
 
   AnimationController _controller;
-  DeliveryExpandAnimation _deliveryAnimation;
+  DeliveryCardExpandAnimation _deliveryAnimation;
 
   @override
   void initState() {
@@ -20,7 +21,7 @@ class _DeliveryState extends State<Delivery> with SingleTickerProviderStateMixin
       duration: Duration(milliseconds: 200),
       vsync: this,
     );
-    _deliveryAnimation = DeliveryExpandAnimation(_controller);
+    _deliveryAnimation = DeliveryCardExpandAnimation(_controller);
   }
 
   @override
@@ -60,7 +61,16 @@ class _DeliveryState extends State<Delivery> with SingleTickerProviderStateMixin
               children: [
                 Align(
                   alignment: Alignment.bottomRight,
-                  child: Text('17:06', style: RapidinhoTextStyle.smallText.copyWith(color: Colors.grey)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Icon(RapidinhoIcon.timer, size: 13.0),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Text('17:06', style: RapidinhoTextStyle.smallText),
+                      ),
+                    ],
+                  ),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,14 +87,17 @@ class _DeliveryState extends State<Delivery> with SingleTickerProviderStateMixin
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('', style: TextStyle(fontSize: 5.0)),
-                        Text('Pizza Quatro Estações', style: RapidinhoTextStyle.normalText,),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Text('Pizza Quatro Estações', style: RapidinhoTextStyle.normalText.copyWith(fontWeight: FontWeight.w600)),
+                        ),
                         Row(
                           children: <Widget>[
-                            Padding(padding: EdgeInsets.only(right: 4.0),
-                              child: Text('Localição:', style: RapidinhoTextStyle.smallText.copyWith(color: Colors.grey[600])),
+                            Icon(RapidinhoIcon.locationPin, size: 15.0),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                              child: Text('Rapidinho\'s Office', style: RapidinhoTextStyle.smallText),
                             ),
-                            Text('Rapidinho\'s Office', style: RapidinhoTextStyle.smallText),
                           ],
                         ),
                       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/ui/widget/delivery.dart';
+import 'package:rapidinho/ui/widget/delivery_card.dart';
 
 class DeliveryTab extends StatelessWidget {
   @override
@@ -7,7 +7,7 @@ class DeliveryTab extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 100.0),
       child: Center(
-        child: Delivery(),
+        child: DeliveryCard(),
       ),
     );
   }

@@ -59,6 +59,7 @@ flutter:
     - assets/images/deliverables/pizza.png
     - assets/images/deliverables/present.png
     - assets/images/deliverables/wear.png
+    - assets/images/deliverables/delivery_scooter.png
 
   fonts:
     - family: Rajdhani
