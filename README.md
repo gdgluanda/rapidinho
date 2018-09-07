@@ -13,8 +13,8 @@ For help getting started with Flutter, view our online
 
 ## Current state (Home Screen)
 
+<img src="/screenshots/preview.gif" width="260" height="480">
 
-<img src="/screenshots/home1.png" width="260" height="480"> <img src="/screenshots/home2.png" width="260" height="480">
 
 ## License
 
