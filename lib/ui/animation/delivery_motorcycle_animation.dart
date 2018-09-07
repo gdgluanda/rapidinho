@@ -17,7 +17,7 @@ class _PriceTabState extends State<DeliveryMotorCycleAnimation> {
 
   Animation _motorcycleAnimation;
 
-  double get _motorcyclePadding => _minMotorcyclePadding + (1 - _motorcycleAnimation.value) * _maxMotorcyclePadding;
+  double get _motorcyclePadding => _minMotorcyclePadding + (1.0 - _motorcycleAnimation.value) * _maxMotorcyclePadding;
 
   double get _maxMotorcyclePadding => widget.width + _initialMotorcyclePadding;
 

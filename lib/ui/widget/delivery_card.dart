@@ -14,7 +14,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
 
   AnimationController _controller;
   DeliveryCardExpandAnimation _deliveryAnimation;
-  AnimationController _planeTravelController;
+  AnimationController _deliveryMotorcycleController;
 
   @override
   void initState() {
@@ -24,13 +24,13 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
       vsync: this,
     )..addStatusListener((status){
       if(status == AnimationStatus.completed){
-        _planeTravelController.forward();
+        _deliveryMotorcycleController.forward();
       }
     });
     _deliveryAnimation = DeliveryCardExpandAnimation(_controller);
-    _planeTravelController = AnimationController(
+    _deliveryMotorcycleController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 1000),
     );
   }
 
@@ -75,7 +75,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                         padding: EdgeInsets.only(top: 24.0),
                         child: DeliveryMotorCycleAnimation(
                           width: constraints.maxWidth,
-                          controller: _planeTravelController,
+                          controller: _deliveryMotorcycleController,
                         ),
                       );
                     }
