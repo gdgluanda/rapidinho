@@ -25,4 +25,7 @@
       </value>
     </option>
   </component>
+  <component name="ProjectRootManager">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
 </project>
