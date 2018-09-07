@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:rapidinho/ui/animation/delivery_motorcycle_animation.dart';
 import 'package:rapidinho/ui/animation/delivery_animation.dart';
 import 'package:flutter/scheduler.dart' show timeDilation ;
@@ -15,6 +16,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
   AnimationController _controller;
   DeliveryCardExpandAnimation _deliveryAnimation;
   AnimationController _deliveryMotorcycleController;
+  AnimationController _locationPinAnimationController;
 
   @override
   void initState() {
@@ -25,12 +27,19 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
     )..addStatusListener((status){
       if(status == AnimationStatus.completed){
         _deliveryMotorcycleController.forward();
+        Future.delayed(Duration(milliseconds: 300), () {
+          _locationPinAnimationController.forward();
+        });
       }
     });
     _deliveryAnimation = DeliveryCardExpandAnimation(_controller);
     _deliveryMotorcycleController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 1000),
+    );
+    _locationPinAnimationController = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 1000)
     );
   }
 
@@ -75,7 +84,8 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                         padding: EdgeInsets.only(top: 24.0),
                         child: DeliveryMotorCycleAnimation(
                           width: constraints.maxWidth,
-                          controller: _deliveryMotorcycleController,
+                          deliveryMotorcycleController: _deliveryMotorcycleController,
+                          locationPinController: _locationPinAnimationController,
                         ),
                       );
                     }

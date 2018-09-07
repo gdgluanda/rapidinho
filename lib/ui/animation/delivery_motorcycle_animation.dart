@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/ui/widget/animated_location_pin.dart';
 
 class DeliveryMotorCycleAnimation extends StatefulWidget {
   final double width;
-  final AnimationController controller;
+  final AnimationController deliveryMotorcycleController;
+  final AnimationController locationPinController;
 
-  const DeliveryMotorCycleAnimation({Key key, this.width, this.controller})
+  const DeliveryMotorCycleAnimation({Key key, this.width, this.deliveryMotorcycleController, this.locationPinController})
       : super(key: key);
 
   @override
-  _PriceTabState createState() => _PriceTabState();
+  _DeliveryMotorcycleAnimationState createState() => _DeliveryMotorcycleAnimationState();
 }
 
-class _PriceTabState extends State<DeliveryMotorCycleAnimation> {
-  final double _initialMotorcyclePadding = 16.0;
-  final double _minMotorcyclePadding = 30.0;
+class _DeliveryMotorcycleAnimationState extends State<DeliveryMotorCycleAnimation> {
 
+  final double _initialMotorcyclePadding = 16.0;
+  final double _minMotorcyclePadding = 10.0;
+  final List<int> _deliveryStops = [1, 2, 3];
+  final double _cardWidth = 100.0;
   Animation _motorcycleAnimation;
+  List<Animation<double>> _pinPositions = [];
 
   double get _motorcyclePadding => _minMotorcyclePadding + (1.0 - _motorcycleAnimation.value) * _maxMotorcyclePadding;
 
@@ -25,6 +30,7 @@ class _PriceTabState extends State<DeliveryMotorCycleAnimation> {
   void initState() {
     super.initState();
     _initMotorcycleAnimations();
+    _initLocationPinAnimations();
   }
 
   Widget _buildMotorcycle() {
@@ -33,7 +39,8 @@ class _PriceTabState extends State<DeliveryMotorCycleAnimation> {
       child: Row(
         children: <Widget>[
           Container(
-            width: 200.0,
+            margin: EdgeInsets.only(top: 15.0),
+            width: _deliveryStops.length * _cardWidth * 0.8,
             height: 0.5,
             color: Colors.black87,
           ),
@@ -53,8 +60,39 @@ class _PriceTabState extends State<DeliveryMotorCycleAnimation> {
 
   _initMotorcycleAnimations() {
     _motorcycleAnimation = CurvedAnimation(
-      parent: widget.controller,
+      parent: widget.deliveryMotorcycleController,
       curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  void _initLocationPinAnimations() {
+    final double slideDurationInterval = 0.4;
+    final double slideDelayInterval = 0.2;
+    double startingMargin = widget.width;
+    double minMargin = _minMotorcyclePadding + 36.0 + 0.5 * (0.8 * _cardWidth);
+
+    for (int i = 0; i < _deliveryStops.length; i++) {
+      final start = slideDelayInterval * i;
+      final end = start + slideDurationInterval;
+      double finalMargin = minMargin + i * (0.8 * _cardWidth);
+      Animation<double> animation = new Tween(
+        begin: startingMargin,
+        end: finalMargin,
+      ).animate(
+        new CurvedAnimation(
+          parent: widget.locationPinController,
+          curve: new Interval(start, end, curve: Curves.easeOut),
+        ),
+      );
+      _pinPositions.add(animation);
+    }
+  }
+
+  Widget _deliverLocationStops(stops){
+    int index = _deliveryStops.indexOf(stops);
+    return AnimatedLocationPin(
+      animation: _pinPositions[index],
+      currentLocation: index == 1 ? true : false,
     );
   }
 
@@ -65,7 +103,7 @@ class _PriceTabState extends State<DeliveryMotorCycleAnimation> {
       width: double.infinity,
       child: Stack(
           alignment: Alignment.bottomCenter,
-          children: <Widget>[_buildMotorcycle()]
+          children: <Widget>[_buildMotorcycle()]..addAll(_deliveryStops.map(_deliverLocationStops)),
       ),
     );
   }

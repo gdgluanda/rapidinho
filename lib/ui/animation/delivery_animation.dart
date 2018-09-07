@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DeliveryCardExpandAnimation {
 
   DeliveryCardExpandAnimation(this.controller):
-        containerHeight = Tween(begin: 80.0, end: 200.0).animate(
+        containerHeight = Tween(begin: 80.0, end: 180.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
