@@ -11,7 +11,7 @@ For help getting started with Flutter, view our online
 [documentation](https://flutter.io/).
 
 
-## Current state (Home Screen)
+## Current project state
 
 <img src="/screenshots/preview.gif" width="260" height="480">
 
