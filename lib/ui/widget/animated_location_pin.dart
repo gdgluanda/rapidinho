@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 class AnimatedLocationPin extends AnimatedWidget {
   final currentLocation;
+  final LocationPinAnimation pinAnimation;
+  final AnimationController controller;
+  final LocationPinViewModel viewModel;
 
   AnimatedLocationPin({
     Key key,
     Animation<double> animation,
     this.currentLocation,
-  }) : super(key: key, listenable: animation);
+    @required this.controller,
+    this.viewModel,
+  }): pinAnimation = LocationPinAnimation(controller), super(key: key, listenable: animation);
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +21,31 @@ class AnimatedLocationPin extends AnimatedWidget {
     return Positioned(
       right: animation.value,
       bottom: 10.0,
-      child: Icon(
-        Icons.location_on,
-        size: currentLocation ? 30.0 : 15.0,
-        color: currentLocation ? Colors.green[700] : Colors.grey,
+      child: AnimatedBuilder(
+        animation: controller,
+        builder: (context, child){
+          return Icon(
+            Icons.location_on,
+            size: currentLocation ? pinAnimation.iconSize.value : 15.0,
+            color: currentLocation ? Colors.green[700] : Colors.grey,
+          );
+        },
       ),
     );
   }
+}
+
+class LocationPinAnimation {
+
+  LocationPinAnimation(this.controller):
+      iconSize = Tween(begin: 15.0, end: 30.0).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Curves.easeInOut,
+        ),
+      );
+
+  final AnimationController controller;
+  final Animation<double> iconSize;
+  final Animation<Color> iconColor;
 }

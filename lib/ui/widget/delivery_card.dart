@@ -17,6 +17,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
   DeliveryCardExpandAnimation _deliveryAnimation;
   AnimationController _deliveryMotorcycleController;
   AnimationController _locationPinAnimationController;
+  AnimationController _locationController;
 
   @override
   void initState() {
@@ -40,12 +41,23 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
     _locationPinAnimationController = AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 1000)
+    )..addStatusListener((status){
+      if(status == AnimationStatus.completed){
+        _locationController.forward().orCancel;
+      }
+    });
+    _locationController = new AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
     );
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _deliveryMotorcycleController.dispose();
+    _locationPinAnimationController.dispose();
+    _locationController.dispose();
     super.dispose();
   }
 
@@ -86,6 +98,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                           width: constraints.maxWidth,
                           deliveryMotorcycleController: _deliveryMotorcycleController,
                           locationPinController: _locationPinAnimationController,
+                          locationController: _locationController,
                         ),
                       );
                     }
@@ -142,4 +155,8 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
       ),
     );
   }
+}
+
+class LocationChangeController extends ChangeNotifier {
+
 }

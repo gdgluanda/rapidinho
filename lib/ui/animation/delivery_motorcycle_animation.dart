@@ -5,8 +5,9 @@ class DeliveryMotorCycleAnimation extends StatefulWidget {
   final double width;
   final AnimationController deliveryMotorcycleController;
   final AnimationController locationPinController;
+  final AnimationController locationController;
 
-  const DeliveryMotorCycleAnimation({Key key, this.width, this.deliveryMotorcycleController, this.locationPinController})
+  const DeliveryMotorCycleAnimation({Key key, this.width, this.deliveryMotorcycleController, this.locationPinController, this.locationController})
       : super(key: key);
 
   @override
@@ -91,8 +92,9 @@ class _DeliveryMotorcycleAnimationState extends State<DeliveryMotorCycleAnimatio
   Widget _deliverLocationStops(stops){
     int index = _deliveryStops.indexOf(stops);
     return AnimatedLocationPin(
+      controller: widget.locationController,
       animation: _pinPositions[index],
-      currentLocation: index == 1 ? true : false,
+      currentLocation: index == 2 ? true : false,
     );
   }
 
