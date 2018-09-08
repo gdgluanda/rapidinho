@@ -156,7 +156,3 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
     );
   }
 }
-
-class LocationChangeController extends ChangeNotifier {
-
-}

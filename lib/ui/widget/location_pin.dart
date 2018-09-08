@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
-class AnimatedLocationPin extends AnimatedWidget {
+class LocationPin extends AnimatedWidget {
   final currentLocation;
   final LocationPinAnimation pinAnimation;
   final AnimationController controller;
 
-  AnimatedLocationPin({
+  LocationPin({
     Key key,
     Animation<double> animation,
     this.currentLocation,

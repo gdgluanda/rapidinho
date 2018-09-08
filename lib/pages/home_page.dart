@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/pages/delivery_tab.dart';
+import 'package:rapidinho/tabs/delivery_tab.dart';
+import 'package:rapidinho/tabs/home_tab.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class HomePage extends StatefulWidget {
@@ -85,6 +86,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               children: navigationCategories.map((category){
                 if(category.name == 'Entregas'){
                   return DeliveryTab();
+                } else if(category.name == 'Casa'){
+                  return HomeTab();
                 } else {
                   return Center(child: Text(category.name, style: RapidinhoTextStyle.displayText));
                 }

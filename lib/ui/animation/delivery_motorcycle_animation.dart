@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/ui/widget/animated_location_pin.dart';
+import 'package:rapidinho/ui/widget/location_pin.dart';
 
 class DeliveryMotorCycleAnimation extends StatefulWidget {
   final double width;
@@ -89,9 +89,9 @@ class _DeliveryMotorcycleAnimationState extends State<DeliveryMotorCycleAnimatio
     }
   }
 
-  Widget _deliverLocationStops(stops){
+  Widget _deliveryLocationStops(stops){
     int index = _deliveryStops.indexOf(stops);
-    return AnimatedLocationPin(
+    return LocationPin(
       controller: widget.locationController,
       animation: _pinPositions[index],
       currentLocation: index == 2 ? true : false,
@@ -105,7 +105,7 @@ class _DeliveryMotorcycleAnimationState extends State<DeliveryMotorCycleAnimatio
       width: double.infinity,
       child: Stack(
           alignment: Alignment.bottomCenter,
-          children: <Widget>[_buildMotorcycle()]..addAll(_deliveryStops.map(_deliverLocationStops)),
+          children: <Widget>[_buildMotorcycle()]..addAll(_deliveryStops.map(_deliveryLocationStops)),
       ),
     );
   }
