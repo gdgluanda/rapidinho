@@ -5,14 +5,12 @@ class AnimatedLocationPin extends AnimatedWidget {
   final currentLocation;
   final LocationPinAnimation pinAnimation;
   final AnimationController controller;
-  final LocationPinViewModel viewModel;
 
   AnimatedLocationPin({
     Key key,
     Animation<double> animation,
     this.currentLocation,
     @required this.controller,
-    this.viewModel,
   }): pinAnimation = LocationPinAnimation(controller), super(key: key, listenable: animation);
 
   @override
@@ -47,5 +45,4 @@ class LocationPinAnimation {
 
   final AnimationController controller;
   final Animation<double> iconSize;
-  final Animation<Color> iconColor;
 }
