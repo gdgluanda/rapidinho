@@ -11,6 +11,11 @@ For help getting started with Flutter, view our online
 [documentation](https://flutter.io/).
 
 
+## Current project state
+
+<img src="/screenshots/preview.gif" width="260" height="480">
+
+
 ## License
 
 ```
