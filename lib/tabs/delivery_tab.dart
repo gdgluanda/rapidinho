@@ -6,7 +6,7 @@ class DeliveryTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 110.0),
+      margin: EdgeInsets.only(top: 100.0),
       child: ListView(
         children: MockData.deliveries.map((product){
           return DeliveryCard(
