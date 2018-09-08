@@ -18,6 +18,10 @@ class MockData {
       category: DeliveryCategory.Pizza,
       vendor: 'Pizza Hunt',
       time: DateTime.now(),
+      details: DeliveryCategoryDetails(
+        'assets/images/deliverables/pizza.png',
+        'Pizza',
+      ),
     ),
     Delivery(
       name: 'Caixa de Chocolates',
@@ -26,14 +30,22 @@ class MockData {
       category: DeliveryCategory.Present,
       vendor: 'Candando',
       time: DateTime.now(),
+      details: DeliveryCategoryDetails(
+        'assets/images/deliverables/present.png',
+        'Presente',
+      ),
     ),
     Delivery(
       name: 'Nike Air VaporMax 97',
       locationName:'Alvalade',
       locationIndex: 1,
-      category: DeliveryCategory.Mail,
+      category: DeliveryCategory.Wear,
       vendor: 'Imaginarium',
       time: DateTime.now(),
+      details: DeliveryCategoryDetails(
+        'assets/images/deliverables/wear.png',
+        'Vestuario',
+      ),
     ),
     Delivery(
       name: 'Carta Confidencial',
@@ -42,8 +54,10 @@ class MockData {
       category: DeliveryCategory.Mail,
       vendor: 'Boss',
       time: DateTime.now(),
+      details: DeliveryCategoryDetails(
+        'assets/images/deliverables/mail.png',
+        'Documento',
+      ),
     ),
   ];
-
-
 }

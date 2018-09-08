@@ -45,16 +45,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         context: context,
         builder: (builderContext) {
           return AlertDialog(
-            title: new Text("Aviso"),
-            content: new Text("Tem a certeza que deseja sair do aplicativo?"),
+            title: new Text("Aviso", style: RapidinhoTextStyle.displayText),
+            content: new Text("Tem a certeza que deseja sair do aplicativo?", style: RapidinhoTextStyle.largeText),
             actions: <Widget>[
               new FlatButton(
                 onPressed: () => Navigator.of(builderContext).pop(false),
-                child: new Text("Não"),
+                child: new Text("Não", style: RapidinhoTextStyle.normalText),
               ),
               new FlatButton(
                 onPressed: () => Navigator.of(builderContext).pop(true),
-                child: new Text("Sim"),
+                child: new Text("Sim", style: RapidinhoTextStyle.normalText),
               )
             ],
           );

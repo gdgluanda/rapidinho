@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/model/delivery.dart';
 import 'dart:async';
 import 'package:rapidinho/ui/animation/delivery_motorcycle_animation.dart';
 import 'package:rapidinho/ui/animation/delivery_animation.dart';
@@ -7,6 +8,11 @@ import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class DeliveryCard extends StatefulWidget {
+
+  final Delivery deliveryProduct;
+
+  DeliveryCard({@required this.deliveryProduct});
+
   @override
   _DeliveryCardState createState() => _DeliveryCardState();
 }
@@ -66,7 +72,6 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
     timeDilation = 1.0;
     return GestureDetector(
       onTap: (){
-        print('Tapped');
         _controller.isCompleted ? _controller.reverse() : _controller.forward();
       },
       child: AnimatedBuilder(
@@ -75,7 +80,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
           return Container(
             width: double.infinity,
             height: _deliveryAnimation.containerHeight.value,
-            margin: EdgeInsets.symmetric(horizontal: 16.0),
+            margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -99,6 +104,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                           deliveryMotorcycleController: _deliveryMotorcycleController,
                           locationPinController: _locationPinAnimationController,
                           locationController: _locationController,
+                          locationIndex: widget.deliveryProduct.locationIndex,
                         ),
                       );
                     }
@@ -111,7 +117,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                       Icon(RapidinhoIcon.timer, size: 13.0),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text('17:06', style: RapidinhoTextStyle.smallText),
+                        child: Text('${widget.deliveryProduct.time.minute}:${widget.deliveryProduct.time.second}', style: RapidinhoTextStyle.smallText),
                       ),
                     ],
                   ),
@@ -122,8 +128,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                     CircleAvatar(
                       radius: 25.0,
                       backgroundColor: Colors.red,
-                      child: Image.asset(
-                          'assets/images/deliverables/pizza.png'),
+                      child: Image.asset(widget.deliveryProduct.details.imageAsset),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 4.0),
@@ -133,14 +138,14 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(top: 5.0),
-                          child: Text('Pizza Quatro Estações', style: RapidinhoTextStyle.normalText.copyWith(fontWeight: FontWeight.w600)),
+                          child: Text(widget.deliveryProduct.name, style: RapidinhoTextStyle.normalText.copyWith(fontWeight: FontWeight.w600)),
                         ),
                         Row(
                           children: <Widget>[
                             Icon(RapidinhoIcon.locationPin, size: 15.0),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                              child: Text('Rapidinho\'s Office', style: RapidinhoTextStyle.smallText),
+                              child: Text(widget.deliveryProduct.locationName, style: RapidinhoTextStyle.smallText),
                             ),
                           ],
                         ),

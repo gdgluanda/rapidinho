@@ -8,6 +8,7 @@ class Delivery {
   final int locationIndex;
   final DeliveryCategory category;
   final String vendor;
+  final DeliveryCategoryDetails details;
 
   Delivery({
     @required this.name,
@@ -15,7 +16,8 @@ class Delivery {
     @required this.locationName,
     @required this.locationIndex,
     @required this.category,
-    @required this.vendor
+    @required this.vendor,
+    @required this.details,
   });
 }
 
