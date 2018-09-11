@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
 
 class LocationPin extends AnimatedWidget {
   final currentLocation;
@@ -23,7 +24,7 @@ class LocationPin extends AnimatedWidget {
         animation: controller,
         builder: (context, child){
           return Icon(
-            Icons.location_on,
+            RapidinhoIcon.locationPin,
             size: currentLocation ? pinAnimation.iconSize.value : 15.0,
             color: currentLocation ? Colors.green[700] : Colors.grey,
           );

@@ -142,7 +142,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                         ),
                         Row(
                           children: <Widget>[
-                            Icon(RapidinhoIcon.locationPin, size: 15.0),
+                            Icon(RapidinhoIcon.doubleLocationPin, size: 15.0),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 4.0),
                               child: Text(widget.deliveryProduct.locationName, style: RapidinhoTextStyle.smallText),
