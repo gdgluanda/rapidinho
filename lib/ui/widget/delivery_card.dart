@@ -88,7 +88,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black26,
-                    offset: Offset(0.0, 5.0),
+                    offset: Offset(0.0, 3.0),
                     blurRadius: 5.0,
                   ),
                 ]
