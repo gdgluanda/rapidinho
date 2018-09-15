@@ -8,4 +8,5 @@ class RapidinhoTextStyle {
   static final mediumText = TextStyle(fontFamily: RapidinhoFontFamily, fontSize: 17.0);
   static final largeText = TextStyle(fontFamily: RapidinhoFontFamily, fontSize: 20.0);
   static final normalText = TextStyle(fontFamily: RapidinhoFontFamily);
+  static final filterCategoryText = smallText.copyWith(color: Colors.white, fontWeight: FontWeight.w600);
 }
