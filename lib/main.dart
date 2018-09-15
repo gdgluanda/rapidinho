@@ -21,7 +21,6 @@ class RapidinhoApp extends StatelessWidget {
       title: 'Rapidinho',
       theme: ThemeData(
         primarySwatch: Colors.red,
-
       ),
       home: Stack(
         children: [
