@@ -1,31 +1,57 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:rapidinho/ui/animation/category_filter_expand_animation.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
+import 'package:rapidinho/ui/widget/category_filter.dart';
 
 class SplashPage extends StatelessWidget {
 
-  SplashPage({
+  SplashPage(
+    this.callback, {
     @required AnimationController controller,
+    @required AnimationController expandController,
     @required screenHeight,
-  }) : animation = new SplashPageEnterAnimation(controller, screenHeight);
+  }) : animation = new SplashPageEnterAnimation(controller, screenHeight), expandAnimation = CategoryFilterExpandExpandAnimation(expandController);
 
   final SplashPageEnterAnimation animation;
+  final CategoryFilterExpandExpandAnimation expandAnimation;
+  final VoidCallback callback;
 
   Widget _buildSplashAnimation(BuildContext context, Widget child){
     return Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-            height: animation.heightSize.value,
             decoration: BoxDecoration(
-              color: Colors.red,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0,
+                color: Colors.red,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(0.0, 3.0),
+                    blurRadius: 5.0,
+                  ),
+                ],
+            ),
+            child: Wrap(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                  height: animation.heightSize.value,
+                  width: double.infinity,
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: GestureDetector(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 16.0, right: 8.0),
+                        child: Icon(Icons.filter_list, color: Colors.white.withOpacity(animation.actionButtonOpacity.value)),
+                      ),
+                      onTap: callback,
+                    ),
+                  ),
                 ),
-              ]
+                CategoryFilter(
+                  expandAnimation: expandAnimation.containerHeight,
+                ),
+              ],
             ),
           ),
           Align(
@@ -62,14 +88,20 @@ class SplashPageAnimator extends StatefulWidget {
   _SplashPageAnimator createState() => new _SplashPageAnimator();
 }
 
-class _SplashPageAnimator extends State<SplashPageAnimator> with SingleTickerProviderStateMixin {
+class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderStateMixin {
+
   AnimationController _controller;
+  AnimationController _expandController;
 
   @override
   void initState() {
     super.initState();
     _controller = new AnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 650),
+      vsync: this,
+    );
+    _expandController = AnimationController(
+      duration: Duration(milliseconds: 200),
       vsync: this,
     );
     Future.delayed(
@@ -87,6 +119,11 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with SingleTickerPro
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return SplashPage(
+      (){
+        print('Appbar Action Button Tapped!');
+        _expandController.isCompleted ? _expandController.reverse() : _expandController.forward();
+      },
+      expandController: _expandController,
       controller: _controller,
       screenHeight: screenHeight,
     );
