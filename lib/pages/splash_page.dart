@@ -25,8 +25,8 @@ class SplashPage extends StatelessWidget {
                 color: Colors.red,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black26,
-                    offset: Offset(0.0, 3.0),
+                    color: Colors.black45,
+                    offset: Offset(1.0, 3.0),
                     blurRadius: 5.0,
                   ),
                 ],
@@ -120,7 +120,6 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
     final screenHeight = MediaQuery.of(context).size.height;
     return SplashPage(
       (){
-        print('Appbar Action Button Tapped!');
         _expandController.isCompleted ? _expandController.reverse() : _expandController.forward();
       },
       expandController: _expandController,
