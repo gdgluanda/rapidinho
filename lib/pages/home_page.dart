@@ -78,30 +78,18 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             });
           },
         ),
-        body: Stack(
-          children: <Widget>[
-            TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              controller: _tabController,
-              children: navigationCategories.map((category){
-                if(category.name == 'Entregas'){
-                  return DeliveryTab();
-                } else if(category.name == 'Casa'){
-                  return HomeTab();
-                } else {
-                  return Center(child: Text(category.name, style: RapidinhoTextStyle.displayText));
-                }
-              }).toList(),
-            ),
-            Container(
-              height: 100.0,
-              color: Colors.red,
-            ),
-            Align(
-              alignment: Alignment.center.add(Alignment(0.0, -1.0)),
-              child: Image.asset('assets/images/rapidinho_transparent.png', height: 150.0, width: 150.0),
-            ),
-          ],
+        body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _tabController,
+          children: navigationCategories.map((category){
+            if(category.name == 'Entregas'){
+              return DeliveryTab();
+            } else if(category.name == 'Casa'){
+              return HomeTab();
+            } else {
+              return Center(child: Text(category.name, style: RapidinhoTextStyle.displayText));
+            }
+          }).toList(),
         ),
       ),
     );
