@@ -1,28 +1,21 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/pages/home_page.dart';
-import 'package:rapidinho/ui/reveal.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 
 class SplashPage extends StatelessWidget {
 
   SplashPage({
     @required AnimationController controller,
-  }) : animation = new SplashPageEnterAnimation(controller);
+    @required screenHeight,
+  }) : animation = new SplashPageEnterAnimation(controller, screenHeight);
 
   final SplashPageEnterAnimation animation;
 
   Widget _buildSplashAnimation(BuildContext context, Widget child){
     return Stack(
         children: [
-          Reveal(
-            revealPercent: animation.revealSize.value,
-            child: Container(
-              color: Colors.white,
-            ),
-          ),
           Container(
-            height: 100.0,
+            height: animation.heightSize.value,
             color: Colors.red,
           ),
           Align(
@@ -32,24 +25,24 @@ class SplashPage extends StatelessWidget {
                 width: animation.logoSize.value, height: animation.logoSize.value)),
           Align(
               alignment: Alignment.center.add(Alignment(0.45, 0.05)),
-              child: Text('Entregas na hora', style: TextStyle(
-                  fontFamily: 'Rajdhani',
-                  color: Colors.white.withOpacity(animation.sloganOpacity.value),
-                  fontSize: 15.0,
-                  letterSpacing: 1.5,
-                  fontWeight: FontWeight.w500))),
+              child: Material(
+                color: Colors.transparent,
+                child: Text('Entregas na hora', style: TextStyle(
+                    fontFamily: 'Rajdhani',
+                    color: Colors.white.withOpacity(animation.sloganOpacity.value),
+                    fontSize: 15.0,
+                    letterSpacing: 1.5,
+                    fontWeight: FontWeight.w500)),
+              )),
         ]
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: Colors.red,
-      body: new AnimatedBuilder(
-        animation: animation.controller,
-        builder: _buildSplashAnimation,
-      ),
+    return AnimatedBuilder(
+      animation: animation.controller,
+      builder: _buildSplashAnimation,
     );
   }
 }
@@ -69,16 +62,9 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with SingleTickerPro
       duration: const Duration(milliseconds: 4000),
       vsync: this,
     );
-    _controller.forward();
     Future.delayed(
-        Duration(milliseconds: 4050)).then((_) =>
-        Navigator.of(context).pushReplacement(MaterialPageRoute<Null>(
-            builder: (context){
-              return HomePage();
-            }
-        ))
+        Duration(milliseconds: 1000)).then((_) => _controller.forward()
     );
-
   }
 
   @override
@@ -89,8 +75,10 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
     return new SplashPage(
       controller: _controller,
+      screenHeight: screenHeight,
     );
   }
 }
