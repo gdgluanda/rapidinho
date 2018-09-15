@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class SplashPageEnterAnimation {
   SplashPageEnterAnimation(this.controller, double screenHeight):
-        heightSize = new Tween(begin: screenHeight, end: 100.0).animate(
+        heightSize = new Tween(begin: screenHeight, end: kToolbarHeight).animate(
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
-              0.700,
+              0.0,
               1.0,
               curve: Curves.easeOut,
             ),
@@ -16,17 +16,17 @@ class SplashPageEnterAnimation {
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
-              0.550,
-              0.700,
+              0.0,
+              1.0,
               curve: Curves.ease,
             ),
           ),
         ),
-        logoSize = new Tween(begin: 300.0, end: 150.0).animate(
+        logoSize = new Tween(begin: 300.0, end: 120.0).animate(
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
-              0.550,
+              0.0,
               1.0,
               curve: Curves.easeOut,
             ),
@@ -36,8 +36,8 @@ class SplashPageEnterAnimation {
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
-              0.450,
-              0.550,
+              0.0,
+              0.700,
               curve: Curves.easeIn,
             ),
           ),

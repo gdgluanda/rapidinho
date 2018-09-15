@@ -15,8 +15,18 @@ class SplashPage extends StatelessWidget {
     return Stack(
         children: [
           Container(
+            margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             height: animation.heightSize.value,
-            color: Colors.red,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  offset: Offset(0.0, 3.0),
+                  blurRadius: 5.0,
+                ),
+              ]
+            ),
           ),
           Align(
             alignment: Alignment.center.add(Alignment(0.0, animation.logoAlignment.value)),
@@ -59,11 +69,11 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with SingleTickerPro
   void initState() {
     super.initState();
     _controller = new AnimationController(
-      duration: const Duration(milliseconds: 4000),
+      duration: const Duration(milliseconds: 600),
       vsync: this,
     );
     Future.delayed(
-        Duration(milliseconds: 1000)).then((_) => _controller.forward()
+        Duration(seconds: 3)).then((_) => _controller.forward()
     );
   }
 
@@ -76,7 +86,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with SingleTickerPro
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    return new SplashPage(
+    return SplashPage(
       controller: _controller,
       screenHeight: screenHeight,
     );
