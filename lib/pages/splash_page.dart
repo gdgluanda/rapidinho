@@ -25,7 +25,7 @@ class SplashPage extends StatelessWidget {
                 color: Colors.red,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black45,
+                    color: Colors.black38,
                     offset: Offset(1.0, 3.0),
                     blurRadius: 5.0,
                   ),
@@ -101,7 +101,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
       vsync: this,
     );
     _expandController = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 100),
       vsync: this,
     );
     Future.delayed(
