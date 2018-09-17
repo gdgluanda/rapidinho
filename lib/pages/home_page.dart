@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     return navigationCategories.map((category){
       return BottomNavigationBarItem(
         title: new Text(category.name, style: RapidinhoTextStyle.bottomTextStyle),
-        icon: new Icon(category.icon, size: category.name ==  'Entregas' ? 30.0 : 24.0, color: _currentIndex == category.index ? Colors.red : Colors.grey),
+        icon: new Icon(category.icon, size: category.name ==  'Entregas' ? 24.0 : 18.0, color: _currentIndex == category.index ? Colors.red : Colors.grey),
       );
     }).toList();
   }
