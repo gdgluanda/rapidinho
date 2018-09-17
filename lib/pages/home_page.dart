@@ -70,6 +70,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     return FloatingActionButton(
         key: tab.key,
         tooltip: tab.name,
+        mini: true,
         backgroundColor: Colors.red,
         child: Icon(tab.name == 'Conta' ? Icons.edit : Icons.add),
         onPressed: (){
