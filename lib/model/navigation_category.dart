@@ -7,4 +7,6 @@ class NavigationCategory {
   final int index;
 
   NavigationCategory(this.name, this.icon, this.index);
+
+  Key get key => new ValueKey<String>(name);
 }

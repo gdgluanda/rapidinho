@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/model/navigation_category.dart';
 import 'package:rapidinho/tabs/delivery_tab.dart';
 import 'package:rapidinho/tabs/home_tab.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
@@ -62,7 +63,23 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-   @override
+  Widget _buildFloatingActionButton(NavigationCategory tab) {
+    if(tab.name == 'Entregas' || tab.name == 'Compras')
+      return null;
+
+    return FloatingActionButton(
+        key: tab.key,
+        tooltip: tab.name,
+        backgroundColor: Colors.red,
+        child: Icon(tab.name == 'Conta' ? Icons.edit : Icons.add),
+        onPressed: (){
+
+        }
+    );
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _exitApp,
@@ -91,6 +108,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             }
           }).toList(),
         ),
+        floatingActionButton: _buildFloatingActionButton(navigationCategories[_currentIndex]),
       ),
     );
   }
