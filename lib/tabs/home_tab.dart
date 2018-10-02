@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/widget/home_card_item.dart';
 
 class HomeTab extends StatefulWidget {
@@ -20,10 +21,23 @@ class _HomeTabState extends State<HomeTab> {
               height: screenSize.width > screenSize.height
                   ? (screenSize.height - kToolbarHeight) * 0.55
                   : (screenSize.height - kToolbarHeight) * 0.35,
-              child: Image.asset(
-                'assets/images/featured_meal.jpg',
-                fit: BoxFit.cover,
-                //height: 200.0,
+              child: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  Image.asset(
+                    'assets/images/featured_meal.jpg',
+                    fit: BoxFit.cover,
+                    //height: 200.0,
+                  ),
+                  Container(
+                    color: Colors.black12.withOpacity(0.2),
+                    alignment: Alignment.bottomLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: new Text('Pizza\nQuatro Estações', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
