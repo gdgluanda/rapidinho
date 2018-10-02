@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class CategoryFilter extends AnimatedWidget {
@@ -7,16 +8,6 @@ class CategoryFilter extends AnimatedWidget {
     Key key,
     Animation<double> expandAnimation,
   }) : super(key: key, listenable: expandAnimation);
-
-  List<String> filterCategoryNames = [
-    'Todos',
-    'Hoje',
-    'Recomendado',
-    'Permitido',
-    'Popular',
-    'Novos',
-    'Adulterados',
-  ];
 
   @override
   Widget build(BuildContext context) {

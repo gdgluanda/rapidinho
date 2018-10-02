@@ -28,7 +28,7 @@ class _HomeTabState extends State<HomeTab> {
           itemBuilder: (context, index, animation){
             return FadeTransition(
               opacity: animation,
-              child: HomeCardItem("Item\nName", () {}, Colors.red, new AssetImage("assets/images/featured_meal.jpg")),
+              child: HomeCardItem("Item\nName", () {}, Colors.red, AssetImage("assets/images/featured_meal.jpg")),
             );
           },
         ),
