@@ -8,6 +8,34 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+
+  final GlobalKey<AnimatedListState> _listKey1 = GlobalKey();
+  final GlobalKey<AnimatedListState> _listKey2 = GlobalKey();
+  final GlobalKey<AnimatedListState> _listKey3 = GlobalKey();
+
+  _buildAnimatedList(GlobalKey<AnimatedListState> _key){
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 120.0),
+      margin: const EdgeInsets.only(top: 20.0),
+      child: Align(
+        alignment: Alignment.center,
+        child: AnimatedList(
+          shrinkWrap: true,
+          padding: EdgeInsets.only(left: 10.0, bottom: 20.0, right: 10.0, top: 10.0),
+          scrollDirection: Axis.horizontal,
+          key: _key,
+          initialItemCount: 4,
+          itemBuilder: (context, index, animation){
+            return FadeTransition(
+              opacity: animation,
+              child: HomeCardItem("Live\nBroadcast", () {}, Colors.red, new AssetImage("assets/images/featured_meal.jpg")),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
@@ -44,19 +72,19 @@ class _HomeTabState extends State<HomeTab> {
           SliverToBoxAdapter(
             child: SizedBox(
               height: 150.0,
-              child: HomeItem(),
+              child: _buildAnimatedList(_listKey1),
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 150.0,
-              child: HomeItem(),
+              child: _buildAnimatedList(_listKey2),
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 150.0,
-              child: HomeItem(),
+              child: _buildAnimatedList(_listKey3),
             ),
           ),
         ],

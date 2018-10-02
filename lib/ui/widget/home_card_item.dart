@@ -1,42 +1,18 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
-class HomeItem extends StatelessWidget {
+class HomeCardItem extends StatelessWidget {
+
+  final String title;
+  final VoidCallback action;
+  final Color color;
+  final ImageProvider backgroundImage;
+
+  HomeCardItem(this.title, this.action, this.color, this.backgroundImage);
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      constraints: const BoxConstraints(maxHeight: 120.0),
-      margin: const EdgeInsets.only(top: 20.0),
-      child: new Align(
-        alignment: Alignment.center,
-        child: new ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(
-                left: 10.0, bottom: 20.0, right: 10.0, top: 10.0),
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              _buildCardItem(
-                  "Live\nBroadcast", () {}, Colors.red,
-                  new AssetImage("assets/images/featured_meal.jpg")),
-              _buildCardItem(
-                  "My\nWallet", () {}, Colors.red,
-                  new AssetImage("assets/images/featured_meal.jpg")),
-              _buildCardItem(
-                  "Game\nCenter", () {}, Colors.red,
-                  new AssetImage("assets/images/featured_meal.jpg")),
-              _buildCardItem(
-                  "Game\nCenter", () {}, Colors.red,
-                  new AssetImage("assets/images/featured_meal.jpg")),
-            ]
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCardItem(String title, VoidCallback action, Color color, ImageProvider backgroundImage) {
     return new GestureDetector(
       onTap: action,
       child: new Stack(
@@ -87,20 +63,4 @@ class HomeItem extends StatelessWidget {
       ),
     );
   }
-}
-
-class _BackgroundImageClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = new Path();
-    path.moveTo(0.0, 0.0);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0.0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-
 }
