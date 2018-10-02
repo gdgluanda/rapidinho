@@ -61,6 +61,22 @@ flutter:
     - assets/images/deliverables/present.png
     - assets/images/deliverables/wear.png
     - assets/images/deliverables/delivery_scooter.png
+    - assets/images/home_items/home_item.png
+    - assets/images/home_items/home_item1.jpg
+    - assets/images/home_items/home_item2.png
+    - assets/images/home_items/home_item3.jpg
+    - assets/images/home_items/home_item4.jpg
+    - assets/images/home_items/home_item5.jpg
+    - assets/images/home_items/home_item6.jpg
+    - assets/images/home_items/home_item7.jpg
+    - assets/images/home_items/home_item8.jpg
+    - assets/images/home_items/home_item9.jpg
+    - assets/images/home_items/home_item10.jpg
+    - assets/images/home_items/home_item11.jpg
+    - assets/images/home_items/home_item12.jpg
+    - assets/images/home_items/home_item13.jpg
+    - assets/images/home_items/home_item14.jpg
+    - assets/images/home_items/home_item15.jpeg
 
   fonts:
     - family: Rajdhani
