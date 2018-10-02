@@ -54,7 +54,7 @@ List<HomeCard> homeCardItemList2 = [
   HomeCard(
       filter: [0, 5],
       name: 'Vinho\nTinto',
-      assetPath: 'assets/images/home_items/home_item13.png'),
+      assetPath: 'assets/images/home_items/home_item13.jpg'),
 
 ];
 

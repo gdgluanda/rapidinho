@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/model/home_card.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/widget/home_card_item.dart';
 
@@ -13,7 +15,7 @@ class _HomeTabState extends State<HomeTab> {
   final GlobalKey<AnimatedListState> _listKey2 = GlobalKey();
   final GlobalKey<AnimatedListState> _listKey3 = GlobalKey();
 
-  _buildAnimatedList(GlobalKey<AnimatedListState> _key){
+  _buildAnimatedList(GlobalKey<AnimatedListState> _key, List<HomeCard> list){
     return Container(
       constraints: const BoxConstraints(maxHeight: 120.0),
       margin: const EdgeInsets.only(top: 20.0),
@@ -24,11 +26,11 @@ class _HomeTabState extends State<HomeTab> {
           padding: EdgeInsets.only(left: 10.0, bottom: 20.0, right: 10.0, top: 10.0),
           scrollDirection: Axis.horizontal,
           key: _key,
-          initialItemCount: 4,
+          initialItemCount: list.length,
           itemBuilder: (context, index, animation){
             return FadeTransition(
               opacity: animation,
-              child: HomeCardItem("Item\nName", () {}, Colors.red, AssetImage("assets/images/featured_meal.jpg")),
+              child: HomeCardItem(list[index].name, () {}, Colors.red, AssetImage(list[index].assetPath)),
             );
           },
         ),
@@ -53,7 +55,7 @@ class _HomeTabState extends State<HomeTab> {
                 fit: StackFit.expand,
                 children: <Widget>[
                   Image.asset(
-                    'assets/images/featured_meal.jpg',
+                    'assets/images/home_items/home_item14.jpg',
                     fit: BoxFit.cover,
                     //height: 200.0,
                   ),
@@ -62,7 +64,7 @@ class _HomeTabState extends State<HomeTab> {
                     alignment: Alignment.bottomLeft,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: new Text('Pizza\nQuatro Estações', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                      child: new Text('Acaba De\nMe Matar', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ],
@@ -72,19 +74,19 @@ class _HomeTabState extends State<HomeTab> {
           SliverToBoxAdapter(
             child: SizedBox(
               height: 150.0,
-              child: _buildAnimatedList(_listKey1),
+              child: _buildAnimatedList(_listKey1, homeCardItemList1),
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 150.0,
-              child: _buildAnimatedList(_listKey2),
+              child: _buildAnimatedList(_listKey2, homeCardItemList2),
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 150.0,
-              child: _buildAnimatedList(_listKey3),
+              child: _buildAnimatedList(_listKey3, homeCardItemList3),
             ),
           ),
         ],
