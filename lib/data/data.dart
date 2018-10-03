@@ -1,4 +1,5 @@
 import 'package:rapidinho/model/delivery.dart';
+import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/home_card.dart';
 import 'package:rapidinho/model/navigation_category.dart';
 import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
@@ -10,13 +11,13 @@ List<NavigationCategory> navigationCategories = [
   NavigationCategory('Conta', RapidinhoIcon.account, 3),
 ];
 
-List<String> filterCategoryNames = [
-  'Todos',
-  'Hoje',
-  'Recomendado',
-  'Permitido',
-  'Popular',
-  'Novos',
+List<FilterItem> filterList = [
+  FilterItem('Todos', false),
+  FilterItem('Hoje', false),
+  FilterItem('Recomendado', false),
+  FilterItem('Permitido', false),
+  FilterItem('Popular', false),
+  FilterItem('Novos', false),
 ];
 
 List<HomeCard> homeCardItemList1 = [

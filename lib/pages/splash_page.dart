@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/ui/animation/category_filter_expand_animation.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/widget/category_filter.dart';
@@ -11,11 +12,13 @@ class SplashPage extends StatelessWidget {
     @required AnimationController controller,
     @required AnimationController expandController,
     @required screenHeight,
+    this.onFilter,
   }) : animation = new SplashPageEnterAnimation(controller, screenHeight), expandAnimation = CategoryFilterExpandExpandAnimation(expandController);
 
   final SplashPageEnterAnimation animation;
   final CategoryFilterExpandExpandAnimation expandAnimation;
   final VoidCallback callback;
+  final Function(int i) onFilter;
 
   Widget _buildSplashAnimation(BuildContext context, Widget child){
     return Stack(
@@ -50,6 +53,9 @@ class SplashPage extends StatelessWidget {
                 ),
                 CategoryFilter(
                   expandAnimation: expandAnimation.containerHeight,
+                  filter: (filterIndex){
+
+                  },
                 ),
               ],
             ),
@@ -121,6 +127,11 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
     return SplashPage(
       (){
         _expandController.isCompleted ? _expandController.reverse() : _expandController.forward();
+      },
+      onFilter: (filterIndex){
+        setState(() {
+          filterList[filterIndex].isFilter = !filterList[filterIndex].isFilter;
+        });
       },
       expandController: _expandController,
       controller: _controller,
