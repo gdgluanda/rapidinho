@@ -34,7 +34,7 @@ List<HomeCard> homeCardItemList1 = [
       filter: [1, 4],
       assetPath: 'assets/images/home_items/home_item5.jpg'),
   HomeCard(
-      name: 'Podim\nCereja',
+      name: 'Pudim\nCereja',
       filter: [3, 5],
       assetPath: 'assets/images/home_items/home_item10.jpg'),
 ];
@@ -109,7 +109,7 @@ class MockData {
       time: DateTime.now(),
       details: DeliveryCategoryDetails(
         'assets/images/deliverables/wear.png',
-        'Vestuario',
+        'Vestuário',
       ),
     ),
     Delivery(
