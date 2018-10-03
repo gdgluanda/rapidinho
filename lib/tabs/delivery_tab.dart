@@ -3,6 +3,11 @@ import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/ui/widget/delivery_card.dart';
 
 class DeliveryTab extends StatefulWidget {
+
+  final int tab;
+
+  DeliveryTab(this.tab);
+
   @override
   _DeliveryTabState createState() => _DeliveryTabState();
 }
@@ -11,6 +16,13 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
 
   AnimationController cardEntranceAnimationController;
   List<Animation> cardAnimations;
+  ValueNotifier<int> currentTab;
+
+  @override
+  void didUpdateWidget(DeliveryTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    currentTab.value = widget.tab;
+  }
 
   @override
   void initState() {
@@ -30,6 +42,10 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
               curve: new Interval(start, end, curve: Curves.decelerate)));
     }).toList();
     cardEntranceAnimationController.forward();
+    currentTab = ValueNotifier(widget.tab);
+    currentTab.addListener((){
+      cardEntranceAnimationController.reverse();
+    });
   }
 
   @override

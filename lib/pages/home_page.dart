@@ -92,7 +92,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           onTap: (int index){
             setState(() {
               _currentIndex = index;
-              _tabController.animateTo(_currentIndex);
+              Future.delayed(Duration(milliseconds: 1100), (){
+                _tabController.animateTo(_currentIndex);
+              });
             });
           },
         ),
@@ -101,7 +103,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           controller: _tabController,
           children: navigationCategories.map((category){
             if(category.name == 'Entregas'){
-              return DeliveryTab();
+              return DeliveryTab(_currentIndex);
             } else if(category.name == 'Casa'){
               return HomeTab();
             } else {
