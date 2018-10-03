@@ -37,7 +37,7 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
       vsync: this,
       duration: Duration(milliseconds: 500),
     );
-    featuredImageAnimation = Tween<double>(begin: -500.0, end: 0.0).animate(
+    featuredImageAnimation = Tween<double>(begin: -200.0, end: 0.0).animate(
         CurvedAnimation(parent: featuredImageAnimationController, curve: Curves.easeInOut),
     );
     featuredImageAnimationController.forward();
@@ -49,8 +49,8 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
 
   _buildAnimatedList(GlobalKey<AnimatedListState> _key, List<HomeCard> list){
     return Container(
-      constraints: const BoxConstraints(maxHeight: 120.0),
-      margin: const EdgeInsets.only(top: 20.0),
+      constraints: BoxConstraints(maxHeight: 120.0),
+      margin: EdgeInsets.only(top: 20.0),
       child: Align(
         alignment: Alignment.center,
         child: AnimatedList(
