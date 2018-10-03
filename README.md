@@ -19,8 +19,6 @@ For help getting started with Flutter, view our online
 ## License
 
 ```
-MIT License
-
 Copyright (c) 2018 GDG Luanda
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

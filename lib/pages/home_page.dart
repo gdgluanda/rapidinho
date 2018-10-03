@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           onTap: (int index){
             setState(() {
               _currentIndex = index;
-              Future.delayed(Duration(milliseconds: 1100), (){
+              Future.delayed(Duration(milliseconds: _tabController.index == 1 ? 1100 : 500), (){
                 _tabController.animateTo(_currentIndex);
               });
             });
@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             if(category.name == 'Entregas'){
               return DeliveryTab(_currentIndex);
             } else if(category.name == 'Casa'){
-              return HomeTab();
+              return HomeTab(_currentIndex);
             } else {
               return Center(child: Text(category.name, style: RapidinhoTextStyle.displayText));
             }

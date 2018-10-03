@@ -27,7 +27,7 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    cardEntranceAnimationController = new AnimationController(
+    cardEntranceAnimationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 1100),
     );
@@ -36,10 +36,10 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
       double start = index * 0.1;
       double duration = 0.6;
       double end = duration + start;
-      return new Tween<double>(begin: 800.0, end: 0.0).animate(
+      return Tween<double>(begin: 800.0, end: 0.0).animate(
           new CurvedAnimation(
               parent: cardEntranceAnimationController,
-              curve: new Interval(start, end, curve: Curves.decelerate)));
+              curve: Interval(start, end, curve: Curves.decelerate)));
     }).toList();
     cardEntranceAnimationController.forward();
     currentTab = ValueNotifier(widget.tab);
@@ -66,7 +66,7 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
                 .padding
                 .top + 64.0,
             child: SingleChildScrollView(
-              child: new Column(
+              child: Column(
                 children: _buildDeliveryCards().toList(),
               ),
             ),
@@ -84,7 +84,7 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
         child: DeliveryCard(
             deliveryProduct: product
         ),
-        builder: (context, child) => new Transform.translate(
+        builder: (context, child) => Transform.translate(
           offset: Offset(0.0, cardAnimations[index].value),
           child: child,
         ),

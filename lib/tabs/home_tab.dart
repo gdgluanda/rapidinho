@@ -5,15 +5,47 @@ import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/widget/home_card_item.dart';
 
 class HomeTab extends StatefulWidget {
+
+  final int tab;
+
+  HomeTab(this.tab);
+
   @override
   _HomeTabState createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
 
   final GlobalKey<AnimatedListState> _listKey1 = GlobalKey();
   final GlobalKey<AnimatedListState> _listKey2 = GlobalKey();
   final GlobalKey<AnimatedListState> _listKey3 = GlobalKey();
+  AnimationController featuredImageAnimationController;
+  Animation<double> featuredImageAnimation;
+  ValueNotifier<int> currentTab;
+
+  @override
+  void didUpdateWidget(HomeTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    currentTab.value = widget.tab;
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    featuredImageAnimationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+    featuredImageAnimation = Tween<double>(begin: -500.0, end: 0.0).animate(
+        CurvedAnimation(parent: featuredImageAnimationController, curve: Curves.easeInOut),
+    );
+    featuredImageAnimationController.forward();
+    currentTab = ValueNotifier(widget.tab);
+    currentTab.addListener((){
+      featuredImageAnimationController.reverse();
+    });
+  }
 
   _buildAnimatedList(GlobalKey<AnimatedListState> _key, List<HomeCard> list){
     return Container(
@@ -39,6 +71,12 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   @override
+  void dispose() {
+    featuredImageAnimationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Container(
@@ -51,24 +89,32 @@ class _HomeTabState extends State<HomeTab> {
               height: screenSize.width > screenSize.height
                   ? (screenSize.height - kToolbarHeight) * 0.55
                   : (screenSize.height - kToolbarHeight) * 0.35,
-              child: Stack(
-                fit: StackFit.expand,
-                children: <Widget>[
-                  Image.asset(
-                    'assets/images/home_items/home_item14.jpg',
-                    fit: BoxFit.cover,
-                    //height: 200.0,
-                  ),
-                  Container(
-                    color: Colors.black12.withOpacity(0.2),
-                    alignment: Alignment.bottomLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: new Text('Acaba De\nMe Matar', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+              child:
+              AnimatedBuilder(
+                animation: featuredImageAnimationController,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: <Widget>[
+                    Image.asset(
+                      'assets/images/home_items/home_item14.jpg',
+                      fit: BoxFit.cover,
+                      //height: 200.0,
                     ),
-                  ),
-                ],
-              ),
+                    Container(
+                      color: Colors.black12.withOpacity(0.2),
+                      alignment: Alignment.bottomLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: new Text('Acaba De\nMe Matar', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                ),
+                builder: (context, child) => new Transform.translate(
+                  offset: Offset(0.0, featuredImageAnimation.value),
+                  child: child,
+                ),
+              )
             ),
           ),
           SliverToBoxAdapter(
