@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/model/home_card.dart';
+import 'package:rapidinho/model/list_model.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/widget/home_card_item.dart';
 
@@ -22,13 +23,13 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
   AnimationController featuredImageAnimationController;
   Animation<double> featuredImageAnimation;
   ValueNotifier<int> currentTab;
+  ListModel _list;
 
   @override
   void didUpdateWidget(HomeTab oldWidget) {
     super.didUpdateWidget(oldWidget);
     currentTab.value = widget.tab;
   }
-
 
   @override
   void initState() {
@@ -45,6 +46,27 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
     currentTab.addListener((){
       featuredImageAnimationController.reverse();
     });
+    _list = ListModel(
+      _listKey1,
+      homeCardItemList1,
+    );
+  }
+
+  void _changeFilterState(int filter) {
+//    for(HomeCard cardItem in homeCardItemList1){
+//      if (cardItem.filter.contains(filter)) {
+//        _list.removeAt(_list.indexOf(cardItem));
+//      } else {
+//        _list.insert(_list.indexOf(cardItem), cardItem);
+//      }
+//    }
+    homeCardItemList1.where((cardItem) => cardItem.filter.contains(filter)).forEach((cardItem) {
+      if (cardItem.filter.contains(filter)) {
+        _list.removeAt(_list.indexOf(cardItem));
+      } else {
+        _list.insert(_list.indexOf(cardItem), cardItem);
+      }
+    });
   }
 
   _buildAnimatedList(GlobalKey<AnimatedListState> _key, List<HomeCard> list){
@@ -60,10 +82,7 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
           key: _key,
           initialItemCount: list.length,
           itemBuilder: (context, index, animation){
-            return FadeTransition(
-              opacity: animation,
-              child: HomeCardItem(list[index].name, () {}, Colors.red, AssetImage(list[index].assetPath)),
-            );
+            return HomeCardItem(list[index].name, () {_changeFilterState(index);}, AssetImage(list[index].assetPath), animation);
           },
         ),
       ),

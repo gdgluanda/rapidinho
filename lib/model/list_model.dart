@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/model/home_card.dart';
+import 'package:rapidinho/ui/widget/home_card_item.dart';
 
-class ListModel<E> {
-  ListModel({
-    @required this.listKey,
-    @required this.removedItemBuilder,
-    Iterable<E> initialItems,
-  })  : assert(listKey != null),
-        assert(removedItemBuilder != null),
-        _items = List<E>.from(initialItems ?? <E>[]);
+class ListModel {
+  ListModel(this.listKey, items) : this.items = List.of(items);
 
   final GlobalKey<AnimatedListState> listKey;
-  final dynamic removedItemBuilder;
-  final List<E> _items;
+  final List<HomeCard> items;
 
   AnimatedListState get _animatedList => listKey.currentState;
 
-  void insert(int index, E item) {
-    _items.insert(index, item);
-    _animatedList.insertItem(index);
+  void insert(int index, HomeCard item) {
+    items.insert(index, item);
+    _animatedList.insertItem(index, duration: Duration(milliseconds: 150));
   }
 
-  E removeAt(int index) {
-    final E removedItem = _items.removeAt(index);
+  HomeCard removeAt(int index) {
+    final HomeCard removedItem = items.removeAt(index);
     if (removedItem != null) {
-      _animatedList.removeItem(index,
-              (BuildContext context, Animation<double> animation) {
-            return removedItemBuilder(removedItem, context, animation);
-          });
+      _animatedList.removeItem(
+          index, (context, animation) => HomeCardItem(removedItem.name, (){}, AssetImage(removedItem.assetPath), animation),
+          duration: Duration(milliseconds: (150 + 200*(index/length)).toInt())
+      );
     }
     return removedItem;
   }
 
-  int get length => _items.length;
+  int get length => items.length;
 
-  E operator [](int index) => _items[index];
+  HomeCard operator [](int index) => items[index];
 
-  int indexOf(E item) => _items.indexOf(item);
+  int indexOf(HomeCard item) => items.indexOf(item);
 }
