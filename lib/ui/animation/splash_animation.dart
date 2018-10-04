@@ -12,7 +12,7 @@ class SplashPageEnterAnimation {
             ),
           ),
         ),
-        logoAlignment = new Tween(begin: 0.0, end: -1.0).animate(
+        logoAlignment = new Tween(begin: 0.0, end: -0.920).animate(
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
@@ -22,7 +22,17 @@ class SplashPageEnterAnimation {
             ),
           ),
         ),
-        logoSize = new Tween(begin: 300.0, end: 120.0).animate(
+        logoWidth = new Tween(begin: 300.0, end: 120.0).animate(
+          new CurvedAnimation(
+            parent: controller,
+            curve: new Interval(
+              0.0,
+              1.0,
+              curve: Curves.easeOut,
+            ),
+          ),
+        ),
+        logoHeight = new Tween(begin: 300.0, end: kToolbarHeight).animate(
           new CurvedAnimation(
             parent: controller,
             curve: new Interval(
@@ -56,7 +66,8 @@ class SplashPageEnterAnimation {
   final AnimationController controller;
   final Animation<double> heightSize;
   final Animation<double> logoAlignment;
-  final Animation<double> logoSize;
+  final Animation<double> logoWidth;
+  final Animation<double> logoHeight;
   final Animation<double> sloganOpacity;
   final Animation<double> actionButtonOpacity;
 }
