@@ -10,9 +10,7 @@ void main() => runApp(
 class RapidinhoApp extends StatelessWidget {
 
   RapidinhoApp(){
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-      statusBarColor: Colors.red[700], //or set color with: Color(0xFF0000FF)
-    ));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.red[700]));
   }
   
   @override
@@ -22,12 +20,7 @@ class RapidinhoApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: Stack(
-        children: [
-          HomePage(),
-          SplashPageAnimator()
-        ],
-      ),
+      home: SplashPageAnimator(),
       debugShowCheckedModeBanner: false,
     );
   }

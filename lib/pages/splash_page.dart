@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:rapidinho/pages/home_page.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/widget/category_filter.dart';
 
@@ -54,9 +55,7 @@ class SplashPage extends StatelessWidget {
                   duration: Duration(milliseconds: 100),
                   height: height,
                   child: CategoryFilterList(
-                    filter: (filterIndex){
-
-                    },
+                    filter: onFilter,
                   ),
                 ),
               ],
@@ -95,6 +94,12 @@ class SplashPage extends StatelessWidget {
 }
 
 class SplashPageAnimator extends StatefulWidget {
+
+  final Function(int i) onFilter;
+  final Widget child;
+
+  SplashPageAnimator({this.child, this.onFilter});
+
   @override
   _SplashPageAnimator createState() => new _SplashPageAnimator();
 }
@@ -103,6 +108,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
 
   AnimationController _controller;
   double height = 0.0;
+  int filterIndex = -1;
 
   @override
   void initState() {
@@ -131,14 +137,21 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    return SplashPage(
-      _changeContainerHeight,
-      onFilter: (filterIndex){
-
-      },
-      height: height,
-      controller: _controller,
-      screenHeight: screenHeight,
+      return Stack(
+      children: <Widget>[
+        HomePage(filter: filterIndex),
+        SplashPage(
+          _changeContainerHeight,
+          onFilter: (filter){
+            setState((){
+              filterIndex = filter;
+            });
+          },
+          height: height,
+          controller: _controller,
+          screenHeight: screenHeight,
+        ),
+      ],
     );
   }
 }

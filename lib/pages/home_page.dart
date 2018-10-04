@@ -10,6 +10,11 @@ import 'package:rapidinho/tabs/shopping_cart_tab.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class HomePage extends StatefulWidget {
+
+  final int filter;
+
+  HomePage({this.filter});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -30,7 +35,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-  /// The Bottom Navigation Items
   List<BottomNavigationBarItem> navigationItems() {
     return navigationCategories.map((category){
       return BottomNavigationBarItem(
@@ -104,7 +108,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           physics: NeverScrollableScrollPhysics(),
           controller: _tabController,
           children: [
-            HomeTab(_currentIndex),
+            HomeTab(_currentIndex, widget.filter),
             DeliveryTab(_currentIndex),
             ShoppingCartTab(),
             AccountTab(),

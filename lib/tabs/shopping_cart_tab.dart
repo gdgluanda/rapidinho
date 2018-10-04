@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class ShoppingCartTab extends StatefulWidget {
   @override
@@ -9,6 +10,6 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(child: Text('Conta', style: RapidinhoTextStyle.displayText));
   }
 }

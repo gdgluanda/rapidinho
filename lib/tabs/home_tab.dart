@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/home_card.dart';
 import 'package:rapidinho/model/list_model.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
@@ -8,8 +9,9 @@ import 'package:rapidinho/ui/widget/home_card_item.dart';
 class HomeTab extends StatefulWidget {
 
   final int tab;
+  final int filter;
 
-  HomeTab(this.tab);
+  HomeTab(this.tab, this.filter);
 
   @override
   _HomeTabState createState() => _HomeTabState();
@@ -28,6 +30,12 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
   @override
   void didUpdateWidget(HomeTab oldWidget) {
     super.didUpdateWidget(oldWidget);
+    filterList.where((filter) => filter.isFilter).forEach((filterItem){
+      print('${filterList.indexOf(filterItem)}');
+//      if(!homeCardItemList1[3].filter.contains(filterList.indexOf(filterItem))){
+//        _list.removeAt(_list.indexOf(homeCardItemList1[3]));
+//      }
+    });
     currentTab.value = widget.tab;
   }
 
@@ -53,18 +61,11 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
   }
 
   void _changeFilterState(int filter) {
-//    for(HomeCard cardItem in homeCardItemList1){
-//      if (cardItem.filter.contains(filter)) {
-//        _list.removeAt(_list.indexOf(cardItem));
-//      } else {
-//        _list.insert(_list.indexOf(cardItem), cardItem);
-//      }
-//    }
     homeCardItemList1.where((cardItem) => cardItem.filter.contains(filter)).forEach((cardItem) {
       if (cardItem.filter.contains(filter)) {
-        _list.removeAt(_list.indexOf(cardItem));
+        _list.removeAt(homeCardItemList1.indexOf(cardItem));
       } else {
-        _list.insert(_list.indexOf(cardItem), cardItem);
+        _list.insert(homeCardItemList1.indexOf(cardItem), cardItem);
       }
     });
   }
@@ -82,7 +83,7 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
           key: _key,
           initialItemCount: list.length,
           itemBuilder: (context, index, animation){
-            return HomeCardItem(list[index].name, () {_changeFilterState(index);}, AssetImage(list[index].assetPath), animation);
+            return HomeCardItem(list[index].name, () {}, AssetImage(list[index].assetPath), animation);
           },
         ),
       ),
@@ -133,7 +134,7 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
                   offset: Offset(0.0, featuredImageAnimation.value),
                   child: child,
                 ),
-              )
+              ),
             ),
           ),
           SliverToBoxAdapter(

@@ -23,7 +23,7 @@ List<FilterItem> filterList = [
 List<HomeCard> homeCardItemList1 = [
   HomeCard(
       name: 'Fahita\nChouriço',
-      filter: [1, 3, 4],
+      filter: [1, 4],
       assetPath: 'assets/images/home_items/home_item.png'),
   HomeCard(
       name: 'Hamburger\nBaicon',
