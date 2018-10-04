@@ -53,9 +53,11 @@ class SplashPage extends StatelessWidget {
                 ),
                 CategoryFilter(
                   expandAnimation: expandAnimation.containerHeight,
-                  filter: (filterIndex){
+                  child: CategoryFilterList(
+                    filter: (filterIndex){
 
-                  },
+                    },
+                  ),
                 ),
               ],
             ),
@@ -129,9 +131,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
         _expandController.isCompleted ? _expandController.reverse() : _expandController.forward();
       },
       onFilter: (filterIndex){
-        setState(() {
-          filterList[filterIndex].isFilter = !filterList[filterIndex].isFilter;
-        });
+
       },
       expandController: _expandController,
       controller: _controller,

@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           onTap: (int index){
             setState(() {
               _currentIndex = index;
-              Future.delayed(Duration(milliseconds: _tabController.index == 1 ? 1100 : 500), (){
+              Future.delayed(Duration(milliseconds: 500), (){
                 _tabController.animateTo(_currentIndex);
               });
             });

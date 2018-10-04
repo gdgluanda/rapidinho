@@ -29,7 +29,7 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
     super.initState();
     cardEntranceAnimationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1100),
+      duration: Duration(milliseconds: 500),
     );
     cardAnimations = MockData.deliveries.map((stop) {
       int index = MockData.deliveries.indexOf(stop);
