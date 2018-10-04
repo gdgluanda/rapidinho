@@ -2,27 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
-class CategoryFilter extends AnimatedWidget {
-
-  final Widget child;
-
-  CategoryFilter({
-    Key key,
-    Animation<double> expandAnimation,
-    this.child,
-  }) : super(key: key, listenable: expandAnimation);
-
-  @override
-  Widget build(BuildContext context) {
-    Animation<double> animation = super.listenable;
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      height: animation.value,
-      child: child,
-    );
-  }
-}
-
 class CategoryFilterList extends StatefulWidget {
 
   final Function(int i) filter;

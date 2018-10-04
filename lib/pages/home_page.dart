@@ -6,6 +6,7 @@ import 'package:rapidinho/model/navigation_category.dart';
 import 'package:rapidinho/tabs/delivery_tab.dart';
 import 'package:rapidinho/tabs/home_tab.dart';
 import 'package:rapidinho/tabs/account_tab.dart';
+import 'package:rapidinho/tabs/shopping_cart_tab.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class HomePage extends StatefulWidget {
@@ -102,17 +103,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
           controller: _tabController,
-          children: navigationCategories.map((category){
-            if(category.name == 'Entregas'){
-              return DeliveryTab(_currentIndex);
-            } else if(category.name == 'Casa'){
-              return HomeTab(_currentIndex);
-            }  else if(category.name == 'Conta') {
-              return AccountTab();
-            } else {
-              return Center(child: Text(category.name, style: RapidinhoTextStyle.displayText));
-            }
-          }).toList(),
+          children: [
+            HomeTab(_currentIndex),
+            DeliveryTab(_currentIndex),
+            ShoppingCartTab(),
+            AccountTab(),
+          ],
         ),
         floatingActionButton: _buildFloatingActionButton(navigationCategories[_currentIndex]),
       ),

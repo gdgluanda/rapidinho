@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/ui/animation/category_filter_expand_animation.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/widget/category_filter.dart';
 
@@ -10,15 +8,15 @@ class SplashPage extends StatelessWidget {
   SplashPage(
     this.callback, {
     @required AnimationController controller,
-    @required AnimationController expandController,
     @required screenHeight,
+    this.height,
     this.onFilter,
-  }) : animation = new SplashPageEnterAnimation(controller, screenHeight), expandAnimation = CategoryFilterExpandExpandAnimation(expandController);
+  }) : animation = new SplashPageEnterAnimation(controller, screenHeight);
 
   final SplashPageEnterAnimation animation;
-  final CategoryFilterExpandExpandAnimation expandAnimation;
   final VoidCallback callback;
   final Function(int i) onFilter;
+  final double height;
 
   Widget _buildSplashAnimation(BuildContext context, Widget child){
     return Stack(
@@ -51,8 +49,10 @@ class SplashPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                CategoryFilter(
-                  expandAnimation: expandAnimation.containerHeight,
+                AnimatedContainer(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  duration: Duration(milliseconds: 100),
+                  height: height,
                   child: CategoryFilterList(
                     filter: (filterIndex){
 
@@ -71,7 +71,7 @@ class SplashPage extends StatelessWidget {
               ),
           ),
           Align(
-              alignment: Alignment.center.add(Alignment(0.45, 0.05)),
+              alignment: Alignment.center.add(Alignment(0.35, 0.11)),
               child: Material(
                 color: Colors.transparent,
                 child: Text('Entregas na hora', style: TextStyle(
@@ -102,17 +102,13 @@ class SplashPageAnimator extends StatefulWidget {
 class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderStateMixin {
 
   AnimationController _controller;
-  AnimationController _expandController;
+  double height = 0.0;
 
   @override
   void initState() {
     super.initState();
     _controller = new AnimationController(
       duration: const Duration(milliseconds: 650),
-      vsync: this,
-    );
-    _expandController = AnimationController(
-      duration: Duration(milliseconds: 100),
       vsync: this,
     );
     Future.delayed(
@@ -126,17 +122,21 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
     super.dispose();
   }
 
+  void _changeContainerHeight(){
+    setState(() {
+      height == 0 ? height = 50.0 : height = 0.0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return SplashPage(
-      (){
-        _expandController.isCompleted ? _expandController.reverse() : _expandController.forward();
-      },
+      _changeContainerHeight,
       onFilter: (filterIndex){
 
       },
-      expandController: _expandController,
+      height: height,
       controller: _controller,
       screenHeight: screenHeight,
     );
