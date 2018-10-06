@@ -111,7 +111,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             HomeTab(_currentIndex, widget.filter),
             DeliveryTab(_currentIndex),
             ShoppingCartTab(),
-            AccountTab(),
+            Padding(
+              padding: const EdgeInsets.only(top: kToolbarHeight),
+              child: AccountTab(),
+            ),
           ],
         ),
         floatingActionButton: _buildFloatingActionButton(navigationCategories[_currentIndex]),
