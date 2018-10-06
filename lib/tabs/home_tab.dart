@@ -1,6 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/home_card.dart';
 import 'package:rapidinho/model/list_model.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
@@ -26,15 +26,20 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
   Animation<double> featuredImageAnimation;
   ValueNotifier<int> currentTab;
   ListModel _list;
+  Function contains = DeepCollectionEquality.unordered().equals;
 
   @override
   void didUpdateWidget(HomeTab oldWidget) {
     super.didUpdateWidget(oldWidget);
+    List<int> filteredList = [];
+
     filterList.where((filter) => filter.isFilter).forEach((filterItem){
       print('${filterList.indexOf(filterItem)}');
-//      if(!homeCardItemList1[3].filter.contains(filterList.indexOf(filterItem))){
-//        _list.removeAt(_list.indexOf(homeCardItemList1[3]));
-//      }
+      filteredList.add(filterList.indexOf(filterItem));
+    });
+
+    homeCardItemList1.where((card) => contains(card.filter, filteredList)).forEach((card){
+      print('Insert item');
     });
     currentTab.value = widget.tab;
   }
@@ -58,16 +63,6 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
       _listKey1,
       homeCardItemList1,
     );
-  }
-
-  void _changeFilterState(int filter) {
-    homeCardItemList1.where((cardItem) => cardItem.filter.contains(filter)).forEach((cardItem) {
-      if (cardItem.filter.contains(filter)) {
-        _list.removeAt(homeCardItemList1.indexOf(cardItem));
-      } else {
-        _list.insert(homeCardItemList1.indexOf(cardItem), cardItem);
-      }
-    });
   }
 
   _buildAnimatedList(GlobalKey<AnimatedListState> _key, List<HomeCard> list){

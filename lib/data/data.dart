@@ -12,7 +12,7 @@ List<NavigationCategory> navigationCategories = [
 ];
 
 List<FilterItem> filterList = [
-  FilterItem('Todos', false),
+  FilterItem('Todos', true),
   FilterItem('Hoje', false),
   FilterItem('Recomendado', false),
   FilterItem('Permitido', false),
@@ -23,19 +23,19 @@ List<FilterItem> filterList = [
 List<HomeCard> homeCardItemList1 = [
   HomeCard(
       name: 'Fahita\nChouriço',
-      filter: [1, 4],
+      filter: [0, 1, 4],
       assetPath: 'assets/images/home_items/home_item.png'),
   HomeCard(
       name: 'Hamburger\nBaicon',
-      filter: [4, 0, 1],
+      filter: [0, 4, 1],
       assetPath: 'assets/images/home_items/home_item1.jpg'),
   HomeCard(
       name: 'Ovos\nEstrelados',
-      filter: [1, 4],
+      filter: [0, 1, 4],
       assetPath: 'assets/images/home_items/home_item5.jpg'),
   HomeCard(
       name: 'Pudim\nCereja',
-      filter: [3, 5],
+      filter: [0, 3, 5],
       assetPath: 'assets/images/home_items/home_item10.jpg'),
 ];
 
