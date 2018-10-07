@@ -13,7 +13,7 @@ For help getting started with Flutter, view our online
 
 ## Current project state
 
-<img src="/screenshots/preview.gif" width="260" height="480">
+<img src="/Screenshots/0.jpg" width="280" height="530"><img src="/Screenshots/1.jpg" width="300" height="530"><img src="/Screenshots/3.jpg" width="300" height="530">
 
 
 ## License
