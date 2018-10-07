@@ -1,11 +1,25 @@
-# Rapidinho
+# Rapidinho 
 
 Unofficial delivery app for [Rapidinho](http://rapidinho.co.ao) made with Flutter
+
+
+## Why 
+With the growing number of delivery based services startups in Luanda/Angola such as [Rapidinho](https://www.instagram.com/rapidinho.ao/), [Motaki](https://www.facebook.com/motaaki/), [OGarsom](https://www.instagram.com/ogarcom_entregas/), [Tupuca](http://www.tupuca.com/en/), [Arreiou](https://twitter.com/arreioubs) and many others coming to the market, we felt the need to build a modular mobile aplication that would be intuitive to use and fit the angolan marketplace. Rapidinho is the use case we decided to go with this aplication. 
+
+For instructions on using this project see the [license](https://github.com/gdgluanda/rapidinho#license)
+
+## Disclaimer
+
+Images and name of Rapidinho contained in this repository do not in any to GDG Luanda or its members.
+
+## Getting Started
 
 Gradle version: `4.6`
 Flutter version: `0.8.3`
 
-## Getting Started
+1. [Install Flutter](https://flutter.io/setup/)
+2. Clone this repo
+3. Run `flutter run --release` on your terminal
 
 For help getting started with Flutter, view our online
 [documentation](https://flutter.io/).
