@@ -10,6 +10,16 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Conta', style: RapidinhoTextStyle.displayText));
+    return Column(
+		  mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset('assets/images/empty_cart_state.png', height: 200.0),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('Lista Vasia!', style: RapidinhoTextStyle.largeText),
+            ),
+            Text('Nada foi adicionado a lista de compras', style: RapidinhoTextStyle.normalText),
+          ],
+        );
   }
 }

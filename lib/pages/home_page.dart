@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   }
 
   Widget _buildFloatingActionButton(NavigationCategory tab) {
-    if(tab.name == 'Entregas' || tab.name == 'Compras')
+    if(tab.name == 'Entregas' || tab.name == 'Casa')
       return null;
 
     return FloatingActionButton(
@@ -110,7 +110,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           children: [
             HomeTab(_currentIndex, widget.filter),
             DeliveryTab(_currentIndex),
-            ShoppingCartTab(),
+            Center(
+			  child: ShoppingCartTab(),
+			),
             Padding(
               padding: const EdgeInsets.only(top: kToolbarHeight),
               child: AccountTab(),
