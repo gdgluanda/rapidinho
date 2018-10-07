@@ -10,7 +10,7 @@ For instructions on using this project see the [license](https://github.com/gdgl
 
 ## Disclaimer
 
-Images and name of Rapidinho contained in this repository do not in any belong to GDG Luanda or its members.
+Images and name of Rapidinho contained in this repository do not belong in any way to GDG Luanda or its members.
 
 ## Getting Started
 
