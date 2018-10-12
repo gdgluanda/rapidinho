@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/pages/home_page.dart';
+import 'package:rapidinho/presentation/home_page.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/widget/category_filter.dart';
 
@@ -139,7 +139,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
     final screenHeight = MediaQuery.of(context).size.height;
       return Stack(
       children: <Widget>[
-        HomePage(filter: filterIndex),
+        HomePageController(filter: filterIndex),
         SplashPage(
           _changeContainerHeight,
           onFilter: (filter){

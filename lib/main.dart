@@ -1,27 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:rapidinho/pages/home_page.dart';
-import 'package:rapidinho/pages/splash_page.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:rapidinho/actions/actions.dart';
+import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/middleware/store_middleware.dart';
+import 'package:rapidinho/presentation/splash_page.dart';
+import 'package:redux/redux.dart';
+import 'package:rapidinho/reducers/app_state_reducer.dart';
 
 void main() => runApp(
   RapidinhoApp()
 );
 
 class RapidinhoApp extends StatelessWidget {
-
-  RapidinhoApp(){
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.red[700]));
-  }
-  
+  final store = Store<AppState>(
+    appReducer,
+    initialState: AppState.init(),
+    middleware: createStoreMiddleware(),
+  );
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rapidinho',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
+    return StoreProvider(
+      store: store,
+      child: MaterialApp(
+        title: 'Rapidinho',
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
+        home: StoreBuilder<AppState>(
+          onInit: (store) => store.dispatch(InitAction()),
+          builder: (context, store){
+            return SplashPageAnimator();
+          }
+        ),
+        debugShowCheckedModeBanner: false,
       ),
-      home: SplashPageAnimator(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }

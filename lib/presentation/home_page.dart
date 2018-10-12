@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:rapidinho/container/active_tab.dart';
+import 'package:rapidinho/container/bottom_tab_selector.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/model/navigation_category.dart';
 import 'package:rapidinho/tabs/delivery_tab.dart';
@@ -9,17 +11,16 @@ import 'package:rapidinho/tabs/account_tab.dart';
 import 'package:rapidinho/tabs/shopping_cart_tab.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
-class HomePage extends StatefulWidget {
-
+class HomePageController extends StatefulWidget {
   final int filter;
 
-  HomePage({this.filter});
+  HomePageController({this.filter});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageControllerState createState() => _HomePageControllerState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _HomePageControllerState extends State<HomePageController> with SingleTickerProviderStateMixin {
 
   TabController _tabController;
 
@@ -34,18 +35,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     _tabController.dispose();
     super.dispose();
   }
-
-  List<BottomNavigationBarItem> navigationItems() {
-    return navigationCategories.map((category){
-      return BottomNavigationBarItem(
-        title: new Text(category.name, style: RapidinhoTextStyle.bottomTextStyle),
-        icon: new Icon(category.icon, size: category.name ==  'Entregas' ? 24.0 : 18.0, color: _currentIndex == category.index ? Colors.red : Colors.grey),
-      );
-    }).toList();
-  }
-
-  // selected index
-  int _currentIndex = 0;
 
   Future<bool> _exitApp() async {
     return showDialog(
@@ -69,10 +58,23 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: _exitApp,
+      child: HomePage(_tabController, widget.filter),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  final TabController _tabController;
+  final int filter;
+  HomePage(this._tabController, this.filter);
+
   Widget _buildFloatingActionButton(NavigationCategory tab) {
     if(tab.name == 'Entregas' || tab.name == 'Casa')
       return null;
-
     return FloatingActionButton(
         key: tab.key,
         tooltip: tab.name,
@@ -85,42 +87,38 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
+  _changeTab(int _currentIndex){
+    Future.delayed(Duration(milliseconds: 500), (){
+      _tabController.animateTo(_currentIndex);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _exitApp,
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        bottomNavigationBar: new BottomNavigationBar(
-          currentIndex: _currentIndex,
-          items: navigationItems(),
-          onTap: (int index){
-            setState(() {
-              _currentIndex = index;
-              Future.delayed(Duration(milliseconds: 500), (){
-                _tabController.animateTo(_currentIndex);
-              });
-            });
-          },
-        ),
-        body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
-          controller: _tabController,
-          children: [
-            HomeTab(_currentIndex, widget.filter),
-            DeliveryTab(_currentIndex),
-            Center(
-			  child: ShoppingCartTab(),
-			),
-            Padding(
-              padding: const EdgeInsets.only(top: kToolbarHeight),
-              child: AccountTab(),
+    return ActiveTab(
+        builder: (context, activeTab){
+          print('Active tab: $activeTab');
+          _changeTab(activeTab.index);
+          return Scaffold(
+            backgroundColor: Colors.white,
+            bottomNavigationBar: BottomTabSelector(),
+            body: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
+              controller: _tabController,
+              children: [
+                HomeTab(activeTab.index, filter),
+                DeliveryTab(activeTab.index),
+                Center(child: ShoppingCartTab()),
+                Padding(
+                  padding: EdgeInsets.only(top: kToolbarHeight),
+                  child: AccountTab(),
+                ),
+              ],
             ),
-          ],
-        ),
-        floatingActionButton: _buildFloatingActionButton(navigationCategories[_currentIndex]),
-      ),
+            floatingActionButton: _buildFloatingActionButton(navigationCategories[activeTab.index]),
+          );
+        }
     );
   }
 }
+

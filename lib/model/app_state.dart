@@ -6,7 +6,7 @@ import 'package:rapidinho/model/navigation_tabs.dart';
 class AppState {
   final NavigationTab activeTab;
 
-  AppState({this.activeTab = NavigationTab.Home});
+  AppState({this.activeTab = NavigationTab.Cart});
 
   factory AppState.init() => AppState();
 
