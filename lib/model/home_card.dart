@@ -18,4 +18,9 @@ class HomeCard {
 
   @override
   int get hashCode => name.hashCode ^ assetPath.hashCode ^ filter.hashCode;
+
+  @override
+  String toString() {
+    return 'HomeCard{assetPath: $assetPath, name: $name, filter: $filter}';
+  }
 }
