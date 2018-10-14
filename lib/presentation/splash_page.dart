@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:rapidinho/container/active_tab.dart';
+import 'package:rapidinho/model/navigation_tabs.dart';
 import 'package:rapidinho/presentation/home_page.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/widget/category_filter.dart';
@@ -33,32 +35,36 @@ class SplashPage extends StatelessWidget {
                   ),
                 ],
             ),
-            child: Wrap(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                  height: animation.heightSize.value,
-                  width: double.infinity,
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: GestureDetector(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 16.0, right: 8.0),
-                        child: Icon(Icons.filter_list, color: Colors.white.withOpacity(animation.actionButtonOpacity.value)),
+            child: ActiveTab(
+              builder: (context, activeTab){
+                return Wrap(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                      height: animation.heightSize.value,
+                      width: double.infinity,
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: GestureDetector(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 16.0, right: 8.0),
+                            child: Icon(Icons.filter_list, color: Colors.white.withOpacity(activeTab == NavigationTab.Home ? animation.actionButtonOpacity.value : 0.0)),
+                          ),
+                          onTap: activeTab == NavigationTab.Home ? callback : (){},
+                        ),
                       ),
-                      onTap: callback,
                     ),
-                  ),
-                ),
-                AnimatedContainer(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
-                  duration: Duration(milliseconds: 100),
-                  height: height,
-                  child: CategoryFilterList(
-                    filter: onFilter,
-                  ),
-                ),
-              ],
+                    AnimatedContainer(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      duration: Duration(milliseconds: 100),
+                      height: activeTab == NavigationTab.Home ? height : 0.0,
+                      child: CategoryFilterList(
+                        filter: onFilter,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           Align(
@@ -139,7 +145,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
     final screenHeight = MediaQuery.of(context).size.height;
       return Stack(
       children: <Widget>[
-        HomePageController(filter: filterIndex),
+        HomePage(filter: filterIndex),
         SplashPage(
           _changeContainerHeight,
           onFilter: (filter){

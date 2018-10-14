@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:rapidinho/container/active_tab.dart';
 import 'package:rapidinho/container/bottom_tab_selector.dart';
@@ -11,18 +10,19 @@ import 'package:rapidinho/tabs/account_tab.dart';
 import 'package:rapidinho/tabs/shopping_cart_tab.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
-class HomePageController extends StatefulWidget {
+class HomePage extends StatefulWidget {
   final int filter;
 
-  HomePageController({this.filter});
+  HomePage({this.filter});
 
   @override
-  _HomePageControllerState createState() => _HomePageControllerState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageControllerState extends State<HomePageController> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
 
   TabController _tabController;
+  static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -58,20 +58,6 @@ class _HomePageControllerState extends State<HomePageController> with SingleTick
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _exitApp,
-      child: HomePage(_tabController, widget.filter),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  final TabController _tabController;
-  final int filter;
-  HomePage(this._tabController, this.filter);
-
   Widget _buildFloatingActionButton(NavigationCategory tab) {
     if(tab.name == 'Entregas' || tab.name == 'Casa')
       return null;
@@ -88,25 +74,29 @@ class HomePage extends StatelessWidget {
   }
 
   _changeTab(int _currentIndex){
-    Future.delayed(Duration(milliseconds: 500), (){
-      _tabController.animateTo(_currentIndex);
+    setState(() {
+      Future.delayed(Duration(milliseconds: 500), (){
+        _tabController.animateTo(_currentIndex);
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return ActiveTab(
-        builder: (context, activeTab){
-          print('Active tab: $activeTab');
-          _changeTab(activeTab.index);
-          return Scaffold(
+      builder: (context, activeTab){
+        return WillPopScope(
+          onWillPop: _exitApp,
+          child: Scaffold(
             backgroundColor: Colors.white,
-            bottomNavigationBar: BottomTabSelector(),
+            bottomNavigationBar: BottomTabSelector(
+              onTabChanged: _changeTab,
+            ),
             body: TabBarView(
               physics: NeverScrollableScrollPhysics(),
               controller: _tabController,
               children: [
-                HomeTab(activeTab.index, filter),
+                HomeTab(activeTab.index, widget.filter),
                 DeliveryTab(activeTab.index),
                 Center(child: ShoppingCartTab()),
                 Padding(
@@ -116,8 +106,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
             floatingActionButton: _buildFloatingActionButton(navigationCategories[activeTab.index]),
-          );
-        }
+          ),
+        );
+      },
     );
   }
 }

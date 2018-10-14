@@ -8,6 +8,11 @@ import 'package:rapidinho/actions/actions.dart';
 import 'package:rapidinho/data/data.dart';
 
 class BottomTabSelector extends StatelessWidget {
+
+  final Function(int) onTabChanged;
+
+  BottomTabSelector({this.onTabChanged});
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
@@ -22,7 +27,10 @@ class BottomTabSelector extends StatelessWidget {
               icon: new Icon(category.icon, size: category.name ==  'Entregas' ? 24.0 : 18.0, color: viewModel.activeTab.index == category.index ? Colors.red : Colors.grey),
             );
           }).toList(),
-          onTap: viewModel.onTabSelected,
+          onTap: (index){
+            viewModel.onTabSelected(index);
+            onTabChanged(index);
+          },
         );
       },
     );
