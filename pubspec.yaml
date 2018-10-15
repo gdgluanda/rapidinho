@@ -49,7 +49,8 @@ flutter:
     - assets/images/rapidinho_red.jpg
     - assets/images/rapidinho_white.jpg
     - assets/images/rapidinho_cover.png
-    - assets/images/rapidinho_transparent.png
+    - assets/images/rapidinho_transparent_white.png
+    - assets/images/rapidinho_transparent_red.png
     - assets/images/r_transparent.png
     - assets/images/featured_meal.jpg
     - assets/images/henrick.jpg

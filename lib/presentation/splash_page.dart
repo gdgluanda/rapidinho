@@ -70,7 +70,7 @@ class SplashPage extends StatelessWidget {
           Align(
               alignment: Alignment.center.add(Alignment(0.0, animation.logoAlignment.value)),
               child: Image.asset(
-                  'assets/images/rapidinho_transparent.png',
+                  'assets/images/rapidinho_transparent_white.png',
                   width: animation.logoWidth.value,
                   height: animation.logoHeight.value
               ),
