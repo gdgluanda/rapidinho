@@ -3,8 +3,9 @@ class FilterItem {
 
   String name;
   bool isFilter;
+  FilterType type;
 
-  FilterItem(this.name, this.isFilter);
+  FilterItem(this.name, this.isFilter, this.type);
 
   @override
   bool operator ==(Object other) =>
@@ -24,3 +25,5 @@ class FilterItem {
     return 'FilterItem{name: $name, isFilter: $isFilter}';
   }
 }
+
+enum FilterType {All, Today, Recommended, Allowed, Popular, New}

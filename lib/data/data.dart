@@ -11,13 +11,13 @@ List<NavigationCategory> navigationCategories = [
   NavigationCategory('Conta', RapidinhoIcon.account, 3),
 ];
 
-List<FilterItem> filterList = [
-  FilterItem('Todos', true),
-  FilterItem('Hoje', false),
-  FilterItem('Recomendado', false),
-  FilterItem('Permitido', false),
-  FilterItem('Popular', false),
-  FilterItem('Novos', false),
+final List<FilterItem> filterList = [
+  FilterItem('Todos', true, FilterType.All),
+  FilterItem('Hoje', false, FilterType.Today),
+  FilterItem('Recomendado', false, FilterType.Recommended),
+  FilterItem('Permitido', false, FilterType.Allowed),
+  FilterItem('Popular', false, FilterType.Popular),
+  FilterItem('Novos', false, FilterType.New),
 ];
 
 List<HomeCard> homeCardItemList1 = [
