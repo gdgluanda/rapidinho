@@ -14,12 +14,13 @@ class UpdateTabAction {
 }
 
 class UpdateFilterAction {
-  final FilterType filterType;
+  final FilterItem filterItem;
+  final FilterType type;
 
-  UpdateFilterAction(this.filterType);
+  UpdateFilterAction(this.filterItem, this.type);
 
   @override
   String toString() {
-    return 'UpdateFilterAction{filterType: $filterType}';
+    return 'UpdateFilterAction{filterItem: $filterItem, type: $type}';
   }
 }

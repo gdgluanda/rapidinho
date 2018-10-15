@@ -26,7 +26,7 @@ class _CategoryFilterListState extends State<CategoryFilterList> {
             onTap: (){
               widget.filter(index);
               setState(() {
-                filterList[index].isFilter = !filterList[index].isFilter;
+                //filterList[index].isFilter = !filterList[index].isFilter;
               });
             },
             child: Container(

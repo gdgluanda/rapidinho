@@ -1,11 +1,21 @@
 
 class FilterItem {
 
-  String name;
-  bool isFilter;
-  FilterType type;
+  final String name;
+  final bool isFilter;
+  final FilterType type;
 
-  FilterItem(this.name, this.isFilter, this.type);
+  //FilterItem.from(this.name, this.isFilter, this.type);
+
+  const FilterItem(this.name, this.isFilter, this.type);
+
+  FilterItem copyWith({String name, bool isFilter, FilterType type}){
+    return FilterItem(
+      name ?? this.name,
+      isFilter ?? this.isFilter,
+      type ?? this.type,
+    );
+  }
 
   @override
   bool operator ==(Object other) =>

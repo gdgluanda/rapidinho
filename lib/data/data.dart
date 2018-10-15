@@ -11,13 +11,13 @@ List<NavigationCategory> navigationCategories = [
   NavigationCategory('Conta', RapidinhoIcon.account, 3),
 ];
 
-final List<FilterItem> filterList = [
-  FilterItem('Todos', true, FilterType.All),
-  FilterItem('Hoje', false, FilterType.Today),
-  FilterItem('Recomendado', false, FilterType.Recommended),
-  FilterItem('Permitido', false, FilterType.Allowed),
-  FilterItem('Popular', false, FilterType.Popular),
-  FilterItem('Novos', false, FilterType.New),
+const List<FilterItem> filterList = [
+  const FilterItem('Todos', true, FilterType.All),
+  const FilterItem('Hoje', false, FilterType.Today),
+  const FilterItem('Recomendado', true, FilterType.Recommended),
+  const FilterItem('Permitido', false, FilterType.Allowed),
+  const FilterItem('Popular', false, FilterType.Popular),
+  const FilterItem('Novos', false, FilterType.New),
 ];
 
 List<HomeCard> homeCardItemList1 = [
