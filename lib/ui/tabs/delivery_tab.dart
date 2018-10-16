@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/model/navigation_tabs.dart';
+import 'package:rapidinho/ui/container/active_tab.dart';
 import 'package:rapidinho/ui/widget/delivery_card.dart';
 
 class DeliveryTab extends StatefulWidget {
 
-  final int tab;
-
-  DeliveryTab(this.tab);
+  DeliveryTab();
 
   @override
   _DeliveryTabState createState() => _DeliveryTabState();
@@ -17,12 +17,6 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
   AnimationController cardEntranceAnimationController;
   List<Animation> cardAnimations;
   ValueNotifier<int> currentTab;
-
-  @override
-  void didUpdateWidget(DeliveryTab oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    currentTab.value = widget.tab;
-  }
 
   @override
   void initState() {
@@ -42,7 +36,7 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
               curve: Interval(start, end, curve: Curves.decelerate)));
     }).toList();
     cardEntranceAnimationController.forward();
-    currentTab = ValueNotifier(widget.tab);
+    currentTab = ValueNotifier(1);
     currentTab.addListener((){
       cardEntranceAnimationController.reverse();
     });
@@ -56,23 +50,28 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 20.0),
-      child: Stack(
-        children: <Widget>[
-          Positioned.fill(
-            top: MediaQuery
-                .of(context)
-                .padding
-                .top + 64.0,
-            child: SingleChildScrollView(
-              child: Column(
-                children: _buildDeliveryCards().toList(),
+    return ActiveTab(
+      builder: (context, activeTab){
+        currentTab.value = activeTab.index;
+        return Container(
+          margin: EdgeInsets.only(top: 20.0),
+          child: Stack(
+            children: <Widget>[
+              Positioned.fill(
+                top: MediaQuery
+                    .of(context)
+                    .padding
+                    .top + 64.0,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: _buildDeliveryCards().toList(),
+                  ),
+                ),
               ),
-            ),
-          )
-        ],
-      ),
+            ],
+          ),
+        );
+      },
     );
   }
 
