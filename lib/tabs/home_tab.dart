@@ -9,9 +9,8 @@ import 'package:rapidinho/ui/widget/home_card_item.dart';
 class HomeTab extends StatefulWidget {
 
   final int tab;
-  final int filter;
 
-  HomeTab(this.tab, this.filter);
+  HomeTab(this.tab);
 
   @override
   _HomeTabState createState() => _HomeTabState();

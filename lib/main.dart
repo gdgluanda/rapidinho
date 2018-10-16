@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:rapidinho/actions/actions.dart';
 import 'package:rapidinho/model/app_state.dart';
 import 'package:rapidinho/middleware/store_middleware.dart';
-import 'package:rapidinho/presentation/splash_page.dart';
+import 'package:rapidinho/ui/presentation/splash_page.dart';
 import 'package:redux/redux.dart';
 import 'package:rapidinho/reducers/app_state_reducer.dart';
 

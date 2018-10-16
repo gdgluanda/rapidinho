@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
-class CategoryFilterList extends StatefulWidget {
+class CategoryFilterList extends StatelessWidget {
+  final Function(FilterItem i) onFilterChanged;
+  final List<FilterItem> filterList;
 
-  final Function(int i) filter;
+  CategoryFilterList({this.onFilterChanged, this.filterList});
 
-
-  CategoryFilterList({this.filter});
-
-  @override
-  _CategoryFilterListState createState() => _CategoryFilterListState();
-}
-
-class _CategoryFilterListState extends State<CategoryFilterList> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -24,10 +18,7 @@ class _CategoryFilterListState extends State<CategoryFilterList> {
         itemBuilder: (context, index){
           return GestureDetector(
             onTap: (){
-              widget.filter(index);
-              setState(() {
-                //filterList[index].isFilter = !filterList[index].isFilter;
-              });
+              onFilterChanged(filterList[index]);
             },
             child: Container(
               alignment: Alignment.center,

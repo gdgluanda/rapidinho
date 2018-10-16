@@ -24,4 +24,22 @@ class AppState {
       filters: filters ?? this.filters,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is AppState &&
+              runtimeType == other.runtimeType &&
+              activeTab == other.activeTab &&
+              filters == other.filters;
+
+  @override
+  int get hashCode =>
+      activeTab.hashCode ^
+      filters.hashCode;
+
+  @override
+  String toString() {
+    return 'AppState{activeTab: $activeTab, filters: $filters}';
+  }
 }

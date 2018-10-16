@@ -1,19 +1,16 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/container/active_tab.dart';
-import 'package:rapidinho/container/bottom_tab_selector.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/model/navigation_category.dart';
 import 'package:rapidinho/tabs/delivery_tab.dart';
 import 'package:rapidinho/tabs/home_tab.dart';
 import 'package:rapidinho/tabs/account_tab.dart';
 import 'package:rapidinho/tabs/shopping_cart_tab.dart';
+import 'package:rapidinho/ui/container/active_tab.dart';
+import 'package:rapidinho/ui/container/bottom_tab_selector.dart';
 import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 
 class HomePage extends StatefulWidget {
-  final int filter;
-
-  HomePage({this.filter});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -96,7 +93,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               physics: NeverScrollableScrollPhysics(),
               controller: _tabController,
               children: [
-                HomeTab(activeTab.index, widget.filter),
+                HomeTab(activeTab.index),
                 DeliveryTab(activeTab.index),
                 Center(child: ShoppingCartTab()),
                 Padding(

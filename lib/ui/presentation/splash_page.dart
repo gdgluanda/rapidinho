@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/container/active_tab.dart';
 import 'package:rapidinho/model/navigation_tabs.dart';
-import 'package:rapidinho/presentation/home_page.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
-import 'package:rapidinho/ui/widget/category_filter.dart';
+import 'package:rapidinho/ui/container/active_tab.dart';
+import 'package:rapidinho/ui/container/filter_list_container.dart';
+import 'package:rapidinho/ui/presentation/home_page.dart';
 
 class SplashPage extends StatelessWidget {
 
@@ -58,9 +58,7 @@ class SplashPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       duration: Duration(milliseconds: 100),
                       height: activeTab == NavigationTab.Home ? height : 0.0,
-                      child: CategoryFilterList(
-                        filter: onFilter,
-                      ),
+                      child: FilterListContainer(),
                     ),
                   ],
                 );
@@ -145,7 +143,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
     final screenHeight = MediaQuery.of(context).size.height;
       return Stack(
       children: <Widget>[
-        HomePage(filter: filterIndex),
+        HomePage(),
         SplashPage(
           _changeContainerHeight,
           onFilter: (filter){
