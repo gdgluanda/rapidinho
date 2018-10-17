@@ -3,7 +3,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:rapidinho/actions/actions.dart';
 import 'package:rapidinho/model/app_state.dart';
 import 'package:rapidinho/middleware/store_middleware.dart';
+import 'package:rapidinho/ui/container/loaded_places.dart';
 import 'package:rapidinho/ui/presentation/splash_page.dart';
+import 'package:rapidinho/ui/tabs/places_tab.dart';
 import 'package:redux/redux.dart';
 import 'package:rapidinho/reducers/app_state_reducer.dart';
 
@@ -29,7 +31,7 @@ class RapidinhoApp extends StatelessWidget {
         home: StoreBuilder<AppState>(
           onInit: (store) => store.dispatch(InitAction()),
           builder: (context, store){
-            return SplashPageAnimator();
+            return LoadedPlaces();
           }
         ),
         debugShowCheckedModeBanner: false,
