@@ -101,7 +101,7 @@ class Result {
     this.website,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => new Result(
+  factory Result.fromJson(Map json) => new Result(
     addressComponents: new List<AddressComponent>.from(json["address_components"].map((x) => AddressComponent.fromJson(x))),
     adrAddress: json["adr_address"],
     formattedAddress: json["formatted_address"],

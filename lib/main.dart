@@ -29,7 +29,7 @@ class RapidinhoApp extends StatelessWidget {
           primarySwatch: Colors.red,
         ),
         home: StoreBuilder<AppState>(
-          onInit: (store) => store.dispatch(InitAction()),
+          onInit: (store) => store.dispatch(LoadPlacesAction()),
           builder: (context, store){
             return LoadedPlaces();
           }

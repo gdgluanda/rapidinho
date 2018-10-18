@@ -6,11 +6,10 @@ import 'package:rapidinho/repository/places_repository.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createStoreMiddleware() {
-  Repository repository = Repository();
-  final storeMiddleware = _storeMiddleware();
+  PlacesRepository repository = Repository();
   final loadPlaces = _createLoadPlaces(repository);
   return [
-    TypedMiddleware<AppState, InitAction>(storeMiddleware),
+    //TypedMiddleware<AppState, InitAction>(storeMiddleware),
     TypedMiddleware<AppState, LoadPlacesAction>(loadPlaces),
   ];
 }
@@ -26,7 +25,7 @@ Middleware<AppState> _createLoadPlaces(PlacesRepository repository) {
     repository.loadPlaces().then((places) {
         store.dispatch(
           PlacesLoadedAction(
-            places.map((Result place) => place).toList(),
+            places,
           ),
         );
       },

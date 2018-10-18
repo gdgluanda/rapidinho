@@ -12,10 +12,12 @@ class LoadedPlaces extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
+      distinct: true,
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
         return PlacesTab(
           places: vm.places,
+          isLoading: vm.loading,
         );
       },
     );
@@ -36,5 +38,23 @@ class _ViewModel {
       places: store.state.places,
       loading: store.state.isLoading,
     );
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is _ViewModel &&
+              runtimeType == other.runtimeType &&
+              places == other.places &&
+              loading == other.loading;
+
+  @override
+  int get hashCode =>
+      places.hashCode ^
+      loading.hashCode;
+
+  @override
+  String toString() {
+    return '_ViewModel{places: $places, loading: $loading}';
   }
 }

@@ -13,15 +13,9 @@ class Repository implements PlacesRepository {
   @override
   Future<List<Result>> loadPlaces() async {
     try{
-      return await webClient.fetchPlaces();
+      return await webClient.getPlaces();
     } catch(e){
-      print('Fetching places error: $e');
       return [];
     }
-  }
-
-  @override
-  Future savePlaces(List<Result> places) {
-    // TODO: implement savePlaces
   }
 }

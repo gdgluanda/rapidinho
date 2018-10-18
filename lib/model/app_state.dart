@@ -18,7 +18,7 @@ class AppState {
     this.isLoading = false,
   });
 
-  factory AppState.init() => AppState(isLoading: false);
+  factory AppState.init() => AppState(isLoading: true);
 
   AppState copyWith({
     NavigationTab activeTab,
