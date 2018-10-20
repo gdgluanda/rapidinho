@@ -58,38 +58,78 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
       child: SizedBox(
         height: screenSize.width > screenSize.height
             ? (screenSize.height - kToolbarHeight) * 0.55
-            : (screenSize.height - kToolbarHeight) * 0.35,
-        child: Container(
-          margin: EdgeInsets.only(bottom: 20.0),
-          child: AnimatedBuilder(
-            animation: featuredImageAnimationController,
-            child: Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                Image.asset(
-                  'assets/images/home_items/home_item14.jpg',
-                  fit: BoxFit.cover,
-                  //height: 200.0,
+            : (screenSize.height - kToolbarHeight) * 0.45,
+        child: Stack(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(bottom: 50.0),
+              child: AnimatedBuilder(
+                animation: featuredImageAnimationController,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: <Widget>[
+                    Image.asset(
+                      'assets/images/home_items/home_item14.jpg',
+                      fit: BoxFit.cover,
+                      //height: 200.0,
+                    ),
+                    Container(
+                      color: Colors.black12.withOpacity(0.2),
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: new Text('Acaba De\nMe Matar', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  color: Colors.black12.withOpacity(0.2),
-                  alignment: Alignment.bottomLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: new Text('Acaba De\nMe Matar', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                builder: (context, child) => new Transform.translate(
+                  offset: Offset(0.0, featuredImageAnimation.value),
+                  child: child,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 25.0, vertical: 30.0),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(50.0),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(color: Colors.black38,
+                        blurRadius: 2.0,
+                        spreadRadius: 1.0,
+                        offset: Offset(0.0, 1.0)),
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 24.0),
+                  child: TextField(
+                    style: RapidinhoTextStyle.mediumText,
+                    decoration: InputDecoration(
+                      hintText: 'Pesquise aqui...',
+                      border: InputBorder.none,
+
+                    ),
+                    onChanged: (text){
+                      //TODO add search action here
+                    },
+                    onSubmitted: (text){
+                      //TODO add search action here
+                    },
                   ),
                 ),
-              ],
+              ),
             ),
-            builder: (context, child) => new Transform.translate(
-              offset: Offset(0.0, featuredImageAnimation.value),
-              child: child,
-            ),
-          ),
+          ],
         ),
       ),
     );
   }
+
   _buildAnimatedList(GlobalKey<AnimatedListState> _key, List<HomeCard> list){
     _list = ListModel(_key, list);
     return SliverToBoxAdapter(
@@ -136,6 +176,7 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
             slivers: <Widget>[
               _buildFeaturedImage(screenSize),
               _buildAnimatedList(_listKey1, homeCardItemList1),
+              _buildProductOptionList(),
               _buildAnimatedList(_listKey2, homeCardItemList2),
               _buildAnimatedList(_listKey3, homeCardItemList3),
             ],
