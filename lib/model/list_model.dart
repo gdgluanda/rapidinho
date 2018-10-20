@@ -19,7 +19,7 @@ class ListModel {
     final HomeCard removedItem = items.removeAt(index);
     if (removedItem != null) {
       _animatedList.removeItem(
-          index, (context, animation) => HomeCardItem(removedItem.name, (){}, AssetImage(removedItem.assetPath), animation),
+          index, (context, animation) => HomeCardItem('placeName', removedItem.name, (){}, AssetImage(removedItem.assetPath), animation),
           duration: Duration(milliseconds: (150 + 200*(index/length)).toInt())
       );
     }

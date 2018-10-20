@@ -7,19 +7,16 @@ import 'package:redux/redux.dart';
 import 'package:rapidinho/repository/place_entity.dart';
 
 class LoadedPlaces extends StatelessWidget {
-  LoadedPlaces({Key key}) : super(key: key);
+
+  final ViewModelBuilder<_ViewModel> builder;
+  LoadedPlaces({Key key, this.builder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
       distinct: true,
       converter: _ViewModel.fromStore,
-      builder: (context, vm) {
-        return PlacesTab(
-          places: vm.places,
-          isLoading: vm.loading,
-        );
-      },
+      builder: builder,
     );
   }
 }

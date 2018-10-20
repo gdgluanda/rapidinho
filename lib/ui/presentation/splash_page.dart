@@ -8,17 +8,15 @@ import 'package:rapidinho/ui/presentation/home_page.dart';
 
 class SplashPage extends StatelessWidget {
 
-  SplashPage(
-    this.callback, {
+  SplashPage({
     @required AnimationController controller,
     @required screenHeight,
+    this.callback,
     this.height,
-    this.onFilter,
   }) : animation = new SplashPageEnterAnimation(controller, screenHeight);
 
   final SplashPageEnterAnimation animation;
   final VoidCallback callback;
-  final Function(int i) onFilter;
   final double height;
 
   Widget _buildSplashAnimation(BuildContext context, Widget child){
@@ -99,11 +97,6 @@ class SplashPage extends StatelessWidget {
 
 class SplashPageAnimator extends StatefulWidget {
 
-  final Function(int i) onFilter;
-  final Widget child;
-
-  SplashPageAnimator({this.child, this.onFilter});
-
   @override
   _SplashPageAnimator createState() => new _SplashPageAnimator();
 }
@@ -112,7 +105,6 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
 
   AnimationController _controller;
   double height = 0.0;
-  int filterIndex = -1;
 
   @override
   void initState() {
@@ -145,12 +137,7 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
       children: <Widget>[
         HomePage(),
         SplashPage(
-          _changeContainerHeight,
-          onFilter: (filter){
-            setState((){
-              filterIndex = filter;
-            });
-          },
+          callback: _changeContainerHeight,
           height: height,
           controller: _controller,
           screenHeight: screenHeight,

@@ -6,6 +6,8 @@ import 'package:rapidinho/model/app_state.dart';
 
 NavigationTab activeTabSelector(AppState state) => state.activeTab;
 
+bool isLoadingSelector(AppState state) => state.isLoading;
+
 /// Filter List Selectors
 int numActiveFiltersSelector(List<FilterItem> filters) => filters.fold(0, (sum, filter) => filter.isFilter ? ++sum : sum);
 

@@ -70,7 +70,7 @@ List<HomeCard> homeCardItemList3 = [
       assetPath: 'assets/images/home_items/home_item4.jpg'),
   HomeCard(
       name: 'iPhone\nX',
-      filter: [5],
+      filter: [1, 5],
       assetPath: 'assets/images/home_items/home_item8.jpg'),
 ];
 

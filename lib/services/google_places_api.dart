@@ -11,12 +11,12 @@ class GooglePlacesApi {
   Future<List<Result>> getPlaces() async {
     List<Result> nearByPlaces = [];
     http.Response response = await http.get(url, headers: {"Accept": "application/json"}).catchError((resp){});
-    List list = await json.decode(response.body)['results'];
-    list.forEach((place) async {
-      List<Photo> photos =  await getPhotos(place["place_id"]);
-      Result result = Result(name: place['name'], photos: photos);
+    List list = json.decode(response.body)['results'];
+    for(var place in list) {
+      List<Photo> photos = await getPhotos(place["place_id"]);
+      Result result = Result(name: place['name'], rating: place["rating"], photos: photos);
       nearByPlaces.add(result);
-    });
+    }
     return nearByPlaces;
   }
 
