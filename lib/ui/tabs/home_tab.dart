@@ -74,11 +74,11 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
                       //height: 200.0,
                     ),
                     Container(
-                      color: Colors.black12.withOpacity(0.2),
+                      color: Colors.black.withOpacity(0.3),
                       alignment: Alignment.topLeft,
                       child: Padding(
-                        padding: const EdgeInsets.all(32.0),
-                        child: new Text('Acaba De\nMe Matar', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 35.0),
+                        child: new Text('Hamburger de\nQueijo e Beicon', style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
                       ),
                     ),
                   ],
@@ -89,39 +89,46 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 25.0, vertical: 30.0),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(50.0),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(color: Colors.black38,
-                        blurRadius: 2.0,
-                        spreadRadius: 1.0,
-                        offset: Offset(0.0, 1.0)),
-                  ],
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 24.0),
-                  child: TextField(
-                    style: RapidinhoTextStyle.mediumText,
-                    decoration: InputDecoration(
-                      hintText: 'Pesquise aqui...',
-                      border: InputBorder.none,
+            AnimatedBuilder(
+              animation: featuredImageAnimationController,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 25.0, vertical: 30.0),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(50.0),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(color: Colors.black38,
+                          blurRadius: 2.0,
+                          spreadRadius: 1.0,
+                          offset: Offset(0.0, 1.0)),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 24.0),
+                    child: TextField(
+                      style: RapidinhoTextStyle.mediumText,
+                      decoration: InputDecoration(
+                        hintText: 'Pesquise aqui...',
+                        border: InputBorder.none,
 
+                      ),
+                      onChanged: (text){
+                        //TODO add search action here
+                      },
+                      onSubmitted: (text){
+                        //TODO add search action here
+                      },
                     ),
-                    onChanged: (text){
-                      //TODO add search action here
-                    },
-                    onSubmitted: (text){
-                      //TODO add search action here
-                    },
                   ),
                 ),
+              ),
+              builder: (context, child) => new Transform.translate(
+                offset: Offset(0.0, featuredImageAnimation.value),
+                child: child,
               ),
             ),
           ],
