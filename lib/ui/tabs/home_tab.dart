@@ -130,6 +130,40 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
     );
   }
 
+  _buildProductOptionList(){
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: 100.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+              child: Text('Outros Productos', style: RapidinhoTextStyle.normalText),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              height: 50.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: MockData.products.map((product){
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: CircleAvatar(
+                      radius: 25.0,
+                      backgroundColor: Colors.red,
+                      child: Image.asset(product.assetPath),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   _buildAnimatedList(GlobalKey<AnimatedListState> _key, List<HomeCard> list){
     _list = ListModel(_key, list);
     return SliverToBoxAdapter(

@@ -2,6 +2,7 @@ import 'package:rapidinho/model/delivery.dart';
 import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/home_card.dart';
 import 'package:rapidinho/model/navigation_category.dart';
+import 'package:rapidinho/model/platform_product.dart';
 import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
 
 List<NavigationCategory> navigationCategories = [
@@ -75,6 +76,48 @@ List<HomeCard> homeCardItemList3 = [
 ];
 
 class MockData {
+  static final List<Product> products = [
+    Product(
+      'Pizzas',
+      'assets/images/deliverables/pizza.png'
+    ),
+    Product(
+        'Bebidas',
+        'assets/images/deliverables/drink.png'
+    ),
+    Product(
+        'Books',
+        'assets/images/deliverables/books.png'
+    ),
+    Product(
+        'Refeições',
+        'assets/images/deliverables/food.png'
+    ),
+    Product(
+        'Hamburger',
+        'assets/images/deliverables/hamburger.png'
+    ),
+    Product(
+        'Gelados',
+        'assets/images/deliverables/ice_cream.png'
+    ),
+    Product(
+        'Convites',
+        'assets/images/deliverables/letter.png'
+    ),
+    Product(
+        'Cartas',
+        'assets/images/deliverables/mail.png'
+    ),
+    Product(
+        'Presentes',
+        'assets/images/deliverables/present.png'
+    ),
+    Product(
+        'Vestuario',
+        'assets/images/deliverables/wear.png'
+    ),
+  ];
   static final List<Delivery> deliveries = [
     Delivery(
       name: 'Pizza Quatro Estações',
