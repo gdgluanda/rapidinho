@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/model/navigation_tabs.dart';
 import 'package:rapidinho/ui/container/active_tab.dart';
+import 'package:rapidinho/ui/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/widget/delivery_card.dart';
 
 class DeliveryTab extends StatefulWidget {
@@ -58,15 +58,17 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
           child: Stack(
             children: <Widget>[
               Positioned.fill(
-                top: MediaQuery
-                    .of(context)
-                    .padding
-                    .top + 64.0,
+                top: MediaQuery.of(context).padding.top + 100.0,
                 child: SingleChildScrollView(
                   child: Column(
                     children: _buildDeliveryCards().toList(),
                   ),
                 ),
+              ),
+              Container(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.only(top: kToolbarHeight + 24.0, left: 16.0),
+                child: Text('Minhas Entregas', style: RapidinhoTextStyle.largeText.copyWith(fontWeight: FontWeight.w500)),
               ),
             ],
           ),
