@@ -101,6 +101,14 @@ class Result {
     this.website,
   });
 
+  Result copyWith({String name, OpeningHours openingHours, List<Photo> photos, String placeId, double rating}){
+    return Result(
+      placeId: placeId ?? this.placeId,
+      name: name ?? this.name,
+      rating: rating ?? this.rating,
+      photos: photos ?? this.photos,
+    );
+  }
   factory Result.fromJson(Map json) => new Result(
     addressComponents: new List<AddressComponent>.from(json["address_components"].map((x) => AddressComponent.fromJson(x))),
     adrAddress: json["adr_address"],

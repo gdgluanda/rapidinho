@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:rapidinho/keys/google_places_api_key.dart';
-import 'package:rapidinho/repository/place_entity.dart';
+import 'package:rapidinho/model/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -13,8 +13,7 @@ class GooglePlacesApi {
     http.Response response = await http.get(url, headers: {"Accept": "application/json"}).catchError((resp){});
     List list = json.decode(response.body)['results'];
     for(var place in list) {
-      List<Photo> photos = await getPhotos(place["place_id"]);
-      Result result = Result(name: place['name'], rating: place["rating"], photos: photos);
+      Result result = Result(name: place['name'], rating: place["rating"]);
       nearByPlaces.add(result);
     }
     return nearByPlaces;

@@ -2,35 +2,35 @@ import 'package:rapidinho/data/data.dart';
 import 'package:meta/meta.dart';
 import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/navigation_tabs.dart';
-import 'package:rapidinho/repository/place_entity.dart';
+import 'package:rapidinho/redux/product/product_state.dart';
 
 @immutable
 class AppState {
   final NavigationTab activeTab;
   final List<FilterItem> filters;
-  final List<Result> places;
-  final bool isLoading;
+  final ProductState productState;
 
   AppState({
-    this.places,
+    this.productState,
     this.activeTab = NavigationTab.Home,
     this.filters = filterList,
-    this.isLoading = false,
   });
 
-  factory AppState.init() => AppState(isLoading: true);
+  factory AppState.init() =>
+      AppState(
+        productState: ProductState.initial(),
+      );
 
   AppState copyWith({
     NavigationTab activeTab,
     List<FilterItem> filters,
-    List<Result> places,
+    ProductState productState,
     bool isLoading,
   }){
     return AppState(
       activeTab: activeTab ?? this.activeTab,
       filters: filters ?? this.filters,
-      places: places ?? this.places,
-      isLoading: isLoading ?? this.isLoading,
+      productState: productState ?? this.productState,
     );
   }
 
@@ -41,18 +41,16 @@ class AppState {
               runtimeType == other.runtimeType &&
               activeTab == other.activeTab &&
               filters == other.filters &&
-              places == other.places &&
-              isLoading == other.isLoading;
+              productState == other.productState;
 
   @override
   int get hashCode =>
       activeTab.hashCode ^
       filters.hashCode ^
-      places.hashCode ^
-      isLoading.hashCode;
+      productState.hashCode;
 
   @override
   String toString() {
-    return 'AppState{activeTab: $activeTab, filters: $filters, places: $places, isLoading: $isLoading}';
+    return 'AppState{activeTab: $activeTab, filters: $filters, productState: $productState}';
   }
 }

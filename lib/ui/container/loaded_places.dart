@@ -4,7 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:rapidinho/model/app_state.dart';
 import 'package:rapidinho/ui/tabs/places_tab.dart';
 import 'package:redux/redux.dart';
-import 'package:rapidinho/repository/place_entity.dart';
+import 'package:rapidinho/model/place.dart';
 
 class LoadedPlaces extends StatelessWidget {
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/repository/place_entity.dart';
+import 'package:rapidinho/model/place.dart';
 import 'package:rapidinho/ui/widget/loading_indicator.dart';
 
 class PlacesTab extends StatelessWidget {

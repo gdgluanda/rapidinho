@@ -149,7 +149,6 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
               child: Text('Outros Productos', style: RapidinhoTextStyle.normalText),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
               height: 50.0,
               child: ListView(
                 scrollDirection: Axis.horizontal,
