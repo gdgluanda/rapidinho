@@ -12,17 +12,21 @@ class AppState {
 
   AppState({
     this.productState,
-    this.activeTab = NavigationTab.Home,
-    this.filters = filterList,
+    this.activeTab,
+    this.filters,
   });
 
-  factory AppState.init() => AppState(productState: ProductState.initial());
+  factory AppState.init() =>
+      AppState(
+        activeTab: NavigationTab.Home,
+        filters: filterList,
+        productState: ProductState.initial()
+      );
 
   AppState copyWith({
     NavigationTab activeTab,
     List<FilterItem> filters,
     ProductState productState,
-    bool isLoading,
   }){
     return AppState(
       activeTab: activeTab ?? this.activeTab,
