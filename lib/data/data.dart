@@ -4,11 +4,11 @@ import 'package:rapidinho/model/product.dart';
 import 'package:rapidinho/model/tabs.dart';
 import 'package:rapidinho/styling/rapidinho_icon.dart';
 
-List<TabItem> navigationCategories = [
-  TabItem('Casa', RapidinhoIcon.homeIcon, 0),
-  TabItem('Entregas', RapidinhoIcon.motorCycle, 1),
-  TabItem('Compras', RapidinhoIcon.shoppingCart, 2),
-  TabItem('Conta', RapidinhoIcon.account, 3),
+List<TabItem> navigationTabs = [
+  TabItem('Casa', RapidinhoIcon.homeIcon, NavigationTab.Home),
+  TabItem('Entregas', RapidinhoIcon.motorCycle, NavigationTab.Delivery),
+  TabItem('Compras', RapidinhoIcon.shoppingCart, NavigationTab.Cart),
+  TabItem('Conta', RapidinhoIcon.account, NavigationTab.Account),
 ];
 
 const List<FilterItem> filterList = [

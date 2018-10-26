@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync: this, length: navigationCategories.length);
+    _tabController = new TabController(vsync: this, length: navigationTabs.length);
   }
 
   @override
@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 ),
               ],
             ),
-            floatingActionButton: _buildFloatingActionButton(navigationCategories[vm.activeTab.index]),
+            floatingActionButton: _buildFloatingActionButton(navigationTabs[vm.activeTab.index]),
           ),
         );
       },

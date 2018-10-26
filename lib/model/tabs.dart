@@ -6,9 +6,9 @@ class TabItem {
 
   final String name;
   final IconData icon;
-  final int index;
+  final NavigationTab tab;
 
-  TabItem(this.name, this.icon, this.index);
+  TabItem(this.name, this.icon, this.tab);
 
   Key get key => new ValueKey<String>(name);
 
@@ -19,16 +19,16 @@ class TabItem {
               runtimeType == other.runtimeType &&
               name == other.name &&
               icon == other.icon &&
-              index == other.index;
+              tab == other.tab;
 
   @override
   int get hashCode =>
       name.hashCode ^
       icon.hashCode ^
-      index.hashCode;
+      tab.hashCode;
 
   @override
   String toString() {
-    return 'NavigationCategory{name: $name, icon: $icon, index: $index}';
+    return 'NavigationCategory{name: $name, icon: $icon, index: $tab}';
   }
 }

@@ -7,16 +7,20 @@ final productReducer = combineReducers<ProductState>([
   TypedReducer<ProductState, LoadProductPlacesAction>(_loadProductPlaces),
   TypedReducer<ProductState, ProductPlacesLoadedAction>(_setProductPlacesLoaded),
   TypedReducer<ProductState, ErrorLoadingProductPlacesAction>(_errorLoadingProductPlaces),
+  TypedReducer<ProductState, UpdateProductPlaceAction>(_setProductPlacePhotosLoaded),
 ]);
 
-ProductState _loadProductPlaces(ProductState state,
-    LoadProductPlacesAction action) =>
+ProductState _loadProductPlaces(ProductState state, LoadProductPlacesAction action) =>
     state.copyWith(loadingStatus: LoadingStatus.loading);
 
-ProductState _setProductPlacesLoaded(ProductState state,
-    ProductPlacesLoadedAction action) =>
-    state.copyWith(loadingStatus: LoadingStatus.success);
+ProductState _setProductPlacesLoaded(ProductState state, ProductPlacesLoadedAction action) =>
+    state.copyWith(
+      loadingStatus: LoadingStatus.success,
+      productPlaces: state.productPlaces,
+    );
 
-ProductState _errorLoadingProductPlaces(ProductState state,
-    ErrorLoadingProductPlacesAction action) =>
+ProductState _errorLoadingProductPlaces(ProductState state, ErrorLoadingProductPlacesAction action) =>
     state.copyWith(loadingStatus: LoadingStatus.error);
+
+ProductState _setProductPlacePhotosLoaded(ProductState state, UpdateProductPlaceAction action) =>
+    state.copyWith(productPhotos: action.updatedPlace.photos);

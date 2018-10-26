@@ -12,15 +12,12 @@ class ProductMiddleware extends MiddlewareClass<AppState> {
 
   @override
   void call(Store<AppState> store, action, NextDispatcher next) async {
-    switch(action){
-      case InitAction:
-        _loadProductPlaces(next);
-        break;
-      case ProductPlacesLoadedAction:
-        for(var place in store.state.productState.productPlaces){
-          _loadProductPlacePhotos(next, place);
-        }
-        break;
+    if(action is InitAction){
+      _loadProductPlaces(next);
+    } else if(action is ProductPlacesLoadedAction){
+      for(var place in store.state.productState.productPlaces){
+        _loadProductPlacePhotos(next, place);
+      }
     }
   }
 
@@ -35,7 +32,7 @@ class ProductMiddleware extends MiddlewareClass<AppState> {
   }
 
   _loadProductPlacePhotos(NextDispatcher next, Place place) async {
-    next(LoadProductPlacePhotoAction);
+    next(LoadProductPlacePhotosAction);
     try{
       var placePhotos = await placesApi.getPhotos(place.placeId);
       next(UpdateProductPlaceAction(place.placeId, place.copyWith(photos: placePhotos)));

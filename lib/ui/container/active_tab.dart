@@ -38,4 +38,24 @@ class _ViewModel {
       }
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is _ViewModel &&
+              runtimeType == other.runtimeType &&
+              activeTab == other.activeTab &&
+              filterList == other.filterList &&
+              onFilterChanged == other.onFilterChanged;
+
+  @override
+  int get hashCode =>
+      activeTab.hashCode ^
+      filterList.hashCode ^
+      onFilterChanged.hashCode;
+
+  @override
+  String toString() {
+    return '_ViewModel{activeTab: $activeTab, filterList: $filterList, onFilterChanged: $onFilterChanged}';
+  }
 }

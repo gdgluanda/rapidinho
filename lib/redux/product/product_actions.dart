@@ -18,7 +18,7 @@ class UpdateProductPlaceAction {
   }
 }
 
-class LoadProductPlacePhotoAction{}
+class LoadProductPlacePhotosAction{}
 class AddPlaceAction{
   final Place place;
   AddPlaceAction(this.place);

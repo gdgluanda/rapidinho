@@ -16,10 +16,7 @@ class AppState {
     this.filters = filterList,
   });
 
-  factory AppState.init() =>
-      AppState(
-        productState: ProductState.initial(),
-      );
+  factory AppState.init() => AppState(productState: ProductState.initial());
 
   AppState copyWith({
     NavigationTab activeTab,
