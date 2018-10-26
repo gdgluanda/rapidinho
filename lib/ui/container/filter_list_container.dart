@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:rapidinho/actions/actions.dart';
-import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/redux/common_actions.dart';
+import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/ui/widget/category_filter.dart';
 import 'package:redux/redux.dart';

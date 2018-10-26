@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:rapidinho/actions/actions.dart';
-import 'package:rapidinho/model/app_state.dart';
-import 'package:rapidinho/middleware/store_middleware.dart';
-import 'package:rapidinho/ui/presentation/splash_page.dart';
+import 'package:rapidinho/redux/common_actions.dart';
+import 'package:rapidinho/redux/app_state.dart';
+import 'package:rapidinho/redux/store.dart';
+import 'package:rapidinho/ui/splash_page.dart';
 import 'package:redux/redux.dart';
-import 'package:rapidinho/reducers/app_state_reducer.dart';
 
-void main() => runApp(
-  RapidinhoApp()
-);
+void main() async {
+  final store = await createStore();
+  runApp(RapidinhoApp(store));
+}
 
 class RapidinhoApp extends StatelessWidget {
-  final store = Store<AppState>(
-    appReducer,
-    initialState: AppState.init(),
-    middleware: createStoreMiddleware(),
-  );
+  final Store<AppState> store;
+  RapidinhoApp(this.store);
+
   @override
   Widget build(BuildContext context) {
     return StoreProvider(
@@ -27,7 +25,7 @@ class RapidinhoApp extends StatelessWidget {
           primarySwatch: Colors.red,
         ),
         home: StoreBuilder<AppState>(
-          onInit: (store) => store.dispatch(LoadPlacesAction()),
+          onInit: (store) => store.dispatch(InitAction()),
           builder: (context, store){
             return SplashPageAnimator();
           }

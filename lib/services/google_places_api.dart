@@ -1,19 +1,18 @@
 import 'dart:async';
-import 'package:rapidinho/keys/google_places_api_key.dart';
+import 'package:rapidinho/utils/google_places_api_key.dart';
 import 'package:rapidinho/model/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class GooglePlacesApi {
-  final Duration delay;
-  const GooglePlacesApi([this.delay = const Duration(milliseconds: 3000)]);
+  const GooglePlacesApi();
 
-  Future<List<Result>> getPlaces() async {
-    List<Result> nearByPlaces = [];
+  Future<List<Place>> getPlaces() async {
+    List<Place> nearByPlaces = [];
     http.Response response = await http.get(url, headers: {"Accept": "application/json"}).catchError((resp){});
     List list = json.decode(response.body)['results'];
     for(var place in list) {
-      Result result = Result(name: place['name'], rating: place["rating"]);
+      Place result = Place(name: place['name'], rating: place["rating"]);
       nearByPlaces.add(result);
     }
     return nearByPlaces;

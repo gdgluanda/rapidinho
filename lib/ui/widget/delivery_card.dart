@@ -4,8 +4,8 @@ import 'dart:async';
 import 'package:rapidinho/ui/animation/delivery_motorcycle_animation.dart';
 import 'package:rapidinho/ui/animation/delivery_animation.dart';
 import 'package:flutter/scheduler.dart' show timeDilation ;
-import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
-import 'package:rapidinho/ui/styling/rapidinho_style.dart';
+import 'package:rapidinho/styling/rapidinho_icon.dart';
+import 'package:rapidinho/styling/rapidinho_style.dart';
 
 class DeliveryCard extends StatefulWidget {
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/model/filter_item.dart';
-import 'package:rapidinho/ui/styling/rapidinho_style.dart';
+import 'package:rapidinho/styling/rapidinho_style.dart';
 
 class CategoryFilterList extends StatelessWidget {
   final Function(FilterItem i) onFilterChanged;

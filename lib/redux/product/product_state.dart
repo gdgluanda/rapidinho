@@ -4,7 +4,7 @@ import 'package:rapidinho/model/place.dart';
 
 @immutable
 class ProductState {
-  final List<Result> productPlaces;
+  final List<Place> productPlaces;
   final List<Photo> productPlacePhotos;
   final LoadingStatus loadingStatus;
 
@@ -19,7 +19,7 @@ class ProductState {
 
   ProductState copyWith({
     LoadingStatus loadingStatus,
-    List<Result> productPlaces,
+    List<Place> productPlaces,
     List<Photo> productPhotos,
   }) {
     return ProductState(

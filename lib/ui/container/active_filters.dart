@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/model/filter_item.dart';
-import 'package:rapidinho/selectors/selectors.dart';
+import 'package:rapidinho/redux/selectors.dart';
 import 'package:redux/redux.dart';
 
 class ActiveFilters extends StatelessWidget {

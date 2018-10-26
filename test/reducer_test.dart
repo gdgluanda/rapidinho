@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rapidinho/actions/actions.dart';
-import 'package:rapidinho/model/app_state.dart';
-import 'package:rapidinho/selectors/selectors.dart';
+import 'package:rapidinho/redux/common_actions.dart';
+import 'package:rapidinho/redux/app_state.dart';
+import 'package:rapidinho/redux/selectors.dart';
 import 'package:redux/redux.dart';
-import 'package:rapidinho/reducers/app_state_reducer.dart';
+import 'package:rapidinho/redux/app_state_reducer.dart';
 
 main(){
   group('Test state reducer', (){

@@ -1,60 +1,4 @@
-import 'dart:convert';
-
-Place placeFromJson(String str) {
-  final jsonData = json.decode(str);
-  return Place.fromJson(jsonData);
-}
-
-String placeToJson(Place data) {
-  final dyn = data.toJson();
-  return json.encode(dyn);
-}
-
 class Place {
-  DebugLog debugLog;
-  List<dynamic> htmlAttributions;
-  Result result;
-  String status;
-
-  Place({
-    this.debugLog,
-    this.htmlAttributions,
-    this.result,
-    this.status,
-  });
-
-  factory Place.fromJson(Map<String, dynamic> json) => new Place(
-    debugLog: DebugLog.fromJson(json["debug_log"]),
-    htmlAttributions: new List<dynamic>.from(json["html_attributions"].map((x) => x)),
-    result: Result.fromJson(json["result"]),
-    status: json["status"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "debug_log": debugLog.toJson(),
-    "html_attributions": new List<dynamic>.from(htmlAttributions.map((x) => x)),
-    "result": result.toJson(),
-    "status": status,
-  };
-}
-
-class DebugLog {
-  List<dynamic> line;
-
-  DebugLog({
-    this.line,
-  });
-
-  factory DebugLog.fromJson(Map<String, dynamic> json) => new DebugLog(
-    line: new List<dynamic>.from(json["line"].map((x) => x)),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "line": new List<dynamic>.from(line.map((x) => x)),
-  };
-}
-
-class Result {
   List<AddressComponent> addressComponents;
   String adrAddress;
   String formattedAddress;
@@ -77,7 +21,7 @@ class Result {
   String vicinity;
   String website;
 
-  Result({
+  Place({
     this.addressComponents,
     this.adrAddress,
     this.formattedAddress,
@@ -101,15 +45,15 @@ class Result {
     this.website,
   });
 
-  Result copyWith({String name, OpeningHours openingHours, List<Photo> photos, String placeId, double rating}){
-    return Result(
+  Place copyWith({String name, OpeningHours openingHours, List<Photo> photos, String placeId, double rating}){
+    return Place(
       placeId: placeId ?? this.placeId,
       name: name ?? this.name,
       rating: rating ?? this.rating,
       photos: photos ?? this.photos,
     );
   }
-  factory Result.fromJson(Map json) => new Result(
+  factory Place.fromJson(Map json) => new Place(
     addressComponents: new List<AddressComponent>.from(json["address_components"].map((x) => AddressComponent.fromJson(x))),
     adrAddress: json["adr_address"],
     formattedAddress: json["formatted_address"],

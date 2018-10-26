@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
+import 'package:rapidinho/styling/rapidinho_icon.dart';
 
 class LocationPin extends AnimatedWidget {
   final currentLocation;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/model/navigation_tabs.dart';
 import 'package:redux/redux.dart';
 

@@ -1,5 +1,5 @@
-import 'package:rapidinho/actions/actions.dart';
-import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/redux/common_actions.dart';
+import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/redux/product/product_actions.dart';
 import 'package:rapidinho/model/place.dart';
 import 'package:rapidinho/services/google_places_api.dart';
@@ -34,7 +34,7 @@ class ProductMiddleware extends MiddlewareClass<AppState> {
     }
   }
 
-  _loadProductPlacePhotos(NextDispatcher next, Result place) async {
+  _loadProductPlacePhotos(NextDispatcher next, Place place) async {
     next(LoadProductPlacePhotoAction);
     try{
       var placePhotos = await placesApi.getPhotos(place.placeId);

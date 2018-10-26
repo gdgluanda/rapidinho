@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/ui/container/active_tab.dart';
-import 'package:rapidinho/ui/styling/rapidinho_style.dart';
+import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/widget/delivery_card.dart';
 
 class DeliveryTab extends StatefulWidget {

@@ -4,7 +4,7 @@ import 'package:rapidinho/model/navigation_tabs.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/container/active_tab.dart';
 import 'package:rapidinho/ui/container/filter_list_container.dart';
-import 'package:rapidinho/ui/presentation/home_page.dart';
+import 'package:rapidinho/ui/home_page.dart';
 
 class SplashPage extends StatelessWidget {
 

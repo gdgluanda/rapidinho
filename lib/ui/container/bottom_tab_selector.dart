@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/model/navigation_tabs.dart';
-import 'package:rapidinho/ui/styling/rapidinho_style.dart';
+import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:redux/redux.dart';
-import 'package:rapidinho/actions/actions.dart';
+import 'package:rapidinho/redux/common_actions.dart';
 import 'package:rapidinho/data/data.dart';
 
 class BottomTabSelector extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/ui/styling/rapidinho_style.dart';
+import 'package:rapidinho/styling/rapidinho_style.dart';
 
 class ShoppingCartTab extends StatefulWidget {
   @override

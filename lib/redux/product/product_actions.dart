@@ -4,12 +4,12 @@ class LoadProductPlacesAction{}
 class ErrorLoadingProductPlacesAction{}
 class ErrorLoadingProductPlacePhotosAction{}
 class ProductPlacesLoadedAction{
-  final List<Result> places;
+  final List<Place> places;
   ProductPlacesLoadedAction(this.places);
 }
 class UpdateProductPlaceAction {
   final String placeId;
-  final Result updatedPlace;
+  final Place updatedPlace;
   UpdateProductPlaceAction(this.placeId, this.updatedPlace);
 
   @override
@@ -20,6 +20,6 @@ class UpdateProductPlaceAction {
 
 class LoadProductPlacePhotoAction{}
 class AddPlaceAction{
-  final Result place;
+  final Place place;
   AddPlaceAction(this.place);
 }

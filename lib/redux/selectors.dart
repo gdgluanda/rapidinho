@@ -1,14 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:rapidinho/model/filter_item.dart';
-import 'package:rapidinho/model/home_card.dart';
 import 'package:rapidinho/model/navigation_tabs.dart';
-import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/redux/app_state.dart';
 
 NavigationTab activeTabSelector(AppState state) => state.activeTab;
 
-bool isLoadingSelector(AppState state) => state.isLoading;
-
-/// Filter List Selectors
 int numActiveFiltersSelector(List<FilterItem> filters) => filters.fold(0, (sum, filter) => filter.isFilter ? ++sum : sum);
 
 List<FilterItem> activeFiltersSelector(List<FilterItem> filters){
@@ -21,10 +17,6 @@ List<int> activeFilterPositionSelector(List<FilterItem> filters){
     filtersInt.add(filters.indexOf(filter));
   });
   return filtersInt;
-}
-
-getContainingFiltersSelector(List<FilterItem> filters, List<HomeCard> homeCards){
-  return homeCards.where((cardItem) => containsUnordered(cardItem.filter, activeFilterPositionSelector(filters)));
 }
 
 Function containsUnordered = DeepCollectionEquality.unordered().equals;

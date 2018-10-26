@@ -3,7 +3,7 @@ import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/home_card.dart';
 import 'package:rapidinho/model/navigation_category.dart';
 import 'package:rapidinho/model/platform_product.dart';
-import 'package:rapidinho/ui/styling/rapidinho_icon.dart';
+import 'package:rapidinho/styling/rapidinho_icon.dart';
 
 List<NavigationCategory> navigationCategories = [
   NavigationCategory('Casa', RapidinhoIcon.homeIcon, 0),

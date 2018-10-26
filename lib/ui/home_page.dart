@@ -8,7 +8,7 @@ import 'package:rapidinho/ui/tabs/account_tab.dart';
 import 'package:rapidinho/ui/tabs/shopping_cart_tab.dart';
 import 'package:rapidinho/ui/container/active_tab.dart';
 import 'package:rapidinho/ui/container/bottom_tab_selector.dart';
-import 'package:rapidinho/ui/styling/rapidinho_style.dart';
+import 'package:rapidinho/styling/rapidinho_style.dart';
 
 class HomePage extends StatefulWidget {
 

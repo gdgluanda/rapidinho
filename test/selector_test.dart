@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/model/app_state.dart';
+import 'package:rapidinho/redux/app_state.dart';
 import 'package:redux/redux.dart';
-import 'package:rapidinho/reducers/app_state_reducer.dart';
-import 'package:rapidinho/selectors/selectors.dart';
+import 'package:rapidinho/redux/app_state_reducer.dart';
+import 'package:rapidinho/redux/selectors.dart';
 
 main(){
   group('Selector', (){
