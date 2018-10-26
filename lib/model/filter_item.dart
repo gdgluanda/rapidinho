@@ -4,9 +4,6 @@ class FilterItem {
   final String name;
   final bool isFilter;
   final FilterType type;
-
-  //FilterItem.from(this.name, this.isFilter, this.type);
-
   const FilterItem(this.name, this.isFilter, this.type);
 
   FilterItem copyWith({String name, bool isFilter, FilterType type}){

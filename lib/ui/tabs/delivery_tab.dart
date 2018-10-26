@@ -50,9 +50,9 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return ActiveTab(
-      builder: (context, activeTab){
-        currentTab.value = activeTab.index;
+    return AppViewModel(
+      builder: (context, vm){
+        currentTab.value = vm.activeTab.index;
         return Container(
           margin: EdgeInsets.only(top: 20.0),
           child: Stack(

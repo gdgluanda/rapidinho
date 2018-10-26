@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/redux/app_state.dart';
-import 'package:rapidinho/model/navigation_tabs.dart';
+import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/redux/common_actions.dart';
 import 'package:redux/redux.dart';
 
-class ActiveTab extends StatelessWidget {
-  final ViewModelBuilder<NavigationTab> builder;
+class AppViewModel extends StatelessWidget {
+  final ViewModelBuilder<_ViewModel> builder;
 
-  ActiveTab({Key key, @required this.builder}) : super(key: key);
+  AppViewModel({Key key, @required this.builder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, NavigationTab>(
+    return StoreConnector<AppState, _ViewModel>(
       distinct: true,
-      converter: (Store<AppState> store) => store.state.activeTab,
+      converter: _ViewModel.fromStore,
       builder: builder,
+    );
+  }
+}
+
+class _ViewModel {
+  final NavigationTab activeTab;
+  final List<FilterItem> filterList;
+  final Function(FilterItem) onFilterChanged;
+
+  _ViewModel({this.activeTab, this.filterList, this.onFilterChanged});
+
+  static _ViewModel fromStore(Store<AppState> store){
+    return _ViewModel(
+      activeTab: store.state.activeTab,
+      filterList: store.state.filters,
+        onFilterChanged: (filter){
+          filter = filter.copyWith(isFilter: !filter.isFilter);
+          store.dispatch(UpdateFilterAction(filter, filter.type));
+      }
     );
   }
 }

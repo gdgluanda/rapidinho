@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/model/navigation_tabs.dart';
+import 'package:rapidinho/model/tabs.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/container/active_tab.dart';
-import 'package:rapidinho/ui/container/filter_list_container.dart';
 import 'package:rapidinho/ui/home_page.dart';
+import 'package:rapidinho/ui/widget/category_filter.dart';
 
 class SplashPage extends StatelessWidget {
 
@@ -33,8 +33,8 @@ class SplashPage extends StatelessWidget {
                   ),
                 ],
             ),
-            child: ActiveTab(
-              builder: (context, activeTab){
+            child: AppViewModel(
+              builder: (context, vm){
                 return Wrap(
                   children: <Widget>[
                     Container(
@@ -46,17 +46,20 @@ class SplashPage extends StatelessWidget {
                         child: GestureDetector(
                           child: Padding(
                             padding: const EdgeInsets.only(top: 16.0, right: 8.0),
-                            child: Icon(Icons.filter_list, color: Colors.white.withOpacity(activeTab == NavigationTab.Home ? animation.actionButtonOpacity.value : 0.0)),
+                            child: Icon(Icons.filter_list, color: Colors.white.withOpacity(vm.activeTab == NavigationTab.Home ? animation.actionButtonOpacity.value : 0.0)),
                           ),
-                          onTap: activeTab == NavigationTab.Home ? callback : (){},
+                          onTap: vm.activeTab == NavigationTab.Home ? callback : (){},
                         ),
                       ),
                     ),
                     AnimatedContainer(
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       duration: Duration(milliseconds: 100),
-                      height: activeTab == NavigationTab.Home ? height : 0.0,
-                      child: FilterListContainer(),
+                      height: vm.activeTab == NavigationTab.Home ? height : 0.0,
+                      child: CategoryFilterList(
+                        filterList: vm.filterList,
+                        onFilterChanged: vm.onFilterChanged,
+                      ),
                     ),
                   ],
                 );

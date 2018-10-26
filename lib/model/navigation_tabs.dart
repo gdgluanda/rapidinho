@@ -1,1 +1,0 @@
-enum NavigationTab{Home, Delivery, Cart, Account}

@@ -1,14 +1,15 @@
 
 import 'package:flutter/foundation.dart';
+import 'package:rapidinho/model/product.dart';
 
 class Delivery {
   final String name;
   final DateTime time;
   final String locationName;
   final int locationIndex;
-  final DeliveryCategory category;
+  final ProductCategory category;
   final String vendor;
-  final DeliveryCategoryDetails details;
+  final Product details;
 
   Delivery({
     @required this.name,
@@ -47,43 +48,4 @@ class Delivery {
   String toString() {
     return 'Delivery{name: $name, time: $time, locationName: $locationName, locationIndex: $locationIndex, category: $category, vendor: $vendor, details: $details}';
   }
-}
-
-class DeliveryCategoryDetails {
-
-  final String imageAsset;
-  final String categoryName;
-
-  DeliveryCategoryDetails(this.imageAsset, this.categoryName);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is DeliveryCategoryDetails &&
-              runtimeType == other.runtimeType &&
-              imageAsset == other.imageAsset &&
-              categoryName == other.categoryName;
-
-  @override
-  int get hashCode =>
-      imageAsset.hashCode ^
-      categoryName.hashCode;
-
-  @override
-  String toString() {
-    return 'DeliveryCategoryDetails{imageAsset: $imageAsset, categoryName: $categoryName}';
-  }
-}
-
-enum DeliveryCategory {
-  Book,
-  Drinks,
-  Food,
-  Hamburger,
-  IceCream,
-  Invites,
-  Mail,
-  Pizza,
-  Present,
-  Wear,
 }

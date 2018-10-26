@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
-class NavigationCategory {
+enum NavigationTab{Home, Delivery, Cart, Account}
+
+class TabItem {
 
   final String name;
   final IconData icon;
   final int index;
 
-  NavigationCategory(this.name, this.icon, this.index);
+  TabItem(this.name, this.icon, this.index);
 
   Key get key => new ValueKey<String>(name);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is NavigationCategory &&
+          other is TabItem &&
               runtimeType == other.runtimeType &&
               name == other.name &&
               icon == other.icon &&

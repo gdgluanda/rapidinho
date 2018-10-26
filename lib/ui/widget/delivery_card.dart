@@ -128,7 +128,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                     CircleAvatar(
                       radius: 25.0,
                       backgroundColor: Colors.red,
-                      child: Image.asset(widget.deliveryProduct.details.imageAsset),
+                      child: Image.asset(widget.deliveryProduct.details.assetPath),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 4.0),

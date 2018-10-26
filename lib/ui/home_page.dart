@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/model/navigation_category.dart';
+import 'package:rapidinho/model/tabs.dart';
 import 'package:rapidinho/ui/tabs/delivery_tab.dart';
 import 'package:rapidinho/ui/tabs/home_tab.dart';
 import 'package:rapidinho/ui/tabs/account_tab.dart';
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-  Widget _buildFloatingActionButton(NavigationCategory tab) {
+  Widget _buildFloatingActionButton(TabItem tab) {
     if(tab.name == 'Entregas' || tab.name == 'Casa')
       return null;
     return FloatingActionButton(
@@ -80,8 +80,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return ActiveTab(
-      builder: (context, activeTab){
+    return AppViewModel(
+      builder: (context, vm){
         return WillPopScope(
           onWillPop: _exitApp,
           child: Scaffold(
@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 ),
               ],
             ),
-            floatingActionButton: _buildFloatingActionButton(navigationCategories[activeTab.index]),
+            floatingActionButton: _buildFloatingActionButton(navigationCategories[vm.activeTab.index]),
           ),
         );
       },
