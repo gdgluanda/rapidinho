@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rapidinho/model/tabs.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
-import 'package:rapidinho/ui/container/active_tab.dart';
+import 'package:rapidinho/ui/container/app_view_model.dart';
 import 'package:rapidinho/ui/home_page.dart';
 import 'package:rapidinho/ui/widget/category_filter.dart';
 

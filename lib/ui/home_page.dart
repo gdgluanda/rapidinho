@@ -6,7 +6,7 @@ import 'package:rapidinho/ui/tabs/delivery_tab.dart';
 import 'package:rapidinho/ui/tabs/home_tab.dart';
 import 'package:rapidinho/ui/tabs/account_tab.dart';
 import 'package:rapidinho/ui/tabs/shopping_cart_tab.dart';
-import 'package:rapidinho/ui/container/active_tab.dart';
+import 'package:rapidinho/ui/container/app_view_model.dart';
 import 'package:rapidinho/ui/container/bottom_tab_selector.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
 
