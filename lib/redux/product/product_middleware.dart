@@ -12,7 +12,7 @@ class ProductMiddleware extends MiddlewareClass<AppState> {
 
   @override
   void call(Store<AppState> store, action, NextDispatcher next) async {
-    if(action is InitAction){
+    if(action is InitAction || action is RefreshProductsAction){
       _loadProductPlaces(next);
     } else if(action is ProductPlacesLoadedAction){
       for(var place in store.state.productState.productPlaces){

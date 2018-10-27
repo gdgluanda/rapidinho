@@ -116,9 +116,10 @@ class _SplashPageAnimator extends State<SplashPageAnimator> with TickerProviderS
       duration: const Duration(milliseconds: 650),
       vsync: this,
     );
-    Future.delayed(
-        Duration(seconds: 3)).then((_) => _controller.forward()
-    );
+    _controller.value = 1.0;
+//    Future.delayed(
+//        Duration(seconds: 3)).then((_) => _controller.forward()
+//    );
   }
 
   @override

@@ -23,8 +23,7 @@ class LoadingView extends StatefulWidget {
   LoadingViewState createState() => LoadingViewState();
 }
 
-class LoadingViewState extends State<LoadingView>
-    with TickerProviderStateMixin {
+class LoadingViewState extends State<LoadingView> with TickerProviderStateMixin {
   AnimationController _loadingController;
   AnimationController _errorController;
   AnimationController _successController;
@@ -119,18 +118,21 @@ class LoadingViewState extends State<LoadingView>
           key: LoadingView.loadingContentKey,
           controller: _loadingController,
           child: widget.loadingContent,
+          status: widget.status,
           isVisible: widget.status == LoadingStatus.loading,
         ),
         _TransitionAnimation(
           key: LoadingView.errorContentKey,
           controller: _errorController,
           child: widget.errorContent,
+          status: widget.status,
           isVisible: widget.status == LoadingStatus.error,
         ),
         _TransitionAnimation(
           key: LoadingView.successContentKey,
           controller: _successController,
           child: widget.successContent,
+          status: widget.status,
           isVisible: widget.status == LoadingStatus.success,
         ),
       ],
@@ -144,6 +146,7 @@ class _TransitionAnimation extends StatelessWidget {
     @required this.controller,
     @required this.child,
     @required this.isVisible,
+    @required this.status,
   })  : _opacity = Tween(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: controller,
@@ -154,7 +157,7 @@ class _TransitionAnimation extends StatelessWidget {
             ),
           ),
         ),
-        _yTranslation = Tween(begin: 40.0, end: 0.0).animate(
+        _yTranslation = Tween(begin: status == LoadingStatus.error ? 40.0 : 0.0, end: 0.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: const Interval(
@@ -169,6 +172,7 @@ class _TransitionAnimation extends StatelessWidget {
   final AnimationController controller;
   final Widget child;
   final bool isVisible;
+  final LoadingStatus status;
 
   final Animation<double> _opacity;
   final Animation<double> _yTranslation;

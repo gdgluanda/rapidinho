@@ -1,6 +1,7 @@
 import 'package:rapidinho/model/place.dart';
 
 class LoadProductPlacesAction{}
+class RefreshProductsAction{}
 class ErrorLoadingProductPlacesAction{}
 class ErrorLoadingProductPlacePhotosAction{}
 class ProductPlacesLoadedAction{

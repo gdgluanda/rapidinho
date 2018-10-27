@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/redux/app_state.dart';
+import 'package:rapidinho/ui/widget/error_view.dart';
 import 'package:rapidinho/ui/product/products_view_model.dart';
 import 'package:rapidinho/ui/product/product_card.dart';
 import 'package:rapidinho/ui/widget/loading_view.dart';
@@ -16,11 +17,11 @@ class HomeTab extends StatelessWidget {
         return LoadingView(
           status: vm.status,
           loadingContent: LoadingProductCard(),
-          successContent: Container(color: Colors.green),
-          errorContent: SizedBox(
-            height: 160.0,
-            child: ProductCard(MockData.deliveries[0].vendor, MockData.deliveries[0].name, (){}, AssetImage(homeCardItemList1[0].assetPath))
+          successContent: SizedBox(
+              height: 160.0,
+              child: ProductCard(MockData.deliveries[0].vendor, MockData.deliveries[0].name, (){}, AssetImage(homeCardItemList1[0].assetPath))
           ),
+          errorContent: ErrorView(onRetry: vm.refreshProducts),
         );
       },
     );

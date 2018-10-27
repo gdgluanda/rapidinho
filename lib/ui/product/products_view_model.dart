@@ -1,14 +1,16 @@
 import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/model/loading_status.dart';
 import 'package:rapidinho/model/place.dart';
+import 'package:rapidinho/redux/product/product_actions.dart';
 import 'package:redux/redux.dart';
 
 class ProductsViewModel {
   final LoadingStatus status;
   final List<Place> productPlaces;
   final List<Photo> productPlacePhotos;
+  final Function refreshProducts;
 
-  ProductsViewModel({this.status, this.productPlaces, this.productPlacePhotos});
+  ProductsViewModel({this.status, this.productPlaces, this.productPlacePhotos, this.refreshProducts});
   static ProductsViewModel fromStore(
     Store<AppState> store,
   ){
@@ -16,6 +18,7 @@ class ProductsViewModel {
       status: store.state.productState.loadingStatus,
       productPlaces: store.state.productState.productPlaces,
       productPlacePhotos: store.state.productState.productPlacePhotos,
+      refreshProducts: () => store.dispatch(RefreshProductsAction()),
     );
   }
 
