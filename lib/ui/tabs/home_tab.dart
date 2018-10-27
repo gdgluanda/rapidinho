@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/ui/product/products_view_model.dart';
+import 'package:rapidinho/ui/product/product_card.dart';
 import 'package:rapidinho/ui/widget/loading_view.dart';
 
 class HomeTab extends StatelessWidget {
@@ -13,9 +15,12 @@ class HomeTab extends StatelessWidget {
       builder: (_, vm){
         return LoadingView(
           status: vm.status,
-          loadingContent: Container(color: Colors.yellow),
+          loadingContent: LoadingProductCard(),
           successContent: Container(color: Colors.green),
-          errorContent: Container(color: Colors.red),
+          errorContent: SizedBox(
+            height: 160.0,
+            child: ProductCard(MockData.deliveries[0].vendor, MockData.deliveries[0].name, (){}, AssetImage(homeCardItemList1[0].assetPath))
+          ),
         );
       },
     );

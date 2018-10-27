@@ -20,17 +20,17 @@ class BottomTabSelector extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (context, viewModel){
         return BottomNavigationBar(
-          currentIndex: viewModel.activeTab.index,
           items: navigationTabs.map((TabItem tab){
-            print('ViewModel active tab ${viewModel.activeTab.index }');
             return BottomNavigationBarItem(
               title: new Text(tab.name, style: RapidinhoTextStyle.bottomTextStyle),
-              icon: new Icon(tab.icon, size: tab.name ==  'Entregas' ? 24.0 : 18.0, color: viewModel.activeTab == tab.tab ? Colors.red : Colors.grey),
+              icon: new Icon(tab.icon, size: 24.0, color: Colors.grey),
+              activeIcon: Icon(tab.icon, color: Colors.red)
             );
           }).toList(),
           onTap: (index){
             viewModel.onTabSelected(index);
-            onTabChanged(index);
+            //TODO remove comment to see other tabs
+            //onTabChanged(index);
           },
         );
       },
