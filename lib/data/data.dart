@@ -37,9 +37,6 @@ List<Product> homeCardItemList1 = [
       name: 'Pudim\nCereja',
       filter: [0, 3, 5],
       assetPath: 'assets/images/home_items/home_item10.jpg'),
-];
-
-List<Product> homeCardItemList2 = [
   Product(
       name: 'Chá\nPreto',
       filter: [5],
@@ -56,10 +53,6 @@ List<Product> homeCardItemList2 = [
       filter: [0, 5],
       name: 'Vinho\nTinto',
       assetPath: 'assets/images/home_items/home_item13.jpg'),
-
-];
-
-List<Product> homeCardItemList3 = [
   Product(
       name: 'Trages\nAfricanos',
       filter: [3, 4],

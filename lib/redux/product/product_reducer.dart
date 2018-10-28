@@ -16,7 +16,7 @@ ProductState _loadProductPlaces(ProductState state, LoadProductPlacesAction acti
 ProductState _setProductPlacesLoaded(ProductState state, ProductPlacesLoadedAction action) =>
     state.copyWith(
       loadingStatus: LoadingStatus.success,
-      productPlaces: state.productPlaces,
+      productPlaces: action.places,
     );
 
 ProductState _errorLoadingProductPlaces(ProductState state, ErrorLoadingProductPlacesAction action) =>

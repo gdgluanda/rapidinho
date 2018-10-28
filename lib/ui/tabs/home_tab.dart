@@ -19,7 +19,17 @@ class HomeTab extends StatelessWidget {
           loadingContent: LoadingProductCard(),
           successContent: SizedBox(
               height: 160.0,
-              child: ProductCard(MockData.deliveries[0].vendor, MockData.deliveries[0].name, (){}, AssetImage(homeCardItemList1[0].assetPath))
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                  itemCount: vm.productPlaces.length,
+                  itemBuilder: (context, index) {
+                    return ProductCard(
+                        vm.productPlaces[index].name,
+                        homeCardItemList1[index].name, () {},
+                        AssetImage(homeCardItemList1[index].assetPath)
+                    );
+                  }
+              )
           ),
           errorContent: ErrorView(onRetry: vm.refreshProducts),
         );

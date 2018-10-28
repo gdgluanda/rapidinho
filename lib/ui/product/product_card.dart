@@ -97,49 +97,57 @@ class LoadingProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 160.0,
-      child: Container(
-        constraints: BoxConstraints(maxHeight: 160.0),
-        child: Card(
-          elevation: 4.0,
-          clipBehavior: Clip.hardEdge,
-          child: Shimmer.fromColors(
-            baseColor: Colors.grey[300],
-            highlightColor: Colors.grey[200],
-            child: Container(
-              height: 120.0,
-              width: 150.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 100.0,
-                    color: Colors.white,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (context, index){
+          return Container(
+            constraints: BoxConstraints(maxHeight: 160.0),
+            child: Card(
+              elevation: 4.0,
+              clipBehavior: Clip.hardEdge,
+              margin: EdgeInsets.all(8.0),
+              child: Shimmer.fromColors(
+                baseColor: Colors.grey[300],
+                highlightColor: Colors.grey[200],
+                child: Container(
+                  height: 120.0,
+                  width: 150.0,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 100.0,
+                        color: Colors.white,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 2.0),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 8.0,
+                        color: Colors.white,
+                        margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 2.0),
+                      ),
+                      Container(
+                        width: 60.0,
+                        height: 8.0,
+                        color: Colors.white,
+                        margin: EdgeInsets.only(left: 8.0),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 8.0,
-                    color: Colors.white,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0),
-                  ),
-                  Container(
-                    width: 60.0,
-                    height: 8.0,
-                    color: Colors.white,
-                    margin: EdgeInsets.only(left: 8.0),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ),
+          );
+        },
+      )
     );
   }
 }
