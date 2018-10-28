@@ -1,21 +1,26 @@
 import 'dart:async';
-import 'package:rapidinho/utils/google_places_api_key.dart';
+import 'package:rapidinho/network/google_places_api_key.dart';
 import 'package:rapidinho/model/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:rapidinho/network/place_parser.dart';
 
 class GooglePlacesApi {
-  const GooglePlacesApi();
 
-  Future<List<Place>> getPlaces() async {
-    List<Place> nearByPlaces = [];
-    http.Response response = await http.get(url, headers: {"Accept": "application/json"}).catchError((resp){});
-    List list = json.decode(response.body)['results'];
-    for(var place in list) {
-      Place result = Place(name: place['name'], rating: place["rating"]);
-      nearByPlaces.add(result);
-    }
-    return nearByPlaces;
+  static final Uri nearbyPlacesUrl = Uri.https('https://maps.googleapis.com', '/maps/api/place/nearbysearch/json', <String, String>{
+    '?location=': '$latitude,$longitude',
+    '&radius=': '$radius',
+    '&type=': placeType,
+    '&key=': key,
+  });
+  static final double latitude = -8.885533;
+  static final double longitude = 13.253325;
+  static final int radius = 2000;
+  static final String placeType = 'restaurant';
+
+  Future<List<Place>> getNearbyPlaces() async {
+    http.Response response = await http.get(url);
+    return PlaceParser.parse(json.decode(response.body)['results']);
   }
 
   Future<List<Photo>> getPhotos(String placeId) async {

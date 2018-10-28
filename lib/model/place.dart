@@ -53,6 +53,7 @@ class Place {
       photos: photos ?? this.photos,
     );
   }
+
   factory Place.fromJson(Map json) => new Place(
     addressComponents: new List<AddressComponent>.from(json["address_components"].map((x) => AddressComponent.fromJson(x))),
     adrAddress: json["adr_address"],

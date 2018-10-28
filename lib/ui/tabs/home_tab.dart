@@ -20,6 +20,7 @@ class HomeTab extends StatelessWidget {
           successContent: SizedBox(
               height: 160.0,
               child: ListView.builder(
+                physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                   itemCount: vm.productPlaces.length,
                   itemBuilder: (context, index) {

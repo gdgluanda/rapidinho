@@ -2,7 +2,7 @@ import 'package:rapidinho/redux/common_actions.dart';
 import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/redux/product/product_actions.dart';
 import 'package:rapidinho/model/place.dart';
-import 'package:rapidinho/services/google_places_api.dart';
+import 'package:rapidinho/network/google_places_api.dart';
 import 'package:redux/redux.dart';
 
 class ProductMiddleware extends MiddlewareClass<AppState> {
@@ -24,7 +24,7 @@ class ProductMiddleware extends MiddlewareClass<AppState> {
   _loadProductPlaces(NextDispatcher next) async {
     next(LoadProductPlacesAction);
     try{
-      var places = await placesApi.getPlaces();
+      var places = await placesApi.getNearbyPlaces();
       next(ProductPlacesLoadedAction(places));
     } catch(e){
       next(ErrorLoadingProductPlacesAction());
