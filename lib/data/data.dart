@@ -65,6 +65,50 @@ List<Product> homeCardItemList1 = [
       name: 'iPhone\nX',
       filter: [1, 5],
       assetPath: 'assets/images/home_items/home_item8.jpg'),
+  Product(
+      name: 'Fahita\nChouriço',
+      filter: [0, 1, 4],
+      assetPath: 'assets/images/home_items/home_item.png'),
+  Product(
+      name: 'Hamburger\nBaicon',
+      filter: [0, 4, 1],
+      assetPath: 'assets/images/home_items/home_item1.jpg'),
+  Product(
+      name: 'Ovos\nEstrelados',
+      filter: [0, 1, 4],
+      assetPath: 'assets/images/home_items/home_item5.jpg'),
+  Product(
+      name: 'Pudim\nCereja',
+      filter: [0, 3, 5],
+      assetPath: 'assets/images/home_items/home_item10.jpg'),
+  Product(
+      name: 'Chá\nPreto',
+      filter: [5],
+      assetPath: 'assets/images/home_items/home_item7.jpg'),
+  Product(
+      filter: [0, 1, 2],
+      name: 'Sumo\nMaçã',
+      assetPath: 'assets/images/home_items/home_item9.jpg'),
+  Product(
+      filter: [2, 3],
+      name: 'Caipirinha\nLimão',
+      assetPath: 'assets/images/home_items/home_item11.jpg'),
+  Product(
+      filter: [0, 5],
+      name: 'Vinho\nTinto',
+      assetPath: 'assets/images/home_items/home_item13.jpg'),
+  Product(
+      name: 'Trages\nAfricanos',
+      filter: [3, 4],
+      assetPath: 'assets/images/home_items/home_item3.jpg'),
+  Product(
+      name: 'Buque\nRosas',
+      filter: [1, 3],
+      assetPath: 'assets/images/home_items/home_item4.jpg'),
+  Product(
+      name: 'iPhone\nX',
+      filter: [1, 5],
+      assetPath: 'assets/images/home_items/home_item8.jpg'),
 ];
 
 class MockData {

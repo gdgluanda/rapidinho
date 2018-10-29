@@ -9,8 +9,9 @@ class ProductCard extends StatelessWidget {
   final ImageProvider backgroundImage;
   final Animation<double> animation;
   final String placeName;
+  final String rating;
 
-  ProductCard(this.placeName, this.title, this.action, this.backgroundImage, {this.animation});
+  ProductCard(this.placeName, this.title, this.action, this.backgroundImage, {this.animation, this.rating});
 
   @override
   Widget build(BuildContext context) {
@@ -70,17 +71,48 @@ class ProductCard extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, top: 2.0, bottom: 2.0),
-                child: Text(placeName != null ? placeName : 'Jardim do Eden', style: RapidinhoTextStyle.normalText.copyWith(color: Colors.black, fontWeight: FontWeight.w500)),
+                child: Text(
+                    placeName != null ? placeName : 'Jardim do Eden',
+                    style: RapidinhoTextStyle.normalText.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Row(
                   children: <Widget>[
-                    Icon(Icons.star, size: 13.0, color: Colors.yellow),
-                    Icon(Icons.star, size: 13.0, color: Colors.yellow),
-                    Icon(Icons.star, size: 13.0, color: Colors.yellow),
-                    Icon(Icons.star_half, size: 13.0, color: Colors.yellow),
-                    Icon(Icons.star_border, size: 13.0, color: Colors.yellow),
+                    Stack(
+                      children: [
+                        Icon(Icons.star, size: 14.0, color: Colors.black54),
+                        Icon(Icons.star, size: 13.0, color: Colors.yellow),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        Icon(Icons.star, size: 14.0, color: Colors.black54),
+                        Icon(Icons.star, size: 13.0, color: Colors.yellow),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        Icon(Icons.star, size: 14.0, color: Colors.black54),
+                        Icon(Icons.star, size: 13.0, color: Colors.yellow),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        Icon(Icons.star_border, size: 14.0, color: Colors.black54),
+                        Icon(Icons.star_half, size: 13.0, color: Colors.yellow),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        Icon(Icons.star_border, size: 14.0, color: Colors.black54),
+                        Icon(Icons.star_border, size: 13.0, color: Colors.yellow),
+                      ],
+                    ),
+                    Text(' • ', style: TextStyle(color: Colors.black54)),
+                    Text(' $rating', style: RapidinhoTextStyle.smallText),
                   ],
                 ),
               ),
