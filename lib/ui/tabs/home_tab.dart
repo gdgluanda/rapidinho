@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rapidinho/ui/product/nearby_places.dart';
-import 'package:rapidinho/ui/product/product_category_list.dart';
+import 'package:rapidinho/ui/place/nearby_places.dart';
+import 'package:rapidinho/ui/widget/product_category_list.dart';
 import 'package:rapidinho/ui/widget/featured_image.dart';
 
 class HomeTab extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:rapidinho/model/place.dart';
+import 'package:rapidinho/network/place_photos_parser.dart';
 
 class PlaceParser {
   static List<Place> parse(List json){
@@ -9,8 +10,8 @@ class PlaceParser {
           placeId: place['place_id'],
           name: place['name'],
           rating: place['rating'].toDouble(),
-          adrAddress: place["adr_address"],
-        )
+          //photos: PlacePhotosParser.parse(place['photos']),
+        ),
       );
     });
     return places;

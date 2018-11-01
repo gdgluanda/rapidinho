@@ -1,17 +1,17 @@
 import 'package:rapidinho/model/place.dart';
 
-class LoadProductPlacesAction{}
-class RefreshProductsAction{}
-class ErrorLoadingProductPlacesAction{}
-class ErrorLoadingProductPlacePhotosAction{}
-class ProductPlacesLoadedAction{
+class LoadPlacesAction{}
+class RefreshPlacesAction{}
+class ErrorLoadingPlacesAction{}
+class ErrorLoadingPlacePhotosAction{}
+class PlacesLoadedAction{
   final List<Place> places;
-  ProductPlacesLoadedAction(this.places);
+  PlacesLoadedAction(this.places);
 }
-class UpdateProductPlaceAction {
+class UpdatePlaceAction {
   final String placeId;
   final Place updatedPlace;
-  UpdateProductPlaceAction(this.placeId, this.updatedPlace);
+  UpdatePlaceAction(this.placeId, this.updatedPlace);
 
   @override
   String toString() {

@@ -2,16 +2,16 @@ import 'package:rapidinho/data/data.dart';
 import 'package:meta/meta.dart';
 import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/tabs.dart';
-import 'package:rapidinho/redux/product/product_state.dart';
+import 'package:rapidinho/redux/place/place_state.dart';
 
 @immutable
 class AppState {
   final NavigationTab activeTab;
   final List<FilterItem> filters;
-  final ProductState productState;
+  final PlaceState placeState;
 
   AppState({
-    this.productState,
+    this.placeState,
     this.activeTab,
     this.filters,
   });
@@ -20,18 +20,18 @@ class AppState {
       AppState(
         activeTab: NavigationTab.Home,
         filters: filterList,
-        productState: ProductState.initial()
+        placeState: PlaceState.initial()
       );
 
   AppState copyWith({
     NavigationTab activeTab,
     List<FilterItem> filters,
-    ProductState productState,
+    PlaceState productState,
   }){
     return AppState(
       activeTab: activeTab ?? this.activeTab,
       filters: filters ?? this.filters,
-      productState: productState ?? this.productState,
+      placeState: productState ?? this.placeState,
     );
   }
 
@@ -42,16 +42,16 @@ class AppState {
               runtimeType == other.runtimeType &&
               activeTab == other.activeTab &&
               filters == other.filters &&
-              productState == other.productState;
+              placeState == other.placeState;
 
   @override
   int get hashCode =>
       activeTab.hashCode ^
       filters.hashCode ^
-      productState.hashCode;
+      placeState.hashCode;
 
   @override
   String toString() {
-    return 'AppState{activeTab: $activeTab, filters: $filters, productState: $productState}';
+    return 'AppState{activeTab: $activeTab, filters: $filters, productState: $placeState}';
   }
 }
