@@ -17,7 +17,6 @@ dependencies:
     sdk: flutter
   flutter_redux: ^0.5.2
   shimmer: ^0.0.5
-  flutter_map: ^0.3.0
   google_maps_webservice: ^0.0.9
   google_maps_flutter:
    git:
@@ -60,6 +59,7 @@ flutter:
     - assets/images/r_transparent.png
     - assets/images/featured_meal.jpg
     - assets/images/henrick.jpg
+    - assets/images/1x1_transparent.png
     - assets/images/empty_cart_state.png
     - assets/images/deliverables/books.png
     - assets/images/deliverables/drink.png

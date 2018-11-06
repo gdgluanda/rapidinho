@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_webservice/places.dart';
+import 'package:rapidinho/network/keys.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProductCard extends StatelessWidget {
 
-  final String title;
+  final PlacesSearchResult place;
   final VoidCallback action;
-  final ImageProvider backgroundImage;
-  final Animation<double> animation;
-  final String placeName;
-  final String rating;
 
-  ProductCard(this.placeName, this.title, this.action, this.backgroundImage, {this.animation, this.rating});
+  ProductCard({this.place, this.action});
 
   @override
   Widget build(BuildContext context) {
@@ -34,45 +32,53 @@ class ProductCard extends StatelessWidget {
                     child: Container(
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
-                        child: Image(
+                        child: place.photos == null ?
+                        Image.asset(
+                          'assets/images/r_white.jpg',
                           width: 150.0,
                           height: 100.0,
-                          fit: BoxFit.cover,
-                          image: backgroundImage != null ? backgroundImage : AssetImage("assets/images/featured_meal.jpg"),
+                          fit: BoxFit.fitHeight,
+                        ) :
+                        FadeInImage.assetNetwork(
+                            height: 100.0,
+                            width: 150.0,
+                            placeholder: 'assets/images/1x1_transparent.png',
+                            image: '$photosUrl${place.photos[0].photoReference}$addKey'+'&maxheight=1000&maxwidth=600',
+                            fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),  // END BACKGROUND IMAGE
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: <double>[0.0, 0.7, 0.7],
-                        colors: <Color>[
-                          Colors.black54,
-                          Colors.transparent,
-                          Colors.transparent,
-                        ],
-                      ),
-                      shape: BoxShape.rectangle,
-                      //color: Colors.black12.withOpacity(0.2),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
-                    ),
-                    height: 100.0,
-                    alignment: Alignment.topLeft,
-                    //margin: const EdgeInsets.only(left: 5.0, right: 10.0, top: 0.0),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, top: 2.0, bottom: 20.0),
-                      child: Text(title, style: RapidinhoTextStyle.mediumText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
-                    ),
-                  ),
+//                  Container(
+//                    decoration: BoxDecoration(
+//                      gradient: LinearGradient(
+//                        begin: Alignment.topCenter,
+//                        end: Alignment.bottomCenter,
+//                        stops: <double>[0.0, 0.7, 0.7],
+//                        colors: <Color>[
+//                          Colors.black54,
+//                          Colors.transparent,
+//                          Colors.transparent,
+//                        ],
+//                      ),
+//                      shape: BoxShape.rectangle,
+//                      //color: Colors.black12.withOpacity(0.2),
+//                      borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
+//                    ),
+//                    height: 100.0,
+//                    alignment: Alignment.topLeft,
+//                    //margin: const EdgeInsets.only(left: 5.0, right: 10.0, top: 0.0),
+//                    child: Padding(
+//                      padding: const EdgeInsets.only(left: 8.0, top: 2.0, bottom: 20.0),
+//                      child: Text(title, style: RapidinhoTextStyle.mediumText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+//                    ),
+//                  ),
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, top: 2.0, bottom: 2.0),
                 child: Text(
-                    placeName != null ? placeName : 'Jardim do Eden',
+                    place.name != null ? place.name : 'Nome do restaurante',
                     style: RapidinhoTextStyle.normalText.copyWith(color: Colors.black, fontWeight: FontWeight.w500),
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -112,7 +118,7 @@ class ProductCard extends StatelessWidget {
                       ],
                     ),
                     Text(' • ', style: TextStyle(color: Colors.black54)),
-                    Text(' $rating', style: RapidinhoTextStyle.smallText),
+                    Text(' ${place.rating}', style: RapidinhoTextStyle.smallText),
                   ],
                 ),
               ),

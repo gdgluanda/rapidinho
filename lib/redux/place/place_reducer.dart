@@ -7,7 +7,6 @@ final placeReducer = combineReducers<PlaceState>([
   TypedReducer<PlaceState, LoadPlacesAction>(_loadPlaces),
   TypedReducer<PlaceState, PlacesLoadedAction>(_setPlacesLoaded),
   TypedReducer<PlaceState, ErrorLoadingPlacesAction>(_errorLoadingPlaces),
-  TypedReducer<PlaceState, UpdatePlaceAction>(_setPlacePhotosLoaded),
 ]);
 
 PlaceState _loadPlaces(PlaceState state, LoadPlacesAction action) =>
@@ -21,6 +20,3 @@ PlaceState _setPlacesLoaded(PlaceState state, PlacesLoadedAction action) =>
 
 PlaceState _errorLoadingPlaces(PlaceState state, ErrorLoadingPlacesAction action) =>
     state.copyWith(loadingStatus: LoadingStatus.error);
-
-PlaceState _setPlacePhotosLoaded(PlaceState state, UpdatePlaceAction action) =>
-    state.copyWith(placePhotos: action.updatedPlace.photos);

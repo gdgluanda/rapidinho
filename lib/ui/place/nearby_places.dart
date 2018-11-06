@@ -53,12 +53,7 @@ class NearbyPlaces extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: vm.places.length,
                     itemBuilder: (context, index) {
-                      return ProductCard(
-                        vm.places[index].name,
-                        homeCardItemList1[index].name, () {},
-                        AssetImage(homeCardItemList1[index].assetPath),
-                        rating: vm.places[index].rating.toString(),
-                      );
+                      return ProductCard(place: vm.places[index]);
                     }
                 ),
               ),

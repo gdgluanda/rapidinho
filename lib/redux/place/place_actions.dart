@@ -1,16 +1,16 @@
-import 'package:rapidinho/model/place.dart';
+import 'package:google_maps_webservice/places.dart';
 
 class LoadPlacesAction{}
 class RefreshPlacesAction{}
 class ErrorLoadingPlacesAction{}
 class ErrorLoadingPlacePhotosAction{}
 class PlacesLoadedAction{
-  final List<Place> places;
+  final List<PlacesSearchResult> places;
   PlacesLoadedAction(this.places);
 }
 class UpdatePlaceAction {
   final String placeId;
-  final Place updatedPlace;
+  final PlacesSearchResult updatedPlace;
   UpdatePlaceAction(this.placeId, this.updatedPlace);
 
   @override
@@ -18,9 +18,4 @@ class UpdatePlaceAction {
     return 'UpdateProductPlaceAction{placeId: $placeId, updatedPlace: $updatedPlace}';
   }
 }
-
 class LoadProductPlacePhotosAction{}
-class AddPlaceAction{
-  final Place place;
-  AddPlaceAction(this.place);
-}
