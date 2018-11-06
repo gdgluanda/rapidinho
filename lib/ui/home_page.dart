@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/ui/tabs/delivery_tab.dart';
 import 'package:rapidinho/ui/tabs/home_tab.dart';
 import 'package:rapidinho/ui/tabs/account_tab.dart';
 import 'package:rapidinho/ui/tabs/shopping_cart_tab.dart';
-import 'package:rapidinho/ui/container/app_view_model.dart';
 import 'package:rapidinho/ui/container/bottom_tab_selector.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
 
@@ -80,33 +79,25 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return AppViewModel(
-      builder: (context, vm){
-        return WillPopScope(
-          onWillPop: _exitApp,
-          child: Scaffold(
-            backgroundColor: Colors.white,
-            bottomNavigationBar: BottomTabSelector(
-              onTabChanged: _changeTab,
-            ),
-            body: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              controller: _tabController,
-              children: [
-                HomeTab(),
-                DeliveryTab(),
-                Center(child: ShoppingCartTab()),
-                Padding(
-                  padding: EdgeInsets.only(top: kToolbarHeight),
-                  child: AccountTab(),
-                ),
-              ],
-            ),
-            floatingActionButton: _buildFloatingActionButton(navigationTabs[vm.activeTab.index]),
-          ),
-        );
-      },
+    return WillPopScope(
+      onWillPop: _exitApp,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        bottomNavigationBar: BottomTabSelector(
+          onTabChanged: _changeTab,
+        ),
+        body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _tabController,
+          children: [
+            HomeTab(),
+            DeliveryTab(),
+            ShoppingCartTab(),
+            AccountTab(),
+          ],
+        ),
+        //floatingActionButton: _buildFloatingActionButton(navigationTabs[vm.activeTab.index]),
+      ),
     );
   }
 }
-

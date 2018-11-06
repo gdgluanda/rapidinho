@@ -80,7 +80,7 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
           return Container(
             width: double.infinity,
             height: _deliveryAnimation.containerHeight.value,
-            margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
             padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -108,6 +108,32 @@ class _DeliveryCardState extends State<DeliveryCard> with TickerProviderStateMix
                         ),
                       );
                     }
+                ),
+                Opacity(
+                  opacity: _controller.value,
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: InkWell(
+                      splashColor: Colors.grey,
+                      highlightColor: Colors.blueGrey,
+                      onTap: (){
+
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Icon(Icons.map, color: Colors.blueGrey),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 4.0),
+                            child: Text('Visualizar no mapa', style: RapidinhoTextStyle.smallText),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,

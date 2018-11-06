@@ -4,7 +4,6 @@ import 'package:rapidinho/styling/rapidinho_icon.dart';
 
 class LocationPin extends AnimatedWidget {
   final currentLocation;
-  final LocationPinAnimation pinAnimation;
   final AnimationController controller;
 
   LocationPin({
@@ -12,7 +11,7 @@ class LocationPin extends AnimatedWidget {
     Animation<double> animation,
     this.currentLocation,
     @required this.controller,
-  }): pinAnimation = LocationPinAnimation(controller), super(key: key, listenable: animation);
+  }): super(key: key, listenable: animation);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +24,8 @@ class LocationPin extends AnimatedWidget {
         builder: (context, child){
           return Icon(
             RapidinhoIcon.locationPin,
-            size: currentLocation ? pinAnimation.iconSize.value : 15.0,
-            color: currentLocation ? Colors.green[700] : Colors.grey,
+            size: 15.0,
+            color: Colors.grey,
           );
         },
       ),

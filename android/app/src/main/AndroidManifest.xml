@@ -16,6 +16,11 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="Rapidinho"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyALDwXPyoi3KyNuWN9W66mGC53hhD5wYaE"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

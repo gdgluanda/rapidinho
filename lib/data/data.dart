@@ -1,14 +1,15 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rapidinho/model/delivery.dart';
 import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/product.dart';
-import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/styling/rapidinho_icon.dart';
 
 List<TabItem> navigationTabs = [
-  TabItem('Casa', RapidinhoIcon.homeIcon, NavigationTab.Home),
-  TabItem('Entregas', RapidinhoIcon.motorCycle, NavigationTab.Delivery),
-  TabItem('Compras', RapidinhoIcon.shoppingCart, NavigationTab.Cart),
-  TabItem('Conta', RapidinhoIcon.account, NavigationTab.Account),
+  TabItem('Casa', RapidinhoIcon.homeIcon, 0),
+  TabItem('Entregas', RapidinhoIcon.motorCycle, 1),
+  TabItem('Compras', RapidinhoIcon.shoppingCart, 2),
+  TabItem('Conta', RapidinhoIcon.account, 3),
 ];
 
 const List<FilterItem> filterList = [
@@ -163,6 +164,7 @@ class MockData {
       vendor: 'Pizza Hunt',
       time: DateTime.now(),
       details: products[0],
+      latLng: LatLng(-8.914714, 13.347579),
     ),
     Delivery(
       name: 'Caixa de Chocolates',
@@ -171,7 +173,8 @@ class MockData {
       category: ProductCategory.Present,
       vendor: 'Candando',
       time: DateTime.now(),
-      details: products[8]
+      details: products[8],
+      latLng: LatLng(-8.854382, 13.358283),
     ),
     Delivery(
       name: 'Nike Air VaporMax 97',
@@ -180,7 +183,8 @@ class MockData {
       category: ProductCategory.Wear,
       vendor: 'Imaginarium',
       time: DateTime.now(),
-      details: products[9]
+      details: products[9],
+      latLng: LatLng(-8.770387, 13.252518),
     ),
     Delivery(
       name: 'Carta Confidencial',
@@ -189,7 +193,8 @@ class MockData {
       category: ProductCategory.Mail,
       vendor: 'Boss',
       time: DateTime.now(),
-      details: products[7]
+      details: products[7],
+      latLng: LatLng(-8.977916, 13.120809),
     ),
   ];
 }

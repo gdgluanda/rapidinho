@@ -1,5 +1,6 @@
 
 import 'package:flutter/foundation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rapidinho/model/product.dart';
 
 class Delivery {
@@ -10,6 +11,7 @@ class Delivery {
   final ProductCategory category;
   final String vendor;
   final Product details;
+  final LatLng latLng;
 
   Delivery({
     @required this.name,
@@ -19,6 +21,7 @@ class Delivery {
     @required this.category,
     @required this.vendor,
     @required this.details,
+    @required this.latLng,
   });
 
   @override

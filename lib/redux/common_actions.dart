@@ -1,5 +1,5 @@
 import 'package:rapidinho/model/filter_item.dart';
-import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/model/tab.dart';
 
 class InitAction {}
 

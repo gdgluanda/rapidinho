@@ -1,7 +1,7 @@
 import 'package:rapidinho/data/data.dart';
 import 'package:meta/meta.dart';
 import 'package:rapidinho/model/filter_item.dart';
-import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/redux/place/place_state.dart';
 
 @immutable

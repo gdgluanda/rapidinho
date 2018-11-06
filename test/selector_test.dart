@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/redux/app_state.dart';
 import 'package:redux/redux.dart';
-import 'package:rapidinho/redux/app_state_reducer.dart';
+import 'package:rapidinho/redux/app_reducer.dart';
 import 'package:rapidinho/redux/selectors.dart';
 
 main(){

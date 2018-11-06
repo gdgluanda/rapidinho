@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rapidinho/data/data.dart';
-import 'package:rapidinho/ui/container/app_view_model.dart';
-import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/widget/delivery_card.dart';
 
 class DeliveryTab extends StatefulWidget {
@@ -14,82 +13,63 @@ class DeliveryTab extends StatefulWidget {
 
 class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin {
 
-  AnimationController cardEntranceAnimationController;
-  List<Animation> cardAnimations;
-  ValueNotifier<int> currentTab;
-
-  @override
-  void initState() {
-    super.initState();
-    cardEntranceAnimationController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 500),
-    );
-    cardAnimations = MockData.deliveries.map((stop) {
-      int index = MockData.deliveries.indexOf(stop);
-      double start = index * 0.1;
-      double duration = 0.6;
-      double end = duration + start;
-      return Tween<double>(begin: 800.0, end: 0.0).animate(
-          new CurvedAnimation(
-              parent: cardEntranceAnimationController,
-              curve: Interval(start, end, curve: Curves.decelerate)));
-    }).toList();
-    cardEntranceAnimationController.forward();
-    currentTab = ValueNotifier(1);
-    currentTab.addListener((){
-      cardEntranceAnimationController.reverse();
-    });
-  }
+  PageController _pageController = PageController(viewportFraction: 0.85);
+  GoogleMapController mapController;
+  GoogleMapOptions _options = GoogleMapOptions(
+    cameraPosition: const CameraPosition(
+      target: LatLng(-8.885533, 13.253325),
+      zoom: 14.0,
+    ),
+    trackCameraPosition: true,
+    compassEnabled: true,
+  );
 
   @override
   void dispose() {
-    cardEntranceAnimationController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AppViewModel(
-      builder: (context, vm){
-        currentTab.value = vm.activeTab.index;
-        return Container(
-          margin: EdgeInsets.only(top: 20.0),
-          child: Stack(
-            children: <Widget>[
-              Positioned.fill(
-                top: MediaQuery.of(context).padding.top + 100.0,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: _buildDeliveryCards().toList(),
-                  ),
-                ),
-              ),
-              Container(
-                alignment: Alignment.topCenter,
-                padding: EdgeInsets.only(top: kToolbarHeight + 24.0, left: 16.0),
-                child: Text('Minhas Entregas', style: RapidinhoTextStyle.largeText.copyWith(fontWeight: FontWeight.w500)),
-              ),
-            ],
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            options: _options,
           ),
-        );
-      },
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              height: 200.0,
+              child: PageView(
+                onPageChanged: _changeLocation,
+                controller: _pageController,
+                scrollDirection: Axis.horizontal,
+                children: MockData.deliveries.map((product) {
+                  return DeliveryCard(
+                      deliveryProduct: product
+                  );
+                }).toList(),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
-  Iterable<Widget> _buildDeliveryCards() {
-    return MockData.deliveries.map((product) {
-      int index = MockData.deliveries.indexOf(product);
-      return AnimatedBuilder(
-        animation: cardEntranceAnimationController,
-        child: DeliveryCard(
-            deliveryProduct: product
-        ),
-        builder: (context, child) => Transform.translate(
-          offset: Offset(0.0, cardAnimations[index].value),
-          child: child,
-        ),
-      );
-    });
+  _changeLocation(int pageIndex){
+    mapController.animateCamera(CameraUpdate.newCameraPosition(
+      CameraPosition(
+        target: MockData.deliveries[pageIndex].latLng,
+        zoom: 17.0,
+      ),
+    ));
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    setState(() { mapController = controller; });
   }
 }

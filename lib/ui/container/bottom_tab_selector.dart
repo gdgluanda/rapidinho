@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:rapidinho/redux/app_state.dart';
-import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:redux/redux.dart';
 import 'package:rapidinho/redux/common_actions.dart';
 import 'package:rapidinho/data/data.dart';
 
 class BottomTabSelector extends StatelessWidget {
-
   final Function(int) onTabChanged;
 
   BottomTabSelector({this.onTabChanged});
@@ -16,21 +15,20 @@ class BottomTabSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
-      distinct: true,
       converter: _ViewModel.fromStore,
       builder: (context, viewModel){
         return BottomNavigationBar(
-          items: navigationTabs.map((TabItem tab){
+          currentIndex: viewModel.activeTab.index,
+          items: navigationTabs.map((tab){
             return BottomNavigationBarItem(
               title: new Text(tab.name, style: RapidinhoTextStyle.bottomTextStyle),
-              icon: new Icon(tab.icon, size: 24.0, color: Colors.grey),
-              activeIcon: Icon(tab.icon, color: Colors.red)
+              icon: new Icon(tab.icon, size: tab.name ==  'Entregas' ? 24.0 : 18.0, color: Colors.grey),
+              activeIcon: Icon(tab.icon, color: Colors.red),
             );
           }).toList(),
           onTap: (index){
-            viewModel.onTabSelected(index);
-            //TODO remove comment to see other tabs
-            //onTabChanged(index);
+            viewModel.onTabChanged(index);
+            onTabChanged(index);
           },
         );
       },
@@ -40,14 +38,14 @@ class BottomTabSelector extends StatelessWidget {
 
 class _ViewModel {
   final NavigationTab activeTab;
-  final Function(int) onTabSelected;
+  final Function(int) onTabChanged;
 
-  _ViewModel({@required this.activeTab, @required this.onTabSelected});
+  _ViewModel({@required this.activeTab, @required this.onTabChanged});
 
   static _ViewModel fromStore(Store<AppState> store){
     return _ViewModel(
       activeTab: store.state.activeTab,
-      onTabSelected: (index){
+      onTabChanged: (index){
         store.dispatch(UpdateTabAction((NavigationTab.values[index])));
       },
     );
@@ -59,11 +57,15 @@ class _ViewModel {
           other is _ViewModel &&
               runtimeType == other.runtimeType &&
               activeTab == other.activeTab &&
-              onTabSelected == other.onTabSelected;
+              onTabChanged == other.onTabChanged;
 
   @override
   int get hashCode =>
       activeTab.hashCode ^
-      onTabSelected.hashCode;
-}
+      onTabChanged.hashCode;
 
+  @override
+  String toString() {
+    return '_ViewModel{activeTab: $activeTab, onTabChanged: $onTabChanged}';
+  }
+}

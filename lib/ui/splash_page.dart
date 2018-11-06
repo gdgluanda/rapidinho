@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/ui/animation/splash_animation.dart';
 import 'package:rapidinho/ui/container/app_view_model.dart';
 import 'package:rapidinho/ui/home_page.dart';
@@ -46,9 +46,9 @@ class SplashPage extends StatelessWidget {
                         child: GestureDetector(
                           child: Padding(
                             padding: const EdgeInsets.only(top: 16.0, right: 8.0),
-                            child: Icon(Icons.filter_list, color: Colors.white.withOpacity(vm.activeTab == NavigationTab.Home ? animation.actionButtonOpacity.value : 0.0)),
+                            //child: Icon(Icons.filter_list, color: Colors.white.withOpacity(vm.activeTab == NavigationTab.Home ? animation.actionButtonOpacity.value : 0.0)),
                           ),
-                          onTap: vm.activeTab == NavigationTab.Home ? callback : (){},
+                          onTap: (){},
                         ),
                       ),
                     ),

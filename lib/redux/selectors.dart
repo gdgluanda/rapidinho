@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:rapidinho/model/filter_item.dart';
-import 'package:rapidinho/model/tabs.dart';
+import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/redux/app_state.dart';
 
 NavigationTab activeTabSelector(AppState state) => state.activeTab;

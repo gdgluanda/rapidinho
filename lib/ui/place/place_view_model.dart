@@ -11,9 +11,7 @@ class PlaceViewModel {
   final Function refreshPlaces;
 
   PlaceViewModel({this.status, this.places, this.placePhotos, this.refreshPlaces});
-  static PlaceViewModel fromStore(
-    Store<AppState> store,
-  ){
+  static PlaceViewModel fromStore(Store<AppState> store){
     return PlaceViewModel(
       status: store.state.placeState.loadingStatus,
       places: store.state.placeState.places,

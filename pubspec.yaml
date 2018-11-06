@@ -17,6 +17,12 @@ dependencies:
     sdk: flutter
   flutter_redux: ^0.5.2
   shimmer: ^0.0.5
+  flutter_map: ^0.3.0
+  google_maps_webservice: ^0.0.9
+  google_maps_flutter:
+   git:
+     url: git://github.com/flutter/plugins
+     path: packages/google_maps_flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
