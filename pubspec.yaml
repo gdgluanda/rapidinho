@@ -18,6 +18,7 @@ dependencies:
   flutter_redux: ^0.5.2
   shimmer: ^0.0.5
   google_maps_webservice: ^0.0.9
+  sqflite: any
   google_maps_flutter:
    git:
      url: git://github.com/flutter/plugins

@@ -9,8 +9,9 @@ import 'package:rapidinho/data/data.dart';
 
 class BottomTabSelector extends StatelessWidget {
   final Function(int) onTabChanged;
+  final int currentIndex;
 
-  BottomTabSelector({this.onTabChanged});
+  BottomTabSelector({this.onTabChanged, this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class BottomTabSelector extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (context, viewModel){
         return BottomNavigationBar(
-          currentIndex: viewModel.activeTab.index,
+          currentIndex: currentIndex,
           items: navigationTabs.map((tab){
             return BottomNavigationBarItem(
               title: new Text(tab.name, style: RapidinhoTextStyle.bottomTextStyle),

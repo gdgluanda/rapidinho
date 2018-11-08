@@ -76,14 +76,17 @@ class SplashPage extends StatelessWidget {
           ),
           Align(
               alignment: Alignment.center.add(Alignment(0.35, 0.11)),
-              child: Material(
-                color: Colors.transparent,
-                child: Text('Entregas na hora', style: TextStyle(
-                    fontFamily: 'Rajdhani',
-                    color: Colors.white.withOpacity(animation.sloganOpacity.value),
-                    fontSize: 15.0,
-                    letterSpacing: 1.5,
-                    fontWeight: FontWeight.w500)),
+              child: IgnorePointer(
+                ignoring: true,
+                child: Material(
+                  color: Colors.transparent,
+                  child: Text('Entregas na hora', style: TextStyle(
+                      fontFamily: 'Rajdhani',
+                      color: Colors.white.withOpacity(animation.sloganOpacity.value),
+                      fontSize: 15.0,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.w500)),
+                ),
               )),
         ]
     );

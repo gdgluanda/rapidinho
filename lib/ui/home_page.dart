@@ -69,13 +69,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-  _changeTab(int _currentIndex){
-    setState(() {
-      Future.delayed(Duration(milliseconds: 500), (){
-        _tabController.animateTo(_currentIndex);
-      });
-    });
-  }
+  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +78,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       child: Scaffold(
         backgroundColor: Colors.white,
         bottomNavigationBar: BottomTabSelector(
-          onTabChanged: _changeTab,
+          onTabChanged: (_currentIndex){
+            setState(() {
+              _index = _currentIndex;
+              Future.delayed(Duration(milliseconds: 500), (){
+                _tabController.animateTo(_currentIndex);
+              });
+            });
+          },
+          currentIndex: _index,
         ),
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
