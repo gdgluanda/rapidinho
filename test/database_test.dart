@@ -1,5 +1,5 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'package:rapidinho/model/order.dart';
-import 'package:test/test.dart';
 import 'package:rapidinho/database/database.dart';
 import 'package:rapidinho/database/tables/placed_order_table.dart';
 

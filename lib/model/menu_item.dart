@@ -10,6 +10,15 @@ class MenuItem {
   Map<int, String> ingredients;
   String recipe;
   bool isActive;
+  ///New variables
+  String recommendations;
+  int servings;
+  double weight;
+  DateTime cookTime, estimatedDeliveryTime;
+  List<MenuItem> suggestedProducts;
+  List<String> tags;
+  double deliveryTax;
+  double rating;
 
   MenuItem({
     @required this.id,
