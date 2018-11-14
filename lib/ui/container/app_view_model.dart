@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/model/tab.dart';
-import 'package:rapidinho/redux/common_actions.dart';
 import 'package:redux/redux.dart';
 
 class AppViewModel extends StatelessWidget {
@@ -23,19 +21,12 @@ class AppViewModel extends StatelessWidget {
 
 class _ViewModel {
   final NavigationTab activeTab;
-  final List<FilterItem> filterList;
-  final Function(FilterItem) onFilterChanged;
 
-  _ViewModel({this.activeTab, this.filterList, this.onFilterChanged});
+  _ViewModel({this.activeTab});
 
   static _ViewModel fromStore(Store<AppState> store){
     return _ViewModel(
       activeTab: store.state.activeTab,
-      filterList: store.state.filters,
-        onFilterChanged: (filter){
-          filter = filter.copyWith(isFilter: !filter.isFilter);
-          store.dispatch(UpdateFilterAction(filter, filter.type));
-      }
     );
   }
 
@@ -44,18 +35,12 @@ class _ViewModel {
       identical(this, other) ||
           other is _ViewModel &&
               runtimeType == other.runtimeType &&
-              activeTab == other.activeTab &&
-              filterList == other.filterList &&
-              onFilterChanged == other.onFilterChanged;
-
+              activeTab == other.activeTab;
   @override
   int get hashCode =>
-      activeTab.hashCode ^
-      filterList.hashCode ^
-      onFilterChanged.hashCode;
-
+      activeTab.hashCode;
   @override
   String toString() {
-    return '_ViewModel{activeTab: $activeTab, filterList: $filterList, onFilterChanged: $onFilterChanged}';
+    return '_ViewModel{activeTab: $activeTab}';
   }
 }

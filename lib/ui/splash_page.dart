@@ -46,7 +46,6 @@ class SplashPage extends StatelessWidget {
                         child: GestureDetector(
                           child: Padding(
                             padding: const EdgeInsets.only(top: 16.0, right: 8.0),
-                            //child: Icon(Icons.filter_list, color: Colors.white.withOpacity(vm.activeTab == NavigationTab.Home ? animation.actionButtonOpacity.value : 0.0)),
                           ),
                           onTap: (){},
                         ),
@@ -56,10 +55,7 @@ class SplashPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       duration: Duration(milliseconds: 100),
                       height: vm.activeTab == NavigationTab.Home ? height : 0.0,
-                      child: CategoryFilterList(
-                        filterList: vm.filterList,
-                        onFilterChanged: vm.onFilterChanged,
-                      ),
+                      //child: CategoryFilterList(),
                     ),
                   ],
                 );

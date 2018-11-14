@@ -4,24 +4,30 @@ class Product {
   final String assetPath;
   final String name;
   final List<int> filter;
+  final ProductCategory category;
 
-  Product({this.name, this.assetPath, this.filter});
-
-  @override
-  bool operator ==(other) =>
-      identical(this, other) &&
-      other is Product &&
-      runtimeType == other.runtimeType &&
-      name == other.name &&
-      assetPath == other.assetPath &&
-      filter == other.filter;
+  Product({this.name, this.assetPath, this.filter, this.category});
 
   @override
-  int get hashCode => name.hashCode ^ assetPath.hashCode ^ filter.hashCode;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is Product &&
+              runtimeType == other.runtimeType &&
+              assetPath == other.assetPath &&
+              name == other.name &&
+              filter == other.filter &&
+              category == other.category;
+
+  @override
+  int get hashCode =>
+      assetPath.hashCode ^
+      name.hashCode ^
+      filter.hashCode ^
+      category.hashCode;
 
   @override
   String toString() {
-    return 'HomeCard{assetPath: $assetPath, name: $name, filter: $filter}';
+    return 'Product{assetPath: $assetPath, name: $name, filter: $filter, category: $category}';
   }
 }
 

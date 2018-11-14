@@ -1,37 +1,31 @@
-import 'package:rapidinho/data/data.dart';
 import 'package:meta/meta.dart';
-import 'package:rapidinho/model/filter_item.dart';
 import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/redux/place/place_state.dart';
+import 'package:sqflite/sqflite.dart';
 
 @immutable
 class AppState {
   final NavigationTab activeTab;
-  final List<FilterItem> filters;
   final PlaceState placeState;
+  final Database database;
 
   AppState({
     this.placeState,
     this.activeTab,
-    this.filters,
+    this.database,
   });
 
   factory AppState.init() =>
       AppState(
         activeTab: NavigationTab.Home,
-        filters: filterList,
-        placeState: PlaceState.initial()
+        placeState: PlaceState.initial(),
       );
 
-  AppState copyWith({
-    NavigationTab activeTab,
-    List<FilterItem> filters,
-    PlaceState productState,
-  }){
+  AppState copyWith({NavigationTab activeTab, PlaceState productState, Database database}){
     return AppState(
       activeTab: activeTab ?? this.activeTab,
-      filters: filters ?? this.filters,
       placeState: productState ?? this.placeState,
+      database: database ?? this.database,
     );
   }
 
@@ -41,17 +35,17 @@ class AppState {
           other is AppState &&
               runtimeType == other.runtimeType &&
               activeTab == other.activeTab &&
-              filters == other.filters &&
-              placeState == other.placeState;
+              placeState == other.placeState &&
+              database == other.database;
 
   @override
   int get hashCode =>
       activeTab.hashCode ^
-      filters.hashCode ^
-      placeState.hashCode;
+      placeState.hashCode ^
+      database.hashCode;
 
   @override
   String toString() {
-    return 'AppState{activeTab: $activeTab, filters: $filters, productState: $placeState}';
+    return 'AppState{activeTab: $activeTab, placeState: $placeState, database: $database}';
   }
 }

@@ -4,27 +4,19 @@ import 'package:rapidinho/model/tab.dart';
 import 'package:rapidinho/redux/app_state.dart';
 import 'package:rapidinho/redux/place/place_reducer.dart';
 import 'package:redux/redux.dart';
+import 'package:sqflite/sqflite.dart';
 
 AppState appReducer(AppState state, dynamic action) {
   return AppState(
-    activeTab: navigationTabsReducer(state.activeTab, action),
-    filters: filterReducer(state.filters, action),
     placeState: placeReducer(state.placeState, action),
+    database: databaseReducer(state.database, action),
   );
 }
 
-final filterReducer = combineReducers<List<FilterItem>>([
-  TypedReducer<List<FilterItem>, UpdateFilterAction>(_activeFilterReducer),
+final databaseReducer = combineReducers<Database>([
+  TypedReducer<Database, DatabaseCreatedAction>(_databaseReducer),
 ]);
 
-List<FilterItem> _activeFilterReducer(List<FilterItem> filters, UpdateFilterAction action){
-  return filters.map((filter) => filter.type == action.type ? action.filterItem : filter).toList();
-}
-
-final navigationTabsReducer = combineReducers<NavigationTab>([
-  TypedReducer<NavigationTab, UpdateTabAction>(_activeTabReducer),
-]);
-
-NavigationTab _activeTabReducer(NavigationTab activeTab, UpdateTabAction action){
-  return action.newTab;
+Database _databaseReducer(Database database, DatabaseCreatedAction action){
+  return action.database;
 }
