@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:rapidinho/database/common.dart';
 
-class MenuItem {
+class Product {
   int id;
   String itemName;
   double price;
@@ -15,12 +15,12 @@ class MenuItem {
   int servings;
   double weight;
   DateTime cookTime, estimatedDeliveryTime;
-  List<MenuItem> suggestedProducts;
+  List<Product> suggestedProducts;
   List<String> tags;
   double deliveryTax;
   double rating;
 
-  MenuItem({
+  Product({
     @required this.id,
     this.itemName,
     this.price,
@@ -31,8 +31,8 @@ class MenuItem {
     this.isActive
   });
 
-  MenuItem copyWith({int id, String itemName, double price, int categoryId, String description, Map ingredients, String recipe, bool isActive}){
-    return MenuItem(
+  Product copyWith({int id, String itemName, double price, int categoryId, String description, Map ingredients, String recipe, bool isActive}){
+    return Product(
       id: id ?? this.id,
       itemName: itemName ?? this.itemName,
       price: price ?? this.price,
@@ -55,8 +55,8 @@ class MenuItem {
     ACTIVE: isActive ? 1 : 0,
   };
 
-  MenuItem.fromMap(Map map){
-    MenuItem(
+  Product.fromMap(Map map){
+    Product(
       id: map[ID],
       categoryId: map[CATEGORY_ID],
       itemName: map[ITEM_NAME],
@@ -71,7 +71,7 @@ class MenuItem {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is MenuItem &&
+          other is Product &&
               runtimeType == other.runtimeType &&
               id == other.id &&
               itemName == other.itemName &&

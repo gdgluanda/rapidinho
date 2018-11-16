@@ -20,7 +20,7 @@ dependencies:
   google_maps_webservice: ^0.0.9
   sqflite: any
   path_provider: any
-  side_header_list_view: ^0.0.4
+  flutter_sticky_header: ^0.3.4
   cloud_firestore: ^0.8.2+3
   google_maps_flutter:
    git:

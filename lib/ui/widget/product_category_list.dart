@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
-import 'package:rapidinho/ui/products_page.dart';
+import 'package:rapidinho/ui/product/products_page.dart';
 
 class ProductCategoryList extends StatelessWidget {
   @override

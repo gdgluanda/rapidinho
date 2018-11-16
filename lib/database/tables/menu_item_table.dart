@@ -1,5 +1,5 @@
 import 'package:rapidinho/database/common.dart';
-import 'package:rapidinho/model/menu_item.dart';
+import 'package:rapidinho/model/product_item.dart';
 import 'package:sqflite/sqflite.dart';
 
 class MenuItemTable {
@@ -10,7 +10,7 @@ class MenuItemTable {
 
   _createTable(Database database) {
     database.execute(
-        "CREATE TABLE $MenuItem ("
+        "CREATE TABLE $Product ("
             "$ID INTEGER PRIMARY KEY,"
             "$CATEGORY_ID INTEGER,"
             "$ITEM_NAME TEXT,"

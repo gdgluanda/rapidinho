@@ -4,12 +4,12 @@ import 'package:rapidinho/network/keys.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ProductCard extends StatelessWidget {
+class PlaceCard extends StatelessWidget {
 
   final PlacesSearchResult place;
   final VoidCallback action;
 
-  ProductCard({this.place, this.action});
+  PlaceCard({this.place, this.action});
 
   @override
   Widget build(BuildContext context) {
