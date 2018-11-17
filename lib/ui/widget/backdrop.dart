@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BackdropPanel extends StatelessWidget {
-  const BackdropPanel({
+  BackdropPanel({
     Key key,
     this.onTap,
     this.onVerticalDragUpdate,
@@ -29,19 +29,17 @@ class BackdropPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    const double panelTitleHeight = 48.0;
+    double panelTitleHeight = 48.0;
     final Size panelSize = constraints.biggest;
     final double panelTop = panelSize.height - panelTitleHeight;
-    double screenWidth = MediaQuery.of(context).size.width;
-    double width = screenWidth / 4;
-    final Animation<RelativeRect> panelAnimation = new RelativeRectTween(
+    final Animation<RelativeRect> panelAnimation = RelativeRectTween(
       begin: RelativeRect.fromLTRB(
         0.0,
         panelTop - MediaQuery.of(context).padding.bottom,
         0.0,
         panelTop - panelSize.height,
       ),
-      end: RelativeRect.fromLTRB(0.0, 350.0, 0.0, 0.0),
+      end: RelativeRect.fromLTRB(0.0, panelTop / 2.5, 0.0, 0.0),
     ).animate(
       CurvedAnimation(
         parent: controller,
@@ -54,23 +52,23 @@ class BackdropPanel extends StatelessWidget {
         shadowColor: Colors.grey[900],
         color: color,
         elevation: 20.0,
-        borderRadius: const BorderRadius.only(
-          topLeft: const Radius.circular(16.0),
-          topRight: const Radius.circular(16.0),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16.0),
+          topRight: Radius.circular(16.0),
         ),
-        child: new Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            new GestureDetector(
+            GestureDetector(
               behavior: HitTestBehavior.opaque,
               onVerticalDragUpdate: onVerticalDragUpdate,
               onVerticalDragEnd: onVerticalDragEnd,
               onTap: onTap,
-              child: new Container(
+              child: Container(
                 height: 48.0,
-                padding: const EdgeInsetsDirectional.only(start: 24.0, end: 24.0),
+                padding: EdgeInsetsDirectional.only(start: 24.0, end: 24.0),
                 alignment: AlignmentDirectional.centerStart,
-                child: new DefaultTextStyle(
+                child: DefaultTextStyle(
                   style: theme.textTheme.subhead,
                   child: Row(
                     children: <Widget>[
@@ -88,8 +86,8 @@ class BackdropPanel extends StatelessWidget {
                 ),
               ),
             ),
-            const Divider(height: 1.0),
-            new Expanded(child: child),
+            Divider(height: 1.0),
+            Expanded(child: child),
           ],
         ),
       ),
@@ -99,7 +97,7 @@ class BackdropPanel extends StatelessWidget {
 
 
 class BackdropTitle extends AnimatedWidget {
-  const BackdropTitle({
+  BackdropTitle({
     Key key,
     Listenable listenable,
   }) : super(key: key, listenable: listenable);
@@ -107,25 +105,25 @@ class BackdropTitle extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     final Animation<double> animation = listenable;
-    return new DefaultTextStyle(
+    return DefaultTextStyle(
       style: Theme.of(context).primaryTextTheme.title,
       softWrap: false,
       overflow: TextOverflow.ellipsis,
-      child: new Stack(
+      child: Stack(
         children: <Widget>[
-          new Opacity(
-            opacity: new CurvedAnimation(
-              parent: new ReverseAnimation(animation),
-              curve: const Interval(0.5, 1.0),
+          Opacity(
+            opacity: CurvedAnimation(
+              parent: ReverseAnimation(animation),
+              curve: Interval(0.5, 1.0),
             ).value,
-            child: const Text('Select a Category'),
+            child: Text('Select a Category'),
           ),
-          new Opacity(
-            opacity: new CurvedAnimation(
+          Opacity(
+            opacity: CurvedAnimation(
               parent: animation,
-              curve: const Interval(0.5, 1.0),
+              curve: Interval(0.5, 1.0),
             ).value,
-            child: const Text('Asset Viewer'),
+            child: Text('Asset Viewer'),
           ),
         ],
       ),

@@ -11,7 +11,7 @@ class ProductCard extends StatelessWidget {
     this.product,
     this.onTap,
   }) : child = Container(
-
+    child: Text('Text', style: TextStyle(color: Colors.white),),
   );
 
 
@@ -42,6 +42,13 @@ class ProductCard extends StatelessWidget {
   );
 
   ProductCard.large({
+    this.product,
+    this.onTap,
+  }) : child = Container(
+
+  );
+
+  ProductCard.loading({
     this.product,
     this.onTap,
   }) : child = Container(

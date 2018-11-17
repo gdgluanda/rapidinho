@@ -1,17 +1,17 @@
 
-class Product {
+class ProductType {
 
   final String assetPath;
   final String name;
   final List<int> filter;
   final ProductCategory category;
 
-  Product({this.name, this.assetPath, this.filter, this.category});
+  ProductType({this.name, this.assetPath, this.filter, this.category});
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Product &&
+          other is ProductType &&
               runtimeType == other.runtimeType &&
               assetPath == other.assetPath &&
               name == other.name &&

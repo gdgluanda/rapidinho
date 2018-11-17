@@ -22,7 +22,7 @@ class ProductCategoryList extends StatelessWidget {
                     InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return ProductsPage();
+                          return ProductsPage(product);
                         }));
                       },
                       child: CircleAvatar(

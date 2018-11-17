@@ -10,7 +10,7 @@ class Delivery {
   final int locationIndex;
   final ProductCategory category;
   final String vendor;
-  final Product details;
+  final ProductType details;
   final LatLng latLng;
 
   Delivery({
