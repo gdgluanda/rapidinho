@@ -1,5 +1,5 @@
 import 'package:rapidinho/database/common.dart';
-import 'package:rapidinho/model/product_item.dart';
+import 'package:rapidinho/model/product.dart';
 import 'package:sqflite/sqflite.dart';
 
 class MenuItemTable {

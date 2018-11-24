@@ -1,7 +1,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rapidinho/model/product.dart';
+import 'package:rapidinho/model/product_category.dart';
 
 class Delivery {
   final String name;

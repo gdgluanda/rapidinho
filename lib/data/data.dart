@@ -1,8 +1,10 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rapidinho/model/delivery.dart';
 import 'package:rapidinho/model/filter_item.dart';
+import 'package:rapidinho/model/product_category.dart';
 import 'package:rapidinho/model/product.dart';
 import 'package:rapidinho/model/tab.dart';
+import 'package:rapidinho/model/vendor.dart';
 import 'package:rapidinho/styling/rapidinho_icon.dart';
 
 List<TabItem> navigationTabs = [
@@ -113,7 +115,45 @@ List<ProductType> homeCardItemList1 = [
 ];
 
 class MockData {
-  static final List<ProductType> products = [
+  static final List<Product> productList = [
+    Product(
+      id: 0,
+      itemName: 'Caipirinha de Limão',
+      imagePath: 'assets/images/home_items/home_item11.jpg',
+      price: 800.00,
+      categoryId: 1,
+      vendorId: 0,
+      ingredients: {0: '70 Cl Cachaça', 1: '1 KG de Gelo em cubo', 2: 'Limoes', 3: '12 Culheres', 4: 'Folha de menta'},
+      description: 'A caipirinha é o coquetel nacional do Brasil, feito com cachaça, açúcar e limão. A cachaça, também conhecida como caninha, ou qualquer um de uma infinidade de nomes tradicionais, é a bebida alcoólica destilada mais comum no Brasil.',
+      recipe: 'Enrole o limão em sua tábua com a palma da sua mão para obter todos os sucos agradáveis, em seguida, corte-os em fatias e esprema o suco em um jarro grande de 1 ½ litro, colocando as fatias nele depois de espremê-las. \n Acrescente o açúcar e o gengibre e passe alguns minutos batendo e esmagando tudo com o final de um rolo de madeira para obter todos esses sabores. Metade encha o jarro com gelo picado e volte a bater. Despeje a cachaça e mexa bem. Tem um pouco de sabor, em seguida, ajustar a acidez ao seu gosto, adicionando mais açúcar, se necessário. Cubra o jarro com mais gelo picado e depois raspe as folhas de hortelã e mexa bem. Sirva e desfrute como um coquetel refrescante com os amigos.',
+      isActive: true,
+      servings: 8,
+      cookTime: 10.0,
+      estimatedDeliveryTime: 15.55,
+      suggestedProducts: [],
+      tags: ['Brazillian', 'Alcohol', 'Cocktail', 'Fruit', 'Dinner Party'],
+      deliveryTax: 1500.00,
+      rating: 4.8,
+      recommendations: 'Você tem que entregar para os brasileiros, eles sabem misturar um coquetel',
+    ),
+  ];
+
+  static final List<Vendor> vendorList = [
+    Vendor(
+      id: 0,
+      name: 'Cassule\'s Restaurante',
+      cityId: 0,
+    )
+  ];
+
+  static final List<City> cities = [
+    City(
+      id: 0,
+      cityName: 'Kilamba Kiaxi',
+    ),
+  ];
+
+  static final List<ProductType> productCategoryList = [
     ProductType(
       name: 'Pizzas',
       assetPath: 'assets/images/deliverables/pizza.png',
@@ -165,6 +205,8 @@ class MockData {
         category: ProductCategory.Wear,
     ),
   ];
+
+
   static final List<Delivery> deliveries = [
     Delivery(
       name: 'Pizza Quatro Estações',
@@ -173,7 +215,7 @@ class MockData {
       category: ProductCategory.Pizza,
       vendor: 'Pizza Hunt',
       time: DateTime.now(),
-      details: products[0],
+      details: productCategoryList[0],
       latLng: LatLng(-8.914714, 13.347579),
     ),
     Delivery(
@@ -183,7 +225,7 @@ class MockData {
       category: ProductCategory.Present,
       vendor: 'Candando',
       time: DateTime.now(),
-      details: products[8],
+      details: productCategoryList[8],
       latLng: LatLng(-8.854382, 13.358283),
     ),
     Delivery(
@@ -193,7 +235,7 @@ class MockData {
       category: ProductCategory.Wear,
       vendor: 'Imaginarium',
       time: DateTime.now(),
-      details: products[9],
+      details: productCategoryList[9],
       latLng: LatLng(-8.770387, 13.252518),
     ),
     Delivery(
@@ -203,7 +245,7 @@ class MockData {
       category: ProductCategory.Mail,
       vendor: 'Boss',
       time: DateTime.now(),
-      details: products[7],
+      details: productCategoryList[7],
       latLng: LatLng(-8.977916, 13.120809),
     ),
   ];

@@ -14,21 +14,34 @@ class Product {
   String recommendations;
   int servings;
   double weight;
-  DateTime cookTime, estimatedDeliveryTime;
+  double cookTime, estimatedDeliveryTime;
   List<Product> suggestedProducts;
   List<String> tags;
   double deliveryTax;
   double rating;
+  String imagePath;
+  int vendorId;
 
   Product({
     @required this.id,
     this.itemName,
     this.price,
     this.categoryId,
+    this.vendorId,
     this.description,
     this.ingredients,
     this.recipe,
-    this.isActive
+    this.isActive,
+    this.imagePath,
+    this.servings,
+    this.weight,
+    this.cookTime,
+    this.estimatedDeliveryTime,
+    this.suggestedProducts,
+    this.tags,
+    this.deliveryTax,
+    this.rating,
+    this.recommendations,
   });
 
   Product copyWith({int id, String itemName, double price, int categoryId, String description, Map ingredients, String recipe, bool isActive}){

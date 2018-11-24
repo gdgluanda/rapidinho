@@ -1,13 +1,17 @@
-class Restaurant {
+class Vendor {
   int id;
+  String name;
   String address;
   int cityId;
+
+  Vendor({this.id, this.name, this.address, this.cityId});
 }
 
 class City {
   int id;
   String cityName;
-  String zipCode;
+
+  City({this.id, this.cityName});
 }
 
 class Customer {
@@ -26,16 +30,6 @@ class Category {
   String categoryName;
 }
 
-class MenuItem {
-  int id;
-  String itemName;
-  double price;
-  int categoryId;
-  String description;
-  Map<int, String> ingredients;
-  bool isActive;
-}
-
 class Offer {
   int id;
   DateTime dateActiveFrom;
@@ -51,24 +45,7 @@ class InOffer {
   int menuItemId;
 }
 
-///ORDERS
-
-class PlacedOrder {
-  int id;
-  int restaurant;
-  DateTime orderTime;
-  DateTime estimatedDeliveryTime;
-  DateTime foodReadyAt;
-  bool isFoodReady;
-  DateTime actualDeliveryTime;
-  String deliveryAddress;
-  int customerId;
-  double price;
-  double discount;
-  double finalPrice;
-  String comment;
-  DateTime timeStamp;
-}
+///ORDER
 
 class InOrder {
   int id;

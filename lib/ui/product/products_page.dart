@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
-import 'package:rapidinho/model/product.dart';
+import 'package:rapidinho/model/product_category.dart';
 import 'package:rapidinho/ui/product/product_card.dart';
 import 'package:rapidinho/ui/product/product_grid.dart';
 import 'package:rapidinho/ui/widget/backdrop.dart';
@@ -73,7 +73,7 @@ class _ProductsPageState extends State<ProductsPage> with SingleTickerProviderSt
         int i = 0;
         return Stack(
           children: <Widget>[
-            ProductGrid(onTap: _toggleBackdropPanelVisibility),
+            ProductGrid(onTap: _toggleBackdropPanelVisibility, productType: widget.product),
             IgnorePointer(
               ignoring: !_backdropPanelVisible,
               child: GestureDetector(

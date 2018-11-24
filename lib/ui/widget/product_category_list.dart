@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/model/product_category.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/product/products_page.dart';
 
@@ -13,7 +14,7 @@ class ProductCategoryList extends StatelessWidget {
           child: ListView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            children: MockData.products.map((product){
+            children: MockData.productCategoryList.map((ProductType product){
               return Container(
                 margin: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
