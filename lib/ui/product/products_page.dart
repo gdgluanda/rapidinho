@@ -1,7 +1,10 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:rapidinho/data/data.dart';
+import 'package:rapidinho/model/product.dart';
 import 'package:rapidinho/model/product_category.dart';
+import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/product/product_card.dart';
 import 'package:rapidinho/ui/product/product_grid.dart';
 import 'package:rapidinho/ui/widget/backdrop.dart';
@@ -91,7 +94,13 @@ class _ProductsPageState extends State<ProductsPage> with SingleTickerProviderSt
               onVerticalDragEnd: _handleDragEnd,
               controller: _controller,
               constraints: constraints,
-              child: Container(),
+              title: Text(
+                MockData.productList.firstWhere((Product product) => product.categoryId == widget.product.category.index).itemName,
+                style: RapidinhoTextStyle.largeText.copyWith(fontWeight: FontWeight.w600, color: Colors.black54),
+              ),
+              child: ProductCard.large(
+                product: MockData.productList.firstWhere((Product product) => product.categoryId == widget.product.category.index),
+              ),
             ),
           ],
         );

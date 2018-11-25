@@ -18,7 +18,6 @@ const List<FilterItem> filterList = [
   const FilterItem('Todos', true, FilterType.All),
   const FilterItem('Hoje', false, FilterType.Today),
   const FilterItem('Recomendado', false, FilterType.Recommended),
-  const FilterItem('Permitido', false, FilterType.Allowed),
   const FilterItem('Popular', false, FilterType.Popular),
   const FilterItem('Novos', false, FilterType.New),
 ];
