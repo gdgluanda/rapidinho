@@ -69,23 +69,28 @@ class ProductCard extends StatelessWidget {
     padding: EdgeInsets.symmetric(horizontal: 8.0),
     child: Stack(
       children: <Widget>[
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.asset(
-                    product.imagePath,
-                    fit: BoxFit.contain,
-                    width: 200.0,
-                ),
-            ),
-            Container(
-              height: 135.0,
-              child: Column(
+        Container(
+          height: 135.0,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.asset(
+                      product.imagePath,
+                      fit: BoxFit.contain,
+                      width: 200.0,
+                  ),
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+//                  Text.rich(
+//                    '${MockData.vendorList.firstWhere((vendor) => vendor.id == product.vendorId).name}',
+//                    style: RapidinhoTextStyle.largeText.copyWith(fontWeight: FontWeight.w600, color: Colors.black54),
+//                    maxLines: 2,
+//                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Row(
@@ -119,8 +124,8 @@ class ProductCard extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         Align(
           alignment: Alignment.bottomCenter,

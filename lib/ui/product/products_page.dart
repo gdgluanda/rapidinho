@@ -71,7 +71,7 @@ class _ProductsPageState extends State<ProductsPage> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Product Items Page')),
+      appBar: AppBar(title: Text('${widget.product.name}')),
       body: LayoutBuilder(builder: (context, constraints) {
         int i = 0;
         return Stack(
