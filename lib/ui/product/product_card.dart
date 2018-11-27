@@ -69,63 +69,150 @@ class ProductCard extends StatelessWidget {
     padding: EdgeInsets.symmetric(horizontal: 8.0),
     child: Stack(
       children: <Widget>[
-        Container(
-          height: 135.0,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Image.asset(
-                      product.imagePath,
-                      fit: BoxFit.contain,
-                      width: 200.0,
-                  ),
-              ),
-              Column(
+        Column(
+          children: <Widget>[
+            Container(
+              height: 135.0,
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+                children: <Widget>[
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                          product.imagePath,
+                          fit: BoxFit.contain,
+                          width: 200.0,
+                      ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
 //                  Text.rich(
 //                    '${MockData.vendorList.firstWhere((vendor) => vendor.id == product.vendorId).name}',
 //                    style: RapidinhoTextStyle.largeText.copyWith(fontWeight: FontWeight.w600, color: Colors.black54),
 //                    maxLines: 2,
 //                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Row(
-                      children: filterList.map((filter)
-                          => Stack(
-                            children: [
-                              Icon(Icons.star, size: 20.0, color: Colors.black54),
-                              Icon(Icons.star, size: 19.0, color: Colors.yellow[700]),
-                            ],
-                          ),
-                      ).toList()
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'Kz 110,${product.price.floor()}',
-                          style: RapidinhoTextStyle.largeText.copyWith(fontWeight: FontWeight.w600, color: Colors.black54),
-                          overflow: TextOverflow.ellipsis,
-                          softWrap: false,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Row(
+                          children: filterList.map((filter)
+                              => Stack(
+                                children: [
+                                  Icon(Icons.star, size: 20.0, color: Colors.black54),
+                                  Icon(Icons.star, size: 19.0, color: Colors.yellow[700]),
+                                ],
+                              ),
+                          ).toList()
                         ),
-                        Text(
-                          '.00',
-                          style: RapidinhoTextStyle.normalText.copyWith(fontWeight: FontWeight.w600, color: Colors.black54),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              'Kz ${product.price.floor()}',
+                              style: RapidinhoTextStyle.largeText.copyWith(fontWeight: FontWeight.w600, color: Colors.black54),
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: false,
+                            ),
+                            Text(
+                              '.00',
+                              style: RapidinhoTextStyle.normalText.copyWith(fontWeight: FontWeight.w600, color: Colors.black54),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    'Quantidade',
+                    style: RapidinhoTextStyle.mediumText.copyWith(fontWeight: FontWeight.w600, color: Colors.black),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 8.0),
+                  child: Divider(color: Colors.black54, height: 5.0),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          '6 ',
+                          style: RapidinhoTextStyle.mediumText.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                        Text(
+                          'itens',
+                          style: RapidinhoTextStyle.mediumText,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          constraints: BoxConstraints(maxWidth: 50.0, maxHeight: 30.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.red, width: 2.0),
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+                          ),
+                          child: FlatButton(
+                            child:  Text(
+                                '-',
+                                style: RapidinhoTextStyle.displayText.copyWith(color: Colors.red)),
+                            onPressed: (){
+                              //TODO decrement quantity
+                            },
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          constraints: BoxConstraints(maxWidth: 50.0, maxHeight: 30.0),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            border: Border.all(color: Colors.red, width: 2.0),
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                          ),
+                          child: FlatButton(
+                            child:  Text(
+                                '+',
+                                style: RapidinhoTextStyle.displayText.copyWith(color: Colors.white)),
+                            onPressed: (){
+                              //TODO increment quantity
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      'Total: ',
+                      style: RapidinhoTextStyle.mediumText,
+                    ),
+                    Text(
+                      'Kz 110,${product.price}0',
+                      style: RapidinhoTextStyle.mediumText.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
         Align(
           alignment: Alignment.bottomCenter,
