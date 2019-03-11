@@ -33,7 +33,7 @@ For help getting started with Flutter, view our online
 ## License
 
 ```
-Copyright (c) 2018 GDG Luanda
+Copyright (c) 2019 GDG Luanda
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
