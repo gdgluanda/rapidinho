@@ -4,6 +4,8 @@ import 'package:rapidinho/network/keys.dart';
 import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:shimmer/shimmer.dart';
 
+const photoUrl = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
+
 class PlaceCard extends StatelessWidget {
 
   final PlacesSearchResult place;
@@ -43,36 +45,12 @@ class PlaceCard extends StatelessWidget {
                             height: 100.0,
                             width: 150.0,
                             placeholder: 'assets/images/1x1_transparent.png',
-                            image: '$photosUrl${place.photos[0].photoReference}$addKey'+'&maxheight=1000&maxwidth=600',
+                            image: '$photoUrl${place.photos[0].photoReference}&key=$googleMapsApiKey',
                             fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                  ),  // END BACKGROUND IMAGE
-//                  Container(
-//                    decoration: BoxDecoration(
-//                      gradient: LinearGradient(
-//                        begin: Alignment.topCenter,
-//                        end: Alignment.bottomCenter,
-//                        stops: <double>[0.0, 0.7, 0.7],
-//                        colors: <Color>[
-//                          Colors.black54,
-//                          Colors.transparent,
-//                          Colors.transparent,
-//                        ],
-//                      ),
-//                      shape: BoxShape.rectangle,
-//                      //color: Colors.black12.withOpacity(0.2),
-//                      borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
-//                    ),
-//                    height: 100.0,
-//                    alignment: Alignment.topLeft,
-//                    //margin: const EdgeInsets.only(left: 5.0, right: 10.0, top: 0.0),
-//                    child: Padding(
-//                      padding: const EdgeInsets.only(left: 8.0, top: 2.0, bottom: 20.0),
-//                      child: Text(title, style: RapidinhoTextStyle.mediumText.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
-//                    ),
-//                  ),
+                  ),
                 ],
               ),
               Padding(
