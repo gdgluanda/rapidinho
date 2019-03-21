@@ -2,6 +2,32 @@
 
 Unofficial delivery app for [Rapidinho](http://rapidinho.co.ao) made with Flutter
 
+## Getting Started
+
+Gradle version: `4.6`
+Flutter version: `0.8.3`
+
+1. [Install Flutter](https://flutter.io/setup/)
+2. Clone this repo
+3. 
+
+add a `keys.dart` file in your `lib/network/` with this content
+
+```
+const googleMapsApiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
+```
+
+Replace 'YOUR_GOOGLE_MAPS_API_KEY' text with... you guessed it, your api key from [Google Maps](https://cloud.google.com/maps-platform/?apis=maps)
+
+4. Run `flutter run --release` on your terminal
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
+
+
+## Current project state
+
+<img src="/Screenshots/0.jpg" width="280" height="530"><img src="/Screenshots/1.jpg" width="300" height="530"><img src="/Screenshots/3.jpg" width="300" height="530">
 
 ## Why 
 With the growing number of delivery based services startups in Luanda/Angola such as [Rapidinho](https://www.instagram.com/rapidinho.ao/), [Motaki](https://www.facebook.com/motaaki/), [OGarsom](https://www.instagram.com/ogarcom_entregas/), [Tupuca](http://www.tupuca.com/en/), [Arreiou](https://twitter.com/arreioubs) and many others coming to the market, we felt the need to build a modular mobile aplication that would be intuitive to use and fit the angolan marketplace. Rapidinho is the use case we decided to go with this aplication. 
@@ -12,22 +38,7 @@ For instructions on using this project see the [license](https://github.com/gdgl
 
 Images and name of Rapidinho contained in this repository do not belong in any way to GDG Luanda or its members.
 
-## Getting Started
 
-Gradle version: `4.6`
-Flutter version: `0.8.3`
-
-1. [Install Flutter](https://flutter.io/setup/)
-2. Clone this repo
-3. Run `flutter run --release` on your terminal
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
-
-
-## Current project state
-
-<img src="/Screenshots/0.jpg" width="280" height="530"><img src="/Screenshots/1.jpg" width="300" height="530"><img src="/Screenshots/3.jpg" width="300" height="530">
 
 
 ## License
