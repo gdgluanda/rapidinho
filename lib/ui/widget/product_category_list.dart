@@ -7,22 +7,23 @@ import 'package:rapidinho/ui/product/products_page.dart';
 class ProductCategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-      return SizedBox(
+    return SizedBox(
         height: 110.0,
         child: Container(
           margin: EdgeInsets.only(top: 40.0),
           child: ListView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            children: MockData.productCategoryList.map((ProductType product){
+            children: MockData.productCategoryList.map((ProductType product) {
               return Container(
                 margin: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
                   children: <Widget>[
                     Text(product.name, style: RapidinhoTextStyle.normalText),
                     InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
                           return ProductsPage(product);
                         }));
                       },
@@ -37,7 +38,6 @@ class ProductCategoryList extends StatelessWidget {
               );
             }).toList(),
           ),
-        )
-      );
+        ));
   }
 }

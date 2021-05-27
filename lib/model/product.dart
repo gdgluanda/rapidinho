@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:rapidinho/database/common.dart';
+import 'package:rapidinho/database/common.dart' as common;
 
 class Product {
   int id;
@@ -10,6 +10,7 @@ class Product {
   Map<int, String> ingredients;
   String recipe;
   bool isActive;
+
   ///New variables
   String recommendations;
   int servings;
@@ -44,7 +45,15 @@ class Product {
     this.recommendations,
   });
 
-  Product copyWith({int id, String itemName, double price, int categoryId, String description, Map ingredients, String recipe, bool isActive}){
+  Product copyWith(
+      {int id,
+      String itemName,
+      double price,
+      int categoryId,
+      String description,
+      Map ingredients,
+      String recipe,
+      bool isActive}) {
     return Product(
       id: id ?? this.id,
       itemName: itemName ?? this.itemName,
@@ -58,42 +67,42 @@ class Product {
   }
 
   Map toMap() => {
-    ID: id,
-    CATEGORY_ID: categoryId,
-    ITEM_NAME: itemName,
-    DESCRIPTION: description,
-    INGREDIENTS: ingredients,
-    RECIPE: recipe,
-    PRICE: price,
-    ACTIVE: isActive ? 1 : 0,
-  };
+        common.id: id,
+        common.categoryId: categoryId,
+        common.itemName: itemName,
+        common.description: description,
+        common.ingredients: ingredients,
+        common.recipe: recipe,
+        common.price: price,
+        common.active: isActive ? 1 : 0,
+      };
 
-  Product.fromMap(Map map){
+  Product.fromMap(Map map) {
     Product(
-      id: map[ID],
-      categoryId: map[CATEGORY_ID],
-      itemName: map[ITEM_NAME],
-      description: map[DESCRIPTION],
-      ingredients: map[INGREDIENTS],
-      recipe: map[RECIPE],
-      price: map[PRICE],
-      isActive: map[ACTIVE] == 1 ? true : false,
+      id: map[common.id],
+      categoryId: map[common.categoryId],
+      itemName: map[common.itemName],
+      description: map[common.description],
+      ingredients: map[common.ingredients],
+      recipe: map[common.recipe],
+      price: map[common.price],
+      isActive: map[common.active] == 1 ? true : false,
     );
   }
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Product &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              itemName == other.itemName &&
-              price == other.price &&
-              categoryId == other.categoryId &&
-              description == other.description &&
-              ingredients == other.ingredients &&
-              recipe == other.recipe &&
-              isActive == other.isActive;
+      other is Product &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          itemName == other.itemName &&
+          price == other.price &&
+          categoryId == other.categoryId &&
+          description == other.description &&
+          ingredients == other.ingredients &&
+          recipe == other.recipe &&
+          isActive == other.isActive;
 
   @override
   int get hashCode =>

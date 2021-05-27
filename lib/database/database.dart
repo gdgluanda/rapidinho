@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:rapidinho/database/tables/account_table.dart';
 import 'package:rapidinho/database/tables/placed_order_table.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -10,7 +12,7 @@ class RapidinhoDatabase {
   factory RapidinhoDatabase() => _instance;
 
   Future<Database> get database async {
-    if(db != null){
+    if (db != null) {
       return db;
     }
     db = await initDB();
@@ -25,7 +27,9 @@ class RapidinhoDatabase {
     var thDB = await openDatabase(path, version: 1, onCreate: _onCreate);
     return thDB;
   }
+
   _onCreate(Database db, int version) async {
     PlacedOrderTable.createTable(db);
+    AccountTable.createTable(db);
   }
 }

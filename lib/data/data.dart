@@ -122,9 +122,17 @@ class MockData {
       price: 800.00,
       categoryId: 1,
       vendorId: 0,
-      ingredients: {0: '70 Cl Cachaça', 1: '1 KG de Gelo em cubo', 2: 'Limoes', 3: '12 Culheres', 4: 'Folha de menta'},
-      description: 'A caipirinha é o coquetel nacional do Brasil, feito com cachaça, açúcar e limão. A cachaça, também conhecida como caninha, ou qualquer um de uma infinidade de nomes tradicionais, é a bebida alcoólica destilada mais comum no Brasil.',
-      recipe: 'Enrole o limão em sua tábua com a palma da sua mão para obter todos os sucos agradáveis, em seguida, corte-os em fatias e esprema o suco em um jarro grande de 1 ½ litro, colocando as fatias nele depois de espremê-las. \n Acrescente o açúcar e o gengibre e passe alguns minutos batendo e esmagando tudo com o final de um rolo de madeira para obter todos esses sabores. Metade encha o jarro com gelo picado e volte a bater. Despeje a cachaça e mexa bem. Tem um pouco de sabor, em seguida, ajustar a acidez ao seu gosto, adicionando mais açúcar, se necessário. Cubra o jarro com mais gelo picado e depois raspe as folhas de hortelã e mexa bem. Sirva e desfrute como um coquetel refrescante com os amigos.',
+      ingredients: {
+        0: '70 Cl Cachaça',
+        1: '1 KG de Gelo em cubo',
+        2: 'Limoes',
+        3: '12 Culheres',
+        4: 'Folha de menta'
+      },
+      description:
+          'A caipirinha é o coquetel nacional do Brasil, feito com cachaça, açúcar e limão. A cachaça, também conhecida como caninha, ou qualquer um de uma infinidade de nomes tradicionais, é a bebida alcoólica destilada mais comum no Brasil.',
+      recipe:
+          'Enrole o limão em sua tábua com a palma da sua mão para obter todos os sucos agradáveis, em seguida, corte-os em fatias e esprema o suco em um jarro grande de 1 ½ litro, colocando as fatias nele depois de espremê-las. \n Acrescente o açúcar e o gengibre e passe alguns minutos batendo e esmagando tudo com o final de um rolo de madeira para obter todos esses sabores. Metade encha o jarro com gelo picado e volte a bater. Despeje a cachaça e mexa bem. Tem um pouco de sabor, em seguida, ajustar a acidez ao seu gosto, adicionando mais açúcar, se necessário. Cubra o jarro com mais gelo picado e depois raspe as folhas de hortelã e mexa bem. Sirva e desfrute como um coquetel refrescante com os amigos.',
       isActive: true,
       servings: 8,
       cookTime: 10.0,
@@ -133,7 +141,66 @@ class MockData {
       tags: ['Brazillian', 'Alcohol', 'Cocktail', 'Fruit', 'Dinner Party'],
       deliveryTax: 1500.00,
       rating: 4.8,
-      recommendations: 'Você tem que entregar para os brasileiros, eles sabem misturar um coquetel',
+      recommendations:
+          'Você tem que entregar para os brasileiros, eles sabem misturar um coquetel',
+    ),
+    Product(
+      id: 1,
+      itemName: 'Suco de laranja',
+      imagePath: 'assets/images/home_items/home_item12.jpg',
+      price: 500.00,
+      categoryId: 2,
+      vendorId: 0,
+      ingredients: {
+        0: '70 Cl Cachaça',
+        1: '1 KG de Gelo em cubo',
+        2: 'Limoes',
+        3: '12 Culheres',
+        4: 'Folha de menta'
+      },
+      description:
+          'A caipirinha é o coquetel nacional do Brasil, feito com cachaça, açúcar e limão. A cachaça, também conhecida como caninha, ou qualquer um de uma infinidade de nomes tradicionais, é a bebida alcoólica destilada mais comum no Brasil.',
+      recipe:
+          'Enrole o limão em sua tábua com a palma da sua mão para obter todos os sucos agradáveis, em seguida, corte-os em fatias e esprema o suco em um jarro grande de 1 ½ litro, colocando as fatias nele depois de espremê-las. \n Acrescente o açúcar e o gengibre e passe alguns minutos batendo e esmagando tudo com o final de um rolo de madeira para obter todos esses sabores. Metade encha o jarro com gelo picado e volte a bater. Despeje a cachaça e mexa bem. Tem um pouco de sabor, em seguida, ajustar a acidez ao seu gosto, adicionando mais açúcar, se necessário. Cubra o jarro com mais gelo picado e depois raspe as folhas de hortelã e mexa bem. Sirva e desfrute como um coquetel refrescante com os amigos.',
+      isActive: true,
+      servings: 8,
+      cookTime: 10.0,
+      estimatedDeliveryTime: 15.55,
+      suggestedProducts: [],
+      tags: ['Brazillian', 'Alcohol', 'Cocktail', 'Fruit', 'Dinner Party'],
+      deliveryTax: 1500.00,
+      rating: 4.0,
+      recommendations:
+          'Você tem que entregar para os brasileiros, eles sabem misturar um coquetel',
+    ),
+    Product(
+      id: 3,
+      itemName: 'Salsicha e ovo',
+      imagePath: 'assets/images/home_items/home_item5.jpg',
+      price: 700.00,
+      categoryId: 3,
+      vendorId: 0,
+      ingredients: {
+        0: '70 Cl Cachaça',
+        1: '1 KG de Gelo em cubo',
+        2: 'Limoes',
+        3: '12 Culheres',
+        4: 'Folha de menta'
+      },
+      description:
+          'A caipirinha é o coquetel nacional do Brasil, feito com cachaça, açúcar e limão. A cachaça, também conhecida como caninha, ou qualquer um de uma infinidade de nomes tradicionais, é a bebida alcoólica destilada mais comum no Brasil.',
+      recipe:
+          'Enrole o limão em sua tábua com a palma da sua mão para obter todos os sucos agradáveis, em seguida, corte-os em fatias e esprema o suco em um jarro grande de 1 ½ litro, colocando as fatias nele depois de espremê-las. \n Acrescente o açúcar e o gengibre e passe alguns minutos batendo e esmagando tudo com o final de um rolo de madeira para obter todos esses sabores. Metade encha o jarro com gelo picado e volte a bater. Despeje a cachaça e mexa bem. Tem um pouco de sabor, em seguida, ajustar a acidez ao seu gosto, adicionando mais açúcar, se necessário. Cubra o jarro com mais gelo picado e depois raspe as folhas de hortelã e mexa bem. Sirva e desfrute como um coquetel refrescante com os amigos.',
+      isActive: true,
+      servings: 8,
+      cookTime: 10.0,
+      estimatedDeliveryTime: 15.55,
+      suggestedProducts: [],
+      tags: ['Brazillian', 'Alcohol', 'Cocktail', 'Fruit', 'Dinner Party'],
+      deliveryTax: 1500.00,
+      rating: 4.0,
+      recommendations:
+          'Você tem que entregar para os brasileiros, eles sabem misturar um coquetel',
     ),
   ];
 
@@ -159,57 +226,55 @@ class MockData {
       category: ProductCategory.Pizza,
     ),
     ProductType(
-        name: 'Bebidas',
-        assetPath: 'assets/images/deliverables/drink.png',
-        category: ProductCategory.Drinks,
+      name: 'Bebidas',
+      assetPath: 'assets/images/deliverables/drink.png',
+      category: ProductCategory.Drinks,
     ),
     ProductType(
-        name: 'Livros',
-        assetPath: 'assets/images/deliverables/books.png',
-        category: ProductCategory.Book,
+      name: 'Livros',
+      assetPath: 'assets/images/deliverables/books.png',
+      category: ProductCategory.Book,
     ),
     ProductType(
         name: 'Refeições',
         assetPath: 'assets/images/deliverables/food.png',
-        category: ProductCategory.Food
+        category: ProductCategory.Food),
+    ProductType(
+      name: 'Hamburgers',
+      assetPath: 'assets/images/deliverables/hamburger.png',
+      category: ProductCategory.Hamburger,
     ),
     ProductType(
-        name: 'Hamburgers',
-        assetPath: 'assets/images/deliverables/hamburger.png',
-        category: ProductCategory.Hamburger,
+      name: 'Gelados',
+      assetPath: 'assets/images/deliverables/ice_cream.png',
+      category: ProductCategory.IceCream,
     ),
     ProductType(
-        name: 'Gelados',
-        assetPath: 'assets/images/deliverables/ice_cream.png',
-        category: ProductCategory.IceCream,
+      name: 'Convites',
+      assetPath: 'assets/images/deliverables/letter.png',
+      category: ProductCategory.Invites,
     ),
     ProductType(
-        name: 'Convites',
-        assetPath: 'assets/images/deliverables/letter.png',
-        category: ProductCategory.Invites,
+      name: 'Cartas',
+      assetPath: 'assets/images/deliverables/mail.png',
+      category: ProductCategory.Mail,
     ),
     ProductType(
-        name: 'Cartas',
-        assetPath: 'assets/images/deliverables/mail.png',
-        category: ProductCategory.Mail,
+      name: 'Presentes',
+      assetPath: 'assets/images/deliverables/present.png',
+      category: ProductCategory.Present,
     ),
     ProductType(
-        name: 'Presentes',
-        assetPath: 'assets/images/deliverables/present.png',
-        category: ProductCategory.Present,
-    ),
-    ProductType(
-        name: 'Vestuario',
-        assetPath: 'assets/images/deliverables/wear.png',
-        category: ProductCategory.Wear,
+      name: 'Vestuario',
+      assetPath: 'assets/images/deliverables/wear.png',
+      category: ProductCategory.Wear,
     ),
   ];
-
 
   static final List<Delivery> deliveries = [
     Delivery(
       name: 'Pizza Quatro Estações',
-      locationName:'Rapidinho\'s Office',
+      locationName: 'Rapidinho\'s Office',
       locationIndex: 2,
       category: ProductCategory.Pizza,
       vendor: 'Pizza Hunt',
@@ -219,7 +284,7 @@ class MockData {
     ),
     Delivery(
       name: 'Caixa de Chocolates',
-      locationName:'Avenida Shopping',
+      locationName: 'Avenida Shopping',
       locationIndex: 1,
       category: ProductCategory.Present,
       vendor: 'Candando',
@@ -229,7 +294,7 @@ class MockData {
     ),
     Delivery(
       name: 'Nike Air VaporMax 97',
-      locationName:'Alvalade',
+      locationName: 'Alvalade',
       locationIndex: 1,
       category: ProductCategory.Wear,
       vendor: 'Imaginarium',
@@ -239,7 +304,7 @@ class MockData {
     ),
     Delivery(
       name: 'Carta Confidencial',
-      locationName:'Escritorio',
+      locationName: 'Escritorio',
       locationIndex: 0,
       category: ProductCategory.Mail,
       vendor: 'Boss',

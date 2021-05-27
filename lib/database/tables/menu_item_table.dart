@@ -3,23 +3,20 @@ import 'package:rapidinho/model/product.dart';
 import 'package:sqflite/sqflite.dart';
 
 class MenuItemTable {
-
-  MenuItemTable(Database db){
+  MenuItemTable(Database db) {
     _createTable(db);
   }
 
   _createTable(Database database) {
-    database.execute(
-        "CREATE TABLE $Product ("
-            "$ID INTEGER PRIMARY KEY,"
-            "$CATEGORY_ID INTEGER,"
-            "$ITEM_NAME TEXT,"
-            "$DESCRIPTION TEXT,"
-            "$INGREDIENTS TEXT,"
-            "$RECIPE TEXT,"
-            "$PRICE REAL,"
-            "$ACTIVE INTEGER"
-            ")"
-    );
+    database.execute("CREATE TABLE $Product ("
+        "$id INTEGER PRIMARY KEY,"
+        "$categoryId INTEGER,"
+        "$itemName TEXT,"
+        "$description TEXT,"
+        "$ingredients TEXT,"
+        "$recipe TEXT,"
+        "$price REAL,"
+        "$active INTEGER"
+        ")");
   }
 }

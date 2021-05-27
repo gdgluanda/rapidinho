@@ -17,17 +17,20 @@ class BottomTabSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
       converter: _ViewModel.fromStore,
-      builder: (context, viewModel){
+      builder: (context, viewModel) {
         return BottomNavigationBar(
           currentIndex: currentIndex,
-          items: navigationTabs.map((tab){
+          items: navigationTabs.map((tab) {
             return BottomNavigationBarItem(
-              title: new Text(tab.name, style: RapidinhoTextStyle.bottomTextStyle),
-              icon: new Icon(tab.icon, size: tab.name ==  'Entregas' ? 24.0 : 18.0, color: Colors.grey),
+              title:
+                  new Text(tab.name, style: RapidinhoTextStyle.bottomTextStyle),
+              icon: new Icon(tab.icon,
+                  size: tab.name == 'Entregas' ? 24.0 : 18.0,
+                  color: Colors.grey),
               activeIcon: Icon(tab.icon, color: Colors.red),
             );
           }).toList(),
-          onTap: (index){
+          onTap: (index) {
             viewModel.onTabChanged(index);
             onTabChanged(index);
           },
@@ -43,10 +46,10 @@ class _ViewModel {
 
   _ViewModel({@required this.activeTab, @required this.onTabChanged});
 
-  static _ViewModel fromStore(Store<AppState> store){
+  static _ViewModel fromStore(Store<AppState> store) {
     return _ViewModel(
       activeTab: store.state.activeTab,
-      onTabChanged: (index){
+      onTabChanged: (index) {
         store.dispatch(UpdateTabAction((NavigationTab.values[index])));
       },
     );
@@ -55,15 +58,13 @@ class _ViewModel {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is _ViewModel &&
-              runtimeType == other.runtimeType &&
-              activeTab == other.activeTab &&
-              onTabChanged == other.onTabChanged;
+      other is _ViewModel &&
+          runtimeType == other.runtimeType &&
+          activeTab == other.activeTab &&
+          onTabChanged == other.onTabChanged;
 
   @override
-  int get hashCode =>
-      activeTab.hashCode ^
-      onTabChanged.hashCode;
+  int get hashCode => activeTab.hashCode ^ onTabChanged.hashCode;
 
   @override
   String toString() {
