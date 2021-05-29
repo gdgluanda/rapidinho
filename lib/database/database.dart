@@ -30,6 +30,7 @@ class RapidinhoDatabase {
 
   _onCreate(Database db, int version) async {
     PlacedOrderTable.createTable(db);
-    AccountTable.createTable(db);
+    AccountTable.createTable(
+        db); // account table is created on database creation
   }
 }

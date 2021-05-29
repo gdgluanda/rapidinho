@@ -179,12 +179,15 @@ class _AccountTabState extends State<AccountTab> with TickerProviderStateMixin {
     );
   }
 
+  // change read state to edit mode
+  // change from edit button to save button
   _enableEdit() {
     setState(() {
       isRead = false;
     });
   }
 
+  // account information updated after user click save button
   _updateProfile() async {
     Profile profile = Profile(
         id: currentProfile.id,
@@ -194,7 +197,9 @@ class _AccountTabState extends State<AccountTab> with TickerProviderStateMixin {
         password: currentProfile.password,
         address: addressController.text);
     AccountTable accountTable = AccountTable();
+    // called updateProfile method from AccountTable class
     await accountTable.updateProfile(profile, db);
+    // set to original read mode state
     setState(() {
       isRead = true;
     });

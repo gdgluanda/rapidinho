@@ -1,5 +1,6 @@
 import 'package:rapidinho/database/common.dart' as common;
 
+// profile object for user to login and sign up
 class Profile {
   int id;
   String name;
@@ -24,6 +25,7 @@ class Profile {
         password = res["password"],
         email = res["email"];
 
+  // data mapping to Profile object
   Map<String, Object> toMap() {
     return {
       common.id: id,
@@ -41,4 +43,4 @@ class Profile {
   }
 }
 
-Profile currentProfile = Profile();
+Profile currentProfile = Profile(); // declare global profile object

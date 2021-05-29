@@ -15,6 +15,7 @@ class AccountTable {
     _createAccount(profile, database: this.database);
   }
 
+  // table create for user account
   _createTable(Database database) async {
     await database.execute("CREATE TABLE $Profile ("
         "${common.id} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
@@ -27,6 +28,7 @@ class AccountTable {
     print("Account Table created.");
   }
 
+  // add new account profile to account table
   Future<int> _createAccount(Profile profile, {Database database}) async {
     try {
       int accountId = await database.insert('$Profile', profile.toMap());
@@ -38,6 +40,7 @@ class AccountTable {
     }
   }
 
+  // check profile is exist or not by quering the account table with name and password
   Future<Profile> getProfile(
       Database database, String name, String password) async {
     final List<Map<String, dynamic>> queryResult = await database.rawQuery(
@@ -46,9 +49,11 @@ class AccountTable {
     return queryResult.isNotEmpty ? Profile.fromMap(queryResult.first) : null;
   }
 
+  // update account data
   Future<int> updateProfile(Profile profile, Database database) async {
     int result = await database.rawUpdate(
-        '''UPDATE $Profile SET ${common.name} = ?, ${common.phone} = ?, ${common.address} = ?, ${common.email} = ?, ${common.password} = ? WHERE ${common.id} = ?''',
+        '''UPDATE $Profile SET ${common.name} = ?, ${common.phone} = ?, ${common.address} = ?,
+         ${common.email} = ?, ${common.password} = ? WHERE ${common.id} = ?''',
         [
           profile.name,
           profile.phone,

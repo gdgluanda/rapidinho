@@ -14,30 +14,37 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController usernameController = new TextEditingController(),
       passwordController = new TextEditingController();
-  RapidinhoDatabase database = RapidinhoDatabase();
+  RapidinhoDatabase database = RapidinhoDatabase(); // initialize the database
   Database db;
 
   @override
   void initState() {
     super.initState();
-    database.initDB().then((value) => db = value);
+    database.initDB().then((value) =>
+        db = value); // create the required tables at the initial state
   }
 
   @override
   void dispose() {
-    usernameController.dispose();
-    passwordController.dispose();
+    usernameController
+        .dispose(); // cannot be useable after the page is disposed
+    passwordController
+        .dispose(); // cannot be useable after the page is disposed
     super.dispose();
   }
 
+  // widgets of Login Up Page
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height =
+        MediaQuery.of(context).size.height; // get current phone screen height
+    double width =
+        MediaQuery.of(context).size.width; // get current phone screen width
 
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
+        FocusScope.of(context).requestFocus(
+            new FocusNode()); // disable the keyboard by touching the screen
       },
       child: Scaffold(
         body: SingleChildScrollView(
@@ -122,7 +129,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 25, 50, 0),
                   child: OutlinedButton(
-                    onPressed: saveAccountToDB,
+                    onPressed: navigateToSignUp,
                     child: Text(
                       "Don't have an account ? Join Us",
                       style: TextStyle(color: Colors.red),
@@ -146,7 +153,8 @@ class _LoginState extends State<Login> {
     );
   }
 
-  saveAccountToDB() {
+  // navigate to sign up screen after user click "Don't have an account ? Join Us" button
+  navigateToSignUp() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) {
@@ -155,12 +163,14 @@ class _LoginState extends State<Login> {
     );
   }
 
+  // check username and password from database
+  // after user click login
   _signInAccount() {
     String name = usernameController.text;
     String password = passwordController.text;
     if (name.length > 0 && password.length > 0) {
-      usernameController.clear();
-      passwordController.clear();
+      usernameController.clear(); // clear name text field
+      passwordController.clear(); // clear password text field
       AccountTable accountTable = AccountTable();
       accountTable.getProfile(db, name, password).then((value) => value != null
           ? setLoginProfile(value)
@@ -168,8 +178,10 @@ class _LoginState extends State<Login> {
     }
   }
 
+  // if user is valid, set the account values to global
   setLoginProfile(Profile profile) {
     currentProfile = profile;
+    // route to the main page
     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
       return HomePage(
         index: 0,

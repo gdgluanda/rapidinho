@@ -36,10 +36,14 @@ class _DeliveryTabState extends State<DeliveryTab>
     return Scaffold(
       body: Stack(
         children: <Widget>[
+          // removed option parameter from GoogleMap
+          // initialCameraPosition is required (replaced with option parameter)
           GoogleMap(
             onMapCreated: _onMapCreated,
-            initialCameraPosition:
-                CameraPosition(target: LatLng(16.7754, 96.1418)),
+            initialCameraPosition: CameraPosition(
+              target: LatLng(16.7754,
+                  96.1418), // initialize the latitude and logitude after map created
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,

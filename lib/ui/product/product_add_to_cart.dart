@@ -9,8 +9,8 @@ import 'package:rapidinho/styling/rapidinho_style.dart';
 import 'package:rapidinho/ui/home_page.dart';
 
 class ProductAddToCart extends StatefulWidget {
-  final Product product;
-  final CartItem cartItem;
+  final Product product; // product to display in the card
+  final CartItem cartItem; // initialize the cart to add items
   ProductAddToCart({@required this.product, @required this.cartItem});
   @override
   _ProductAddToCartState createState() => _ProductAddToCartState();
@@ -210,24 +210,28 @@ class _ProductAddToCartState extends State<ProductAddToCart> {
     );
   }
 
+  // click plus sign to increase total item
   _increaseItemCount() {
     setState(() {
       widget.cartItem.totalItem += 1;
       widget.cartItem.totalPrice =
-          widget.product.price * widget.cartItem.totalItem;
+          widget.product.price * widget.cartItem.totalItem; // update price
     });
   }
 
+  // decrease total item by clicking minus sign
   _decreaseItemCount() {
+    // only able to decrease if total item is greater than 1
     if (widget.cartItem.totalItem > 1) {
       setState(() {
         widget.cartItem.totalItem -= 1;
         widget.cartItem.totalPrice =
-            widget.product.price * widget.cartItem.totalItem;
+            widget.product.price * widget.cartItem.totalItem; // update price
       });
     }
   }
 
+  // added item to cart
   _addToCart() {
     double totalAmount = 0;
     addedItems.add(widget.cartItem);
@@ -240,6 +244,8 @@ class _ProductAddToCartState extends State<ProductAddToCart> {
         profile: currentProfile,
         purchasedDate: DateTime.now(),
         totalAmount: totalAmount);
+    // show snack bar at the bottom of the screen
+    // click "view" will redirect to cart tab
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Added'),

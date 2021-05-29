@@ -34,6 +34,7 @@ class _SignUpState extends State<SignUp> {
     super.dispose();
   }
 
+  // widgets of Sign Up Page
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -265,6 +266,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+  // toggle to visible password field
   void _toggelVisible() {
     if (visible) {
       setState(() {
@@ -277,6 +279,8 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  // check all fields is not empty first
+  // created new profile object then added to database
   void _saveToDatabase() {
     final name = nameController.text;
     final password = passwordController.text;
@@ -293,8 +297,9 @@ class _SignUpState extends State<SignUp> {
           phone: phone,
           address: address,
           email: email);
-      AccountTable.createAccount(newProfile, db);
-      Navigator.pop(context);
+      AccountTable.createAccount(
+          newProfile, db); // insert new profile to database
+      Navigator.pop(context); // back to login page
     }
   }
 }
