@@ -8,7 +8,6 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topCenter,
-      margin: EdgeInsets.only(top: kToolbarHeight),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(

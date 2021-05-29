@@ -13,6 +13,7 @@ Future<Store<AppState>> createStore() async {
   return Store<AppState>(
     appReducer,
     initialState: AppState.init(),
+    // ignore: todo
     //TODO review [distinct]
     //distinct: true,
     middleware: [

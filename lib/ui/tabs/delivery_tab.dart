@@ -7,37 +7,23 @@ import 'package:rapidinho/ui/widget/delivery_card.dart';
 import 'package:google_maps_webservice/directions.dart';
 
 class DeliveryTab extends StatefulWidget {
-
   DeliveryTab();
 
   @override
   _DeliveryTabState createState() => _DeliveryTabState();
 }
 
-class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin {
-
-  final directions = new GoogleMapsDirections(Platform.environment[googleMapsApiKey]);
+class _DeliveryTabState extends State<DeliveryTab>
+    with TickerProviderStateMixin {
+  final directions =
+      new GoogleMapsDirections(Platform.environment[googleMapsApiKey]);
   PageController _pageController = PageController(viewportFraction: 0.85);
   GoogleMapController mapController;
-  GoogleMapOptions _options = GoogleMapOptions(
-    cameraPosition: const CameraPosition(
-      target: LatLng(-8.885533, 13.253325),
-      zoom: 14.0,
-    ),
-    trackCameraPosition: true,
-    compassEnabled: true,
-  );
 
-//  @override
-//  void initState() async {
-//    super.initState();
-//    DirectionsResponse res = await directions.directionsWithLocation(
-//        Location(-8.914714, 13.347579), Location(-8.770387, 13.252518),
-//        travelMode: TravelMode.bicycling,
-//        waypoints: Waypoint.fromLocation(Location(-8.854382, 13.358283)),
-//    );
-//    print('Direction API response: ${res.status}');
-//  }
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -50,9 +36,14 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
     return Scaffold(
       body: Stack(
         children: <Widget>[
+          // removed option parameter from GoogleMap
+          // initialCameraPosition is required (replaced with option parameter)
           GoogleMap(
             onMapCreated: _onMapCreated,
-            options: _options,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(16.7754,
+                  96.1418), // initialize the latitude and logitude after map created
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -63,9 +54,7 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
                 controller: _pageController,
                 scrollDirection: Axis.horizontal,
                 children: MockData.deliveries.map((product) {
-                  return DeliveryCard(
-                      deliveryProduct: product
-                  );
+                  return DeliveryCard(deliveryProduct: product);
                 }).toList(),
               ),
             ),
@@ -75,7 +64,7 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
     );
   }
 
-  _changeLocation(int pageIndex){
+  _changeLocation(int pageIndex) {
     mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         target: MockData.deliveries[pageIndex].latLng,
@@ -85,6 +74,8 @@ class _DeliveryTabState extends State<DeliveryTab> with TickerProviderStateMixin
   }
 
   void _onMapCreated(GoogleMapController controller) {
-    setState(() { mapController = controller; });
+    setState(() {
+      mapController = controller;
+    });
   }
 }

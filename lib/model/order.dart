@@ -1,4 +1,4 @@
-import 'package:rapidinho/database/common.dart';
+import 'package:rapidinho/database/common.dart' as common;
 
 class PlacedOrder {
   int id, restaurantId, customerId;
@@ -23,72 +23,87 @@ class PlacedOrder {
     this.finalPrice,
   });
 
-  PlacedOrder copyWith({int id, int restaurantId, int customerId, DateTime orderTime, DateTime estimatedDeliveryTime, DateTime foodReadyAt, DateTime actualDeliveryTime, DateTime isFoodReady, DateTime deliveryAddress, DateTime comment, DateTime price, DateTime discount, DateTime finalPrice}){
+  PlacedOrder copyWith(
+      {int id,
+      int restaurantId,
+      int customerId,
+      DateTime orderTime,
+      DateTime estimatedDeliveryTime,
+      DateTime foodReadyAt,
+      DateTime actualDeliveryTime,
+      DateTime isFoodReady,
+      DateTime deliveryAddress,
+      DateTime comment,
+      DateTime price,
+      DateTime discount,
+      DateTime finalPrice}) {
     return PlacedOrder(
-      id: id ?? this.id,
-      restaurantId:  restaurantId ?? this.restaurantId,
-      customerId: customerId ?? this.customerId,
-      orderTime: orderTime ?? this.orderTime,
-      estimatedDeliveryTime:  estimatedDeliveryTime ?? this.estimatedDeliveryTime,
-      foodReadyAt: foodReadyAt ?? this.foodReadyAt,
-      actualDeliveryTime: actualDeliveryTime ?? this.actualDeliveryTime,
-      isFoodReady: isFoodReady ?? this.isFoodReady,
-      deliveryAddress: deliveryAddress ?? this.deliveryAddress,
-      comment: comment ?? this.comment,
-      price: price ?? this.comment,
-      discount: discount ?? this.discount,
-      finalPrice: finalPrice ?? this.finalPrice
-    );
+        id: id ?? this.id,
+        restaurantId: restaurantId ?? this.restaurantId,
+        customerId: customerId ?? this.customerId,
+        orderTime: orderTime ?? this.orderTime,
+        estimatedDeliveryTime:
+            estimatedDeliveryTime ?? this.estimatedDeliveryTime,
+        foodReadyAt: foodReadyAt ?? this.foodReadyAt,
+        actualDeliveryTime: actualDeliveryTime ?? this.actualDeliveryTime,
+        isFoodReady: isFoodReady ?? this.isFoodReady,
+        deliveryAddress: deliveryAddress ?? this.deliveryAddress,
+        comment: comment ?? this.comment,
+        price: price ?? this.comment,
+        discount: discount ?? this.discount,
+        finalPrice: finalPrice ?? this.finalPrice);
   }
-  Map toMap() => {
-    ID: id,
-    RESTAURANT_ID: restaurantId,
-    CUSTOMER_ID: customerId,
-    ORDER_TIME: orderTime.millisecondsSinceEpoch,
-    ESTIMATED_DELIVERY_TIME: estimatedDeliveryTime.millisecondsSinceEpoch,
-    FOOD_READY_AT: foodReadyAt.millisecondsSinceEpoch,
-    ACTUAL_DELIVERY_TIME: actualDeliveryTime.millisecondsSinceEpoch,
-    DELIVERY_ADDRESS: deliveryAddress,
-    COMMENT: comment,
-    PRICE: price,
-    DISCOUNT: discount,
-    FINAL_PRICE: finalPrice,
-  };
 
-  PlacedOrder.fromMap(Map map){
+  Map toMap() => {
+        common.id: id,
+        common.restaurantId: restaurantId,
+        common.customerId: customerId,
+        common.orderTime: orderTime.millisecondsSinceEpoch,
+        common.estimatedDeliveryTime:
+            estimatedDeliveryTime.millisecondsSinceEpoch,
+        common.foodReadyAt: foodReadyAt.millisecondsSinceEpoch,
+        common.actualDeliveryTime: actualDeliveryTime.millisecondsSinceEpoch,
+        common.deliveryAddress: deliveryAddress,
+        common.comment: comment,
+        common.price: price,
+        common.discount: discount,
+        common.finalPrice: finalPrice,
+      };
+
+  PlacedOrder.fromMap(Map map) {
     PlacedOrder(
-      id: map[ID],
-      restaurantId: map[RESTAURANT_ID],
-      customerId: map[CUSTOMER_ID],
-      orderTime: map[ORDER_TIME],
-      estimatedDeliveryTime: map[ESTIMATED_DELIVERY_TIME],
-      foodReadyAt: map[FOOD_READY_AT],
-      actualDeliveryTime: map[ACTUAL_DELIVERY_TIME],
-      deliveryAddress: map[DELIVERY_ADDRESS],
-      comment: map[COMMENT],
-      discount: map[DISCOUNT],
-      finalPrice: map[FINAL_PRICE],
+      id: map[common.id],
+      restaurantId: map[common.restaurantId],
+      customerId: map[common.customerId],
+      orderTime: map[common.orderTime],
+      estimatedDeliveryTime: map[common.estimatedDeliveryTime],
+      foodReadyAt: map[common.foodReadyAt],
+      actualDeliveryTime: map[common.actualDeliveryTime],
+      deliveryAddress: map[common.deliveryAddress],
+      comment: map[common.comment],
+      discount: map[common.discount],
+      finalPrice: map[common.finalPrice],
     );
   }
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is PlacedOrder &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              restaurantId == other.restaurantId &&
-              customerId == other.customerId &&
-              orderTime == other.orderTime &&
-              estimatedDeliveryTime == other.estimatedDeliveryTime &&
-              foodReadyAt == other.foodReadyAt &&
-              actualDeliveryTime == other.actualDeliveryTime &&
-              isFoodReady == other.isFoodReady &&
-              deliveryAddress == other.deliveryAddress &&
-              comment == other.comment &&
-              price == other.price &&
-              discount == other.discount &&
-              finalPrice == other.finalPrice;
+      other is PlacedOrder &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          restaurantId == other.restaurantId &&
+          customerId == other.customerId &&
+          orderTime == other.orderTime &&
+          estimatedDeliveryTime == other.estimatedDeliveryTime &&
+          foodReadyAt == other.foodReadyAt &&
+          actualDeliveryTime == other.actualDeliveryTime &&
+          isFoodReady == other.isFoodReady &&
+          deliveryAddress == other.deliveryAddress &&
+          comment == other.comment &&
+          price == other.price &&
+          discount == other.discount &&
+          finalPrice == other.finalPrice;
 
   @override
   int get hashCode =>
